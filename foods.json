@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "makarna",
+    "gram": 100,
+    "protein": 12,
+    "fat": 1,
+    "carb:": 75
+  },
+  {
+    "id": 2,
+    "title": "ızgara tavuk",
+    "gram": 100,
+    "protein": 23,
+    "fat": 15,
+    "carb:": 10
+  },
+  {
+    "id": 3,
+    "title": "levrek",
+    "gram": 100,
+    "protein": 19,
+    "fat": 2,
+    "carb:": 0
+  },
+  {
+    "id": 4,
+    "title": "dana eti",
+    "gram": 100,
+    "protein": 18,
+    "fat": 16,
+    "carb:": 10
+  },
+  {
+    "id": 5,
+    "title": "barbunya",
+    "gram": 100,
+    "protein": 23,
+    "fat": 2,
+    "carb:": 63
+  },
+  {
+    "id": 6,
+    "title": "yumurta",
+    "gram": 100,
+    "protein": 13,
+    "fat": 11,
+    "carb:": 2
+  },
+  {
+    "id": 7,
+    "title": "pilav",
+    "gram": 100,
+    "protein": 7,
+    "fat": 1,
+    "carb:": 81
+  }
+]
