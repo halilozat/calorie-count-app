@@ -3,6 +3,7 @@ import Header from './components/Header';
 import { useState, useEffect } from 'react';
 import foods from './foods.json';
 import Food from './components/Food';
+import Basket from './components/Basket';
 
 function App() {
   const [macros, setMacros] = useState({
@@ -10,7 +11,12 @@ function App() {
     protein: 100,
     fat: 50,
   });
+
   const [basket, setBasket] = useState([]);
+
+  const resetBasket = () => {
+    setBasket([])
+  }
 
   /*
     tek bir total'de tutmaya çalış! 
@@ -53,11 +59,41 @@ function App() {
 
   return (
     <div>
-      <Header totalCarb={totalCarb} totalProtein={totalProtein} totalFat={totalFat} macros={macros} />
+      <Header
+        totalCarb={totalCarb}
+        totalProtein={totalProtein}
+        totalFat={totalFat}
+        macros={macros}
+      />
 
       {foods.map((food) => (
-        <Food key={food.id} basket={basket} setBasket={setBasket} food={food} />
+        <Food
+          key={food.id}
+          totalCarb={totalCarb}
+          totalProtein={totalProtein}
+          totalFat={totalFat}
+          macros={macros}
+          basket={basket}
+          setBasket={setBasket}
+          food={food}
+        />
       ))}
+
+      {
+        totalProtein > 0 && (
+          <Basket
+            resetBasket={resetBasket}
+            foods={foods}
+            totalCarb={totalCarb}
+            totalProtein={totalProtein}
+            totalFat={totalFat}
+            basket={basket}
+          />
+        )
+      }
+
+
+
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './food.css';
 
-const Food = ({ food, basket, setBasket }) => {
+const Food = ({ food, basket, setBasket, macros, totalFat, totalCarb, totalProtein }) => {
     const basketItem = basket.find((item) => item.id === food.id);
 
     const addBasket = () => {
@@ -46,7 +46,11 @@ const Food = ({ food, basket, setBasket }) => {
                     <div className="amount">
                         {basketItem && basketItem.amount || 0}
                     </div>
-                    <button onClick={addBasket}>Ekle</button>
+                    <button
+                        disabled={macros.fat - totalFat <= 0 || macros.protein - totalProtein <= 0 || macros.carb - totalCarb <= 0}
+                        onClick={addBasket}
+                    >Ekle
+                    </button>
                 </div>
             </div>
         </>
