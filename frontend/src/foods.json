@@ -5,7 +5,7 @@
     "gram": 100,
     "protein": 12,
     "fat": 1,
-    "carb:": 75
+    "carb": 75
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "gram": 100,
     "protein": 23,
     "fat": 15,
-    "carb:": 10
+    "carb": 10
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "gram": 100,
     "protein": 19,
     "fat": 2,
-    "carb:": 0
+    "carb": 0
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "gram": 100,
     "protein": 18,
     "fat": 16,
-    "carb:": 10
+    "carb": 10
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "gram": 100,
     "protein": 23,
     "fat": 2,
-    "carb:": 63
+    "carb": 63
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "gram": 100,
     "protein": 13,
     "fat": 11,
-    "carb:": 2
+    "carb": 2
   },
   {
     "id": 7,
@@ -53,6 +53,6 @@
     "gram": 100,
     "protein": 7,
     "fat": 1,
-    "carb:": 81
+    "carb": 81
   }
 ]
