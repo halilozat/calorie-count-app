@@ -35,18 +35,21 @@ const Food = ({ food, basket, setBasket, macros, totalFat, totalCarb, totalProte
     return (
         <>
             <div className="food">
-                <h5>{food.title}</h5>
+
+                <img src={food.image} alt="" />
+                <h6>{food.title}</h6>
 
                 <div className="carb">{food.carb} gr karbonhidrat</div>
                 <div className="carb">{food.protein} gr protein</div>
                 <div className="carb">{food.fat} gr yağ</div>
 
                 <div className="actions">
-                    <button disabled={!basketItem} onClick={removeBasket}>Çıkar</button>
+                    <button className="sell-btn" disabled={!basketItem} onClick={removeBasket}>Çıkar</button>
                     <div className="amount">
                         {basketItem && basketItem.amount || 0}
                     </div>
                     <button
+                        className="buy-btn"
                         disabled={macros.fat - totalFat <= 0 || macros.protein - totalProtein <= 0 || macros.carb - totalCarb <= 0}
                         onClick={addBasket}
                     >Ekle

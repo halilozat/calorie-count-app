@@ -66,18 +66,21 @@ function App() {
         macros={macros}
       />
 
-      {foods.map((food) => (
-        <Food
-          key={food.id}
-          totalCarb={totalCarb}
-          totalProtein={totalProtein}
-          totalFat={totalFat}
-          macros={macros}
-          basket={basket}
-          setBasket={setBasket}
-          food={food}
-        />
-      ))}
+
+      <div className="container foods">
+        {foods.map((food) => (
+          <Food
+            key={food.id}
+            totalCarb={totalCarb}
+            totalProtein={totalProtein}
+            totalFat={totalFat}
+            macros={macros}
+            basket={basket}
+            setBasket={setBasket}
+            food={food}
+          />
+        ))}
+      </div>
 
       {
         totalProtein > 0 && (

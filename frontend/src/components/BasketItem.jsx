@@ -1,10 +1,13 @@
 import React from 'react'
+import './basketItem.css'
 
 const BasketItem = ({ item, food }) => {
     return (
-        <div>
-            {food.title} x {item.amount}
-        </div>
+        <>
+            <li className="basketItem">
+                {food.title} <span>x {item.amount}</span>
+            </li>
+        </>
     )
 }
 
