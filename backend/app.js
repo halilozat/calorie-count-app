@@ -1,13 +1,17 @@
 const fastify = require('fastify')({ logger: true })
-fastify.get('/', async (request, reply) => {
-    reply.send({ hello: 'world' })
-})
+const route = require('./routes')
+const dbconnector = require('./db')
+
+fastify.register(dbconnector)
+fastify.register(route)
+
 async function start() {
     try {
-        await fastify.listen(3000)
+        await fastify.listen(5000)
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)
     }
 }
 start()
+
