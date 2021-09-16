@@ -1,9 +1,15 @@
 const fastify = require('fastify')({ logger: true })
 const route = require('./routes')
-const dbconnector = require('./db')
+const db = require('./db')
 
-fastify.register(dbconnector)
 fastify.register(route)
+
+db.authenticate().then(() => {
+    console.log('Database connected...');
+}).catch(err => {
+    console.log('Error: ' + err);
+})
+
 
 async function start() {
     try {

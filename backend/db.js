@@ -7,7 +7,7 @@ const client = new Client({
     password: "passwod",
     host: 'localhost',
     port: 5432,
-    database: "food"
+    database: "database_development_dev2"
 })
 async function dbconnector(fastify, options) {
     try {
