@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import foods from './foods.json';
 import Food from './components/Food';
 import Basket from './components/Basket';
+import CalorieFinder from './components/calorieFinder/CalorieFinder'
 
 function App() {
   const [macros, setMacros] = useState({
@@ -65,6 +66,8 @@ function App() {
         totalFat={totalFat}
         macros={macros}
       />
+
+      <CalorieFinder />
 
 
       <div className="container foods">

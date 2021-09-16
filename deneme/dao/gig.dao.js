@@ -1,10 +1,10 @@
 const Gig = require('../models/Gig');
 var gigDao = {
-    findAll: findAll,
-    create: create,
-    findById: findById,
-    deleteById: deleteById,
-    updateGig: updateGig
+    findAll,
+    create,
+    findById,
+    deleteById,
+    updateGig
 }
 
 function findAll() {

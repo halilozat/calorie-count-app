@@ -1,10 +1,10 @@
 const gigDao = require('../dao/gig.dao');
 var gigController = {
-    addGig: addGig,
-    findGigs: findGigs,
-    findGigById: findGigById,
-    updateGig: updateGig,
-    deleteById: deleteById
+    addGig,
+    findGigs,
+    findGigById,
+    updateGig,
+    deleteById
 }
 
 function addGig(req, res) {

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('./db');
+const db = require('../config/database');
 
 const User = db.define('user', {
     id: {
@@ -7,15 +7,15 @@ const User = db.define('user', {
         primaryKey: true,
         autoIncrement: true
     },
-    firstName: {
+    username: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    lastName: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
     },
     email: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
         type: Sequelize.STRING,
         allowNull: false
     },

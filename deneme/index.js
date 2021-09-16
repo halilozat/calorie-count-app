@@ -1,6 +1,9 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
+const dotenv = require("dotenv");
+dotenv.config();
+
 
 //Database Connection
 const db = require('./config/database');
@@ -15,8 +18,8 @@ const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cors("*"));
+app.use(express.json())
 
-//Gig routes
 app.use('/', require('./routes/routes'));
 
 const PORT = process.env.PORT || 5000;

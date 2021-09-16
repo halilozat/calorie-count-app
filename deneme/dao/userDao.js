@@ -1,11 +1,10 @@
-const User = require('./userModel')
-
+const User = require('../models/User');
 var userDao = {
-    findAll: findAll,
-    create: create,
-    findById: findById,
-    deleteById: deleteById,
-    updateUser: updateUser
+    findAll,
+    create,
+    findById,
+    deleteById,
+    updateUser
 }
 
 function findAll() {
@@ -27,9 +26,8 @@ function create(user) {
 
 function updateUser(user, id) {
     var updateUser = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
+        username: user.username,
+        password: user.password
     };
     return User.update(updateUser, { where: { id: id } });
 }
