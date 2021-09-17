@@ -1,0 +1,66 @@
+// Colors
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$darkColor: rgb(107, 96, 97);
+
+// Fonts
+$fontAsap: 'Asap', sans-serif;
+
+.register-form {
+  background-color: $darkColor;
+  font-family: $fontAsap;
+
+  .register {
+    background-color: white;
+    overflow: hidden;
+    padding: 40px 30px 30px 30px;
+    border-radius: 20px;
+    position: absolute;
+    top: 30%;
+    left: 42%;
+    width: 400px;
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 10px !important;
+      color: $darkColor;
+    }
+
+    > input {
+      font-family: $fontAsap;
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      width: 100%;
+      border: 0;
+      padding: 10px 10px;
+      margin: 15px -10px;
+    }
+
+    > button {
+      font-family: $fontAsap;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      width: 100px;
+      border: 0;
+      padding: 10px 0;
+      margin-top: 10px;
+      margin-left: -5px;
+      border-radius: 10px;
+      background-color: $darkColor;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $darkColor;
+    font-size: 14px;
+    position: absolute;
+    right: 10%;
+    bottom: 10px;
+  }
+}

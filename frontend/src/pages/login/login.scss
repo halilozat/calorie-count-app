@@ -1,0 +1,67 @@
+// Colors
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$darkColor: rgb(120, 97, 99);
+
+// Fonts
+$fontAsap: 'Asap', sans-serif;
+
+body {
+  background: $darkColor !important;
+  font-family: $fontAsap;
+
+  .login {
+    background-color: $darkColor;
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 20px;
+    position: absolute;
+    top: 30%;
+    left: 42%;
+    width: 400px;
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 10px !important;
+      color: $darkColor;
+    }
+
+    > input {
+      font-family: $fontAsap;
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      width: 100%;
+      border: 0;
+      padding: 10px 10px;
+      margin: 15px -10px;
+    }
+
+    > button {
+      font-family: $fontAsap;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      width: 80px;
+      border: 0;
+      padding: 10px 0;
+      margin-top: 10px;
+      margin-left: -5px;
+      border-radius: 5px;
+      background-color: $darkColor;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $darkColor;
+    font-size: 14px;
+    position: absolute;
+    right: 10%;
+    bottom: 10px;
+  }
+}
