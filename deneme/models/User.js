@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 
-const User = db.define('user', {
+const User = db.define('users', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -9,7 +9,7 @@ const User = db.define('user', {
     },
     username: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
     },
     email: {
         type: Sequelize.STRING,
@@ -19,6 +19,11 @@ const User = db.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    isAdmin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
+    }
 });
 
 module.exports = User;
