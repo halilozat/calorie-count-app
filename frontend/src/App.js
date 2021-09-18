@@ -8,19 +8,33 @@ import {
 import Home from './pages/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
+
+
 
 function App() {
-
+  const { user } = useContext(AuthContext)
 
   return (
     <div>
       <Router>
         <Switch>
-          <Route path="/" exact>
-            <Home />
+          <Route path="/" exact >
+            {user ? <Home /> : <Register />}
           </Route>
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+          <Route path="/login">
+            {user
+              ? <Redirect to="/" />
+              : <Login />
+            }
+          </Route>
+          <Route path="/register">
+            {user
+              ? <Redirect to="/" />
+              : <Register />
+            }
+          </Route>
         </Switch>
       </Router>
     </div>
