@@ -34,7 +34,6 @@ const Register = () => {
                             console.log(err);
                         }
                     )
-                // history.push("/login");
             } catch (err) {
                 console.log(err);
             }

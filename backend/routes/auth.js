@@ -44,8 +44,6 @@ module.exports = function (fastify, opts, done) {
                 { expiresIn: "5d" }
             );
 
-            // const { password, ...info } = user._doc;
-
             res.code(200).send({ user, accessToken });
         } catch (err) {
             res.code(500).send(err);
