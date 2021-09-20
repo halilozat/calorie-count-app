@@ -24,7 +24,6 @@ const Register = () => {
                 password: password.current.value,
             };
             try {
-                console.log(user);
                 axios.post("http://localhost:5001/api/auth/register", user, { withCredentials: true })
                     .then(res => {
                         console.log(res);
