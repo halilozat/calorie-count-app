@@ -1,27 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './search.scss'
 
-const Search = ({ sendValue, sendEnter, sendClick }) => {
+const Search = ({ defaultValue, onChange }) => {
+
+    const [value, setValue] = useState(defaultValue || '')
 
     const handleChange = (e) => {
-        sendValue(e.target.value)
+        setValue(e.target.value)
     }
 
-    const keyDown = (event) => {
-        if (event.key === 'Enter') {
-            sendEnter();
+    const handleClick = (event) => {
+        if (event.key === 'Enter' || event.key === 'Click') {
+            onChange(value)
             console.log('Enter')
         }
     }
 
-    const handleClick = () => {
-        sendClick()
-    }
 
     return (
         <div className="search">
-            <div className='search-box'>
-                <input type='text' onChange={handleChange} onKeyDown={keyDown} placeholder='Enter food...' />
+            <div className="search-box">
+                <input type="text" value={value} onChange={handleChange} onKeyDown={handleClick} placeholder="Enter food..." />
                 <button onClick={handleClick} ><i className="fas fa-search"></i></button>
             </div>
         </div>

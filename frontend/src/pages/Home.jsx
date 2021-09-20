@@ -73,7 +73,6 @@ const Home = () => {
 
             <CalorieFinder />
 
-
             <div className="container foods">
                 {foods.map((food) => (
                     <Food

@@ -9,40 +9,26 @@ const CalorieFinder = () => {
     const [foodState, setFoodState] = useState({ items: [], term: 'egg' });
 
     useEffect(() => {
-        axios
-            .get(`https://api.calorieninjas.com/v1/nutrition?query=${foodState.term}`, {
-                headers: {
-                    "X-Api-Key": "6A1Khw0bb4Yytpf9cVkUGA==RnqW2ay0MqmwlBkh"
-                }
-            })
-            .then((response) => {
-                console.log(response.data.items);
-                setFoodState({
-                    ...foodState,
-                    items: response.data.items
-                });
-            })
-            .catch((error) => console.log(error.message));
-        console.log(foodState.items);
+        fetchItems(foodState.term);
     }, [])
 
-    const fetchItems = () => {
-        console.clear()
-        axios
-            .get(`https://api.calorieninjas.com/v1/nutrition?query=${foodState.term}`, {
-                headers: {
-                    "X-Api-Key": "6A1Khw0bb4Yytpf9cVkUGA==RnqW2ay0MqmwlBkh"
-                }
-            })
-            .then((response) => {
-                console.log(response.data.items);
-                setFoodState({
-                    ...foodState,
-                    items: response.data.items
-                });
-            })
-            .catch((error) => console.log(error.message));
-        console.log(foodState.items);
+    const fetchItems = async (foodTerm) => {
+        try {
+            const response = await axios
+                .get(`https://api.calorieninjas.com/v1/nutrition?query=${foodTerm}`, {
+                    headers: {
+                        "X-Api-Key": "6A1Khw0bb4Yytpf9cVkUGA==RnqW2ay0MqmwlBkh"
+                    }
+                })
+            console.log(response.data.items);
+            setFoodState({
+                ...foodState,
+                items: response.data.items,
+                term: foodTerm
+            });
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
     const getItems = () => {
@@ -68,19 +54,8 @@ const CalorieFinder = () => {
         return foodItems;
     }
 
-    const storeValue = (searchValue) => {
-        setFoodState({
-            ...foodState,
-            term: searchValue
-        });
-        fetchItems();
-        console.log(foodState.term)
-        console.log('searchValue:' + searchValue)
-    }
-
-    const storeClick = () => {
-        fetchItems();
-        console.log('click')
+    const searchHandler = async (value) => {
+        await fetchItems(value)
     }
 
 
@@ -89,7 +64,7 @@ const CalorieFinder = () => {
     return (
 
         <div className="basket">
-            <Search sendValue={storeValue} sendEnter={storeClick} sendClick={storeClick} />
+            <Search defaultValue={foodState.term} onChange={searchHandler} />
 
             <div className='items'>
                 {allItems.length === 0 ? <div className='error'>No food found... <i className="fas fa-pizza-slice"></i></div> : allItems}
