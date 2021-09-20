@@ -6,7 +6,7 @@ import Search from '../search/Search';
 
 const CalorieFinder = () => {
 
-    const [foodState, setFoodState] = useState({ items: [], term: '50 egg' });
+    const [foodState, setFoodState] = useState({ items: [], term: 'egg' });
 
     useEffect(() => {
         axios
@@ -94,7 +94,6 @@ const CalorieFinder = () => {
             <div className='items'>
                 {allItems.length === 0 ? <div className='error'>No food found... <i className="fas fa-pizza-slice"></i></div> : allItems}
             </div>
-
         </div>
     )
 }
