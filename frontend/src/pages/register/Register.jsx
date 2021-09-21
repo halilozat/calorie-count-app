@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './register.scss'
 import axios from "axios";
-import { useRef } from "react";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -11,7 +9,6 @@ const Register = () => {
     const email = useRef();
     const password = useRef();
     const passwordAgain = useRef();
-    const history = useHistory();
 
     const handleClick = async (e) => {
         e.preventDefault();

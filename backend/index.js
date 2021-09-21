@@ -1,8 +1,9 @@
 const fastify = require('fastify')({
     logger: true
 })
-
 require('dotenv').config();
+fastify.register(require('fastify-formbody'))
+fastify.register(require('fastify-multipart'))
 
 
 //Database Connection
@@ -13,8 +14,10 @@ db.authenticate().then(() => {
     console.log('Error: ' + err);
 })
 
+
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
+const foodRoute = require('./routes/apiData');
 
 fastify.register(require('fastify-cors'), {
     origin: true,
@@ -23,6 +26,7 @@ fastify.register(require('fastify-cors'), {
 
 fastify.register(authRoute, { prefix: "/api/auth" });
 // fastify.register(userRoute, { prefix: "/api/users" });
+fastify.register(foodRoute, { prefix: "/api/food" });
 
 const start = async () => {
     try {

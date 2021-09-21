@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Item = ({ name, calories, carbs, serve, cholesterol, fat_saturated, fat_total, fiber, potassium, protein, sodium, sugar }) => {
+const Item = ({ name, calories, carbs, serve, fat_total, protein }) => {
     return (
         <div className='item'>
             <div className='item-top'>
@@ -14,11 +14,6 @@ const Item = ({ name, calories, carbs, serve, cholesterol, fat_saturated, fat_to
                         <span className='item-info-a'>{calories}</span>
                         <span className='item-info-b'>Calories</span>
                     </div>
-
-                    {/* <div className='item-info'>
-                        <span className='item-info-a'>{carbs}</span>
-                        <span className='item-info-b'>Carbs</span>
-                    </div> */}
 
                     <div className='item-info'>
                         <span className='item-info-a'>{serve}g</span>

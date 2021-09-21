@@ -16,11 +16,16 @@ const Search = ({ defaultValue, onChange }) => {
         }
     }
 
-
     return (
         <div className="search">
             <div className="search-box">
-                <input type="text" value={value} onChange={handleChange} onKeyDown={handleClick} placeholder="Enter food..." />
+                <input
+                    type="text"
+                    value={value}
+                    onChange={handleChange}
+                    onKeyDown={handleClick}
+                    placeholder="Enter food..."
+                />
                 <button onClick={handleClick} ><i className="fas fa-search"></i></button>
             </div>
         </div>
