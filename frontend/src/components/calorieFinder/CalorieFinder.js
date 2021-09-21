@@ -16,7 +16,23 @@ const CalorieFinder = () => {
         fetchItems(foodState.term);
     }, []);
 
+    const fetchItems = async (foodTerm) => {
 
+        try {
+            const response = await axios.post(
+                'http://localhost:5001/api/food/getFoods',
+                { query: foodTerm }
+            );
+            console.log(response.data.items);
+            setFoodState({
+                ...foodState,
+                items: response.data.items,
+                term: foodTerm,
+            });
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
     const getItems = () => {
         let foodItems = [];
