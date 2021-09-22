@@ -3,7 +3,7 @@ import FoodContext from '../../../context/foodContext/FoodContext'
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
-    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat } = useContext(FoodContext)
+    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, macros, totalProtein } = useContext(FoodContext)
 
     useEffect(() => {
         setTotalCarb(
@@ -35,8 +35,6 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
                 );
             }, 0)
         )
-
-
     }, [basket]);
 
     const basketItem = basket.find(item => item.name === food.name)
@@ -98,6 +96,8 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
                     <div className='item-head'>
                         <button onClick={addBasket}>Add</button>
                     </div>
+
+
                 </div>
             </div>
 

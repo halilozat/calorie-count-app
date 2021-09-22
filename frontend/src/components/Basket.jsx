@@ -10,15 +10,15 @@ const Basket = ({ foods }) => {
     return (
         <>
             <div className="basket-container container">
-                <h3>Bugün Yediklerim:</h3>
+                <h3>My Meals</h3>
                 <ul>
                     {
                         basket.map(item => (
-                            <BasketItem key={item.id} item={item} food={foods.find(f => f.id === item.id)} />
+                            <BasketItem key={item.name} item={item} />
                         ))
                     }
                 </ul>
-                <button className="basket-reset-btn" onClick={resetBasket}>Sepeti Sıfırla</button>
+                <button className="basket-reset-btn" onClick={resetBasket}>Reset Basket</button>
             </div>
         </>
     )
