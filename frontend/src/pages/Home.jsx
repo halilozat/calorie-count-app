@@ -1,17 +1,18 @@
 import React from 'react'
 import '../App.css';
-import Header from '../components/Header';
+import Macros from '../components/macros/Macros';
 import { useState, useEffect } from 'react';
 import foods from '../foods.json';
 import Food from '../components/Food';
 import Basket from '../components/Basket';
 import CalorieFinder from '../components/calorieFinder/CalorieFinder'
+import Header from '../components/header/Header';
 
 
 const Home = () => {
 
     const [macros, setMacros] = useState({
-        carb: 200,
+        carb: 250,
         protein: 100,
         fat: 50,
     });
@@ -64,16 +65,23 @@ const Home = () => {
 
     return (
         <div>
-            <Header
+
+            <Header />
+
+
+            <CalorieFinder />
+
+            <Macros
                 totalCarb={totalCarb}
                 totalProtein={totalProtein}
                 totalFat={totalFat}
                 macros={macros}
             />
 
-            <CalorieFinder />
 
-            <div className="container foods">
+
+
+            {/* <div className="container foods">
                 {foods.map((food) => (
                     <Food
                         key={food.id}
@@ -87,7 +95,7 @@ const Home = () => {
                     />
                 ))}
             </div>
-
+            
             {
                 totalProtein > 0 && (
                     <Basket
@@ -99,8 +107,7 @@ const Home = () => {
                         basket={basket}
                     />
                 )
-            }
-
+            } */}
 
 
         </div>

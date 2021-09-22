@@ -1,0 +1,53 @@
+@import '../../assets/stylesheets/variables';
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 25px 40px;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+
+  .logo {
+    cursor: pointer;
+  }
+
+  nav {
+    .nav__links {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        padding: 0px 40px;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+
+        &:hover {
+          color: yellow;
+        }
+      }
+    }
+  }
+
+  button {
+    padding: 9px 25px;
+    background-color: $buttonColor;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    &:hover {
+      color: yellow;
+    }
+  }
+}
