@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './calorieFinder.scss';
 import axios from 'axios';
-import Item from '../item/Item';
-import Search from '../search/Search';
+import Item from './item/Item';
+import Search from './search/Search';
 import *as api from '../../services/apiCalls'
 
 const CalorieFinder = () => {

@@ -5,6 +5,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 0;
+  border-radius: 50px;
 }
 
 .header {
@@ -12,13 +13,17 @@ header {
   margin: 0;
   padding: 25px 40px;
   background-color: black;
-  color: white;
+  color: $textColor;
   font-weight: 500;
   font-size: 16px;
   text-decoration: none;
 
   .logo {
     cursor: pointer;
+
+    &:hover {
+      color: $hoverColor;
+    }
   }
 
   nav {
@@ -32,7 +37,7 @@ header {
         transition: all 0.3s ease 0s;
 
         &:hover {
-          color: yellow;
+          color: $hoverColor;
         }
       }
     }
@@ -45,9 +50,9 @@ header {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
-    color: white;
+    color: $textColor;
     &:hover {
-      color: yellow;
+      color: $hoverColor;
     }
   }
 }

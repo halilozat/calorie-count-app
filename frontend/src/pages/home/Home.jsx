@@ -1,12 +1,11 @@
 import React from 'react'
-import '../App.css';
-import Macros from '../components/macros/Macros';
+import Macros from '../../components/macros/Macros';
 import { useState, useEffect } from 'react';
-import foods from '../foods.json';
-import Food from '../components/Food';
-import Basket from '../components/Basket';
-import CalorieFinder from '../components/calorieFinder/CalorieFinder'
-import Header from '../components/header/Header';
+import foods from '../../foods.json';
+import Food from '../../components/Food';
+import Basket from '../../components/Basket';
+import CalorieFinder from '../../components/calorieFinder/CalorieFinder'
+import Header from '../../components/header/Header';
 
 
 const Home = () => {
@@ -67,16 +66,16 @@ const Home = () => {
         <div>
 
             <Header />
-
-
-            <CalorieFinder />
-
             <Macros
                 totalCarb={totalCarb}
                 totalProtein={totalProtein}
                 totalFat={totalFat}
                 macros={macros}
             />
+
+            <CalorieFinder />
+
+
 
 
 

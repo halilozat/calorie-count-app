@@ -1,9 +1,31 @@
 .macros {
   position: sticky;
-  background: linear-gradient(to bottom, #252522, #3e2902);
-  height: 150px;
-  color: #fff;
-  font-size: 24px;
+  height: 200px;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
   letter-spacing: 2px;
-  padding: 30px;
+  text-align: center;
+
+  li {
+    padding: 1%;
+    border: 2px solid black;
+    border-radius: 50px;
+    align-items: center;
+    span {
+      font-size: 13px;
+    }
+  }
+  .carb {
+    margin: auto 25% !important;
+    background-color: rgb(275, 162, 0);
+  }
+  .protein {
+    margin: auto 30% !important;
+    background-color: rgb(236, 200, 9);
+  }
+  .fat {
+    margin: auto 35% !important;
+    background-color: rgb(187, 250, 9);
+  }
 }

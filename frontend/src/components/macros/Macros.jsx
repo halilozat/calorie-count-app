@@ -5,13 +5,11 @@ const Header = ({ macros, totalCarb, totalProtein, totalFat }) => {
   return (
     <>
       {
-        <div className="macros">
-          Karbonhidrat: <span>{macros.carb - totalCarb}</span> gr. daha alabilirsiniz.
-          <br />
-          Protein: <span>{macros.protein - totalProtein}</span> gr. daha alabilirsiniz.
-          <br />
-          Yağ: <span>{macros.fat - totalFat}</span> gr. daha alabilirsiniz.
-        </div>
+        <ul className="macros">
+          <li className="carb">Karbonhidrat: <span>{macros.carb - totalCarb} gr. daha alabilirsiniz.</span></li>
+          <li className="protein">Protein: <span>{macros.protein - totalProtein} gr. daha alabilirsiniz.</span></li>
+          <li className="fat">Yağ: <span>{macros.fat - totalFat} gr. daha alabilirsiniz.</span></li>
+        </ul>
       }
     </>
   );
