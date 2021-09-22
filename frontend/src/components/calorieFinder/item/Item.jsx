@@ -1,6 +1,73 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import FoodContext from '../../../context/foodContext/FoodContext'
 
-const Item = ({ name, calories, carbs, serve, fat_total, protein }) => {
+const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
+
+    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat } = useContext(FoodContext)
+
+    useEffect(() => {
+        setTotalCarb(
+            basket.reduce((acc, item) => {
+                return (
+                    (
+                        acc + (item.amount * (basket.find(food => food.name === item.name).carb))
+                    )
+                );
+            }, 0)
+        )
+
+        setTotalProtein(
+            basket.reduce((acc, item) => {
+                return (
+                    (
+                        acc + (item.amount * (basket.find(food => food.name === item.name).protein))
+                    )
+                );
+            }, 0)
+        )
+
+        setTotalFat(
+            basket.reduce((acc, item) => {
+                return (
+                    (
+                        acc + (item.amount * (basket.find(food => food.name === item.name).fat))
+                    )
+                );
+            }, 0)
+        )
+
+
+    }, [basket]);
+
+    const basketItem = basket.find(item => item.name === food.name)
+
+    const addBasket = () => {
+        const checkBasket = basket.find(item => item.name === food.name)
+        if (checkBasket) {
+            checkBasket.amount += 1
+            setBasket([...basket.filter(item => item.name !== food.name), checkBasket])
+        } else {
+            setBasket([...basket, {
+                name: food.name,
+                amount: 1,
+                protein,
+                fat: fat_total,
+                carb: carbs
+            }])
+        }
+    }
+
+    const removeBasket = () => {
+        const checkBasket = basket.find(item => item.name === food.name)
+        checkBasket.amount -= 1
+        if (checkBasket.amount === 0) {
+            setBasket([...basket.filter(item => item.name !== food.name)])
+        } else {
+            setBasket([...basket.filter(item => item.name !== food.name), checkBasket])
+        }
+
+    }
+
     return (
         <div className='item'>
             <div className='item-top'>
@@ -19,10 +86,18 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein }) => {
                         <span className='item-info-a'>{serve}g</span>
                         <span className='item-info-b'>Serve (grams)</span>
                     </div>
-                    <div className='item-head'>
-                        <button>Add</button>
-                    </div>
+                    {
+                        basketItem ?
+                            <div className='item-del'>
+                                <button onClick={removeBasket}>X</button>
+                            </div>
+                            :
+                            <div></div>
 
+                    }
+                    <div className='item-head'>
+                        <button onClick={addBasket}>Add</button>
+                    </div>
                 </div>
             </div>
 

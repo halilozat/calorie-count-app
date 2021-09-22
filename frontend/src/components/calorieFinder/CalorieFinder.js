@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './calorieFinder.scss';
 import axios from 'axios';
 import Item from './item/Item';
 import Search from './search/Search';
-import *as api from '../../services/apiCalls'
+import FoodContext from '../../context/foodContext/FoodContext';
 
 const CalorieFinder = () => {
-    const [status, setStatus] = useState('idle');
+
+    const { } = useContext(FoodContext)
+
     const [foodState, setFoodState] = useState({
         items: [],
         term: 'Egg',
@@ -15,6 +17,8 @@ const CalorieFinder = () => {
     useEffect(() => {
         fetchItems(foodState.term);
     }, []);
+
+
 
     const fetchItems = async (foodTerm) => {
 
@@ -39,6 +43,7 @@ const CalorieFinder = () => {
         foodState.items.map((item) => {
             foodItems.push(
                 <Item
+                    food={item}
                     key={item.name}
                     name={item.name}
                     calories={item.calories}

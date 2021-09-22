@@ -5,7 +5,7 @@ const BasketItem = ({ item, food }) => {
     return (
         <>
             <li className="basketItem">
-                {food.title} <span>x {item.amount}</span>
+                {/* {food.title} <span>x {item.amount}</span> */}
             </li>
         </>
     )

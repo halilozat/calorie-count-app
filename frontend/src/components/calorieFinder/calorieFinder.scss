@@ -28,40 +28,6 @@
   }
 }
 
-.search {
-  height: 100px;
-  display: grid;
-  place-content: center;
-  .search-box {
-    border-radius: 10px !important;
-  }
-  &-box {
-    display: flex;
-    transition: all 0.2s ease;
-    &:focus-within {
-      box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.3);
-    }
-    input {
-      appearance: none;
-      border: 0;
-      outline: 0;
-      height: 40px;
-      background-color: $textColor;
-      padding: 0 10px;
-      min-width: 350px;
-    }
-    button {
-      appearance: none;
-      border: 0;
-      outline: 0;
-      height: 40px;
-      background-color: $textColor;
-      padding: 0 10px;
-      cursor: pointer;
-    }
-  }
-}
-
 .items::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -142,12 +108,30 @@
   button {
     font-weight: bold;
     font-size: 16px;
-    color: white;
+    color: $textColor;
     background-color: $buttonColor;
     width: 90px;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 50px;
     margin-left: 15px;
+    cursor: pointer;
+  }
+}
+
+.item-del {
+  h4 {
+    margin: 0;
+    text-transform: capitalize;
+    font-size: 24px;
+  }
+  button {
+    font-size: 16px;
+    color: $textColor;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin-left: 5px;
     cursor: pointer;
   }
 }

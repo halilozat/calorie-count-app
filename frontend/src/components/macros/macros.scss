@@ -19,13 +19,22 @@
   .carb {
     margin: auto 25% !important;
     background-color: rgb(275, 162, 0);
+    &:hover {
+      color: white;
+    }
   }
   .protein {
     margin: auto 30% !important;
     background-color: rgb(236, 200, 9);
+    &:hover {
+      color: white;
+    }
   }
   .fat {
     margin: auto 35% !important;
     background-color: rgb(187, 250, 9);
+    &:hover {
+      color: white;
+    }
   }
 }

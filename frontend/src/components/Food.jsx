@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import FoodContext from '../context/foodContext/FoodContext';
 import './food.css';
 
-const Food = ({ food, basket, setBasket, macros, totalFat, totalCarb, totalProtein }) => {
+const Food = ({ food }) => {
+
+    const { basket, setBasket, macros, totalFat, totalCarb, totalProtein } = useContext(FoodContext)
+
     const basketItem = basket.find((item) => item.id === food.id);
 
     const addBasket = () => {

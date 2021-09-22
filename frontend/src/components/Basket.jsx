@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import BasketItem from './BasketItem'
 import './basket.css'
+import FoodContext from '../context/foodContext/FoodContext'
 
-const Basket = ({ basket, foods, resetBasket }) => {
+const Basket = ({ foods }) => {
+
+    const { basket, resetBasket } = useContext(FoodContext)
+
     return (
         <>
             <div className="basket-container container">
