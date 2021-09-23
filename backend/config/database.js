@@ -12,4 +12,5 @@ const db = new Sequelize('database_development_dev2', 'postgres', 'passwod', {
     }
 });
 
+
 module.exports = db;

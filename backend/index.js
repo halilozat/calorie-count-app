@@ -9,6 +9,7 @@ fastify.register(require('fastify-multipart'))
 //Database Connection
 const db = require('./config/database');
 db.authenticate().then(() => {
+    db.sync()
     console.log('Database connected...');
 }).catch(err => {
     console.log('Error: ' + err);

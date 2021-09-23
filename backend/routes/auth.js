@@ -27,7 +27,7 @@ module.exports = function (fastify, opts, done) {
     //LOGIN
     fastify.post("/login", async (req, res) => {
         try {
-            const user = await User.findOne({ email: req.body.email });
+            const user = await User.findOne({ where: { email: req.body.email } });
             !user && res.code(401).send("User not found!");
 
             const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
