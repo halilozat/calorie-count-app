@@ -2,9 +2,12 @@
 
 .basket-container {
   padding: 30px;
+  width: 50%;
+  margin: 0 auto;
   background: $textColor;
   border: 1px solid $textColor;
   border-radius: 60px;
+  box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.5);
 
   h3 {
     font-size: 25px;

@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './calorieFinder.scss';
 import axios from 'axios';
 import Item from './item/Item';
 import Search from './search/Search';
-import FoodContext from '../../context/foodContext/FoodContext';
 
 const CalorieFinder = () => {
 
-    const { } = useContext(FoodContext)
 
     const [foodState, setFoodState] = useState({
         items: [],

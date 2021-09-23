@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const FoodContext = createContext();
 
@@ -43,4 +43,4 @@ export const FoodContextProvider = ({ children }) => {
     return <FoodContext.Provider value={values}>{children}</FoodContext.Provider>
 }
 
-export default FoodContext;
+export const useFoodContext = () => useContext(FoodContext);

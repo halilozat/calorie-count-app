@@ -1,12 +1,16 @@
-import React, { useContext, useEffect } from 'react'
-import FoodContext from '../../../context/foodContext/FoodContext'
+import React, { useEffect } from 'react'
+import { useFoodContext } from '../../../context/foodContext/FoodContext'
 import './item.scss'
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
-    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie, totalCalorie, totalProtein } = useContext(FoodContext)
+    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie } = useFoodContext()
+
+
+
 
     useEffect(() => {
+
         setTotalCarb(
             basket.reduce((acc, item) => {
                 return (

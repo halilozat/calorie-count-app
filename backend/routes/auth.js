@@ -12,6 +12,9 @@ module.exports = function (fastify, opts, done) {
                 req.body.password,
                 process.env.SECRET_KEY
             ).toString(),
+            userProtein: req.body.userProtein,
+            userCarb: req.body.userCarb,
+            userFat: req.body.userFat
         });
         try {
             const user = await newUser.save();

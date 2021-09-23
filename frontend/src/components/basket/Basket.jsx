@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import BasketItem from './basketItem/BasketItem'
 import './basket.scss'
-import FoodContext from '../../context/foodContext/FoodContext'
+import { useFoodContext } from '../../context/foodContext/FoodContext'
 
 const Basket = () => {
 
-    const { basket, resetBasket, totalCalorie } = useContext(FoodContext)
+    const { basket, resetBasket, totalCalorie } = useFoodContext();
 
     return (
         <>

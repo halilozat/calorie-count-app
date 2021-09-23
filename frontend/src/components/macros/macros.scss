@@ -1,3 +1,5 @@
+@import '../../assets/stylesheets/variables';
+
 .macros {
   position: sticky;
   height: 200px;
@@ -19,6 +21,8 @@
   .carb {
     margin: auto 25% !important;
     background-color: rgb(236, 172, 0);
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
     &:hover {
       color: white;
     }
@@ -26,6 +30,7 @@
   .protein {
     margin: auto 30% !important;
     background-color: rgb(236, 200, 9);
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
       color: white;
     }
@@ -33,6 +38,7 @@
   .fat {
     margin: auto 35% !important;
     background-color: rgb(236, 230, 9);
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
       color: white;
     }
@@ -41,6 +47,7 @@
   .calorie {
     margin: auto 40% !important;
     background-color: rgb(236, 260, 29);
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
       color: white;
     }

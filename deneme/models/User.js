@@ -23,7 +23,19 @@ const User = db.define('users', {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
         allowNull: false
-    }
+    },
+    userProtein: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    userCarb: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    userFat: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
 });
 
 module.exports = User;
