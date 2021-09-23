@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import { useFoodContext } from '../../context/foodContext/FoodContext';
 import './macros.scss'
 
 const Header = () => {
 
   const { macros, totalCarb, totalProtein, totalFat, totalCalorie } = useFoodContext();
+  const { user } = useContext(AuthContext)
+
 
   return (
     <>
       {
         <ul className="macros">
+
           <li className="carb">
             {
               Math.round(macros.carb - totalCarb) > 0 ?
-                <div>Carbohydrate : <span>You need {Math.round(macros.carb - totalCarb)} g. carbohydrates.</span></div>
+                <div>Carbohydrate {user.username}: <span>You need {Math.round(macros.carb - totalCarb)} g. carbohydrates.</span></div>
                 :
                 <div>Carbohydrate : <span>You got an extra {-Math.round(macros.carb - totalCarb)} g of carbohydrates.</span></div>
             }

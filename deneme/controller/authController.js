@@ -47,9 +47,7 @@ const login = async (req, res) => {
             { expiresIn: "5d" }
         );
 
-        const { password, ...info } = user._doc;
-
-        res.status(200).json({ ...info, accessToken });
+        res.status(200).json({ user, accessToken });
     } catch (err) {
         res.status(500).json(err);
     }

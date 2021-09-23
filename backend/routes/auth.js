@@ -28,21 +28,16 @@ module.exports = function (fastify, opts, done) {
     fastify.post("/login", async (req, res) => {
         try {
             const user = await User.findOne({ email: req.body.email });
-            if (!user) {
-                res.code(401).send("User not found!");
-                return;
-            }
+            !user && res.code(401).send("User not found!");
 
             const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
             const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
 
-            if (originalPassword !== req.body.password) {
+            originalPassword !== req.body.password &&
                 res.code(401).send("Wrong password or username!");
-                return;
-            }
 
             const accessToken = jwt.sign(
-                { id: user.id, isAdmin: user.isAdmin },
+                { id: user._id, isAdmin: user.isAdmin },
                 process.env.SECRET_KEY,
                 { expiresIn: "5d" }
             );
@@ -52,5 +47,6 @@ module.exports = function (fastify, opts, done) {
             res.code(500).send(err);
         }
     });
+
     done();
 }

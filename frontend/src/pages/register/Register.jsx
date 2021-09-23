@@ -2,13 +2,18 @@ import React, { useRef } from 'react'
 import './register.scss'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const Register = () => {
+    const history = useHistory();
 
     const username = useRef();
     const email = useRef();
     const password = useRef();
     const passwordAgain = useRef();
+    const userProtein = useRef();
+    const userCarb = useRef();
+    const userFat = useRef();
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -19,6 +24,10 @@ const Register = () => {
                 username: username.current.value,
                 email: email.current.value,
                 password: password.current.value,
+                userProtein: userProtein.current.value,
+                userCarb: userCarb.current.value,
+                userFat: userFat.current.value,
+
             };
             try {
                 axios.post("http://localhost:5001/api/auth/register", user, { withCredentials: true })
@@ -30,6 +39,7 @@ const Register = () => {
                             console.log(err);
                         }
                     )
+                history.push("/login");
             } catch (err) {
                 console.log(err);
             }
@@ -65,6 +75,24 @@ const Register = () => {
                     required
                     ref={passwordAgain}
                     type="password"
+                />
+                <input
+                    placeholder="Your Daily Protein *"
+                    required
+                    ref={userProtein}
+                    type="text"
+                />
+                <input
+                    placeholder="Your Daily Carbohydrate *"
+                    required
+                    ref={userCarb}
+                    type="text"
+                />
+                <input
+                    placeholder="Your Daily Fat *"
+                    required
+                    ref={userFat}
+                    type="text"
                 />
                 <button type="submit">Register</button>
                 <div href="">
