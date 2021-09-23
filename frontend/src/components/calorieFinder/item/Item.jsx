@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import FoodContext from '../../../context/foodContext/FoodContext'
+import './item.scss'
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
-    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, macros, totalProtein } = useContext(FoodContext)
+    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie, totalCalorie, totalProtein } = useContext(FoodContext)
 
     useEffect(() => {
         setTotalCarb(
@@ -35,6 +36,16 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
                 );
             }, 0)
         )
+
+        setTotalCalorie(
+            basket.reduce((acc, item) => {
+                return (
+                    (
+                        acc + (item.amount * (basket.find(food => food.name === item.name).cal))
+                    )
+                );
+            }, 0)
+        )
     }, [basket]);
 
     const basketItem = basket.find(item => item.name === food.name)
@@ -50,11 +61,12 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
                 amount: 1,
                 protein,
                 fat: fat_total,
-                carb: carbs
+                carb: carbs,
+                gram: serve,
+                cal: calories
             }])
         }
     }
-
     const removeBasket = () => {
         const checkBasket = basket.find(item => item.name === food.name)
         checkBasket.amount -= 1

@@ -1,0 +1,89 @@
+@import '../../../assets/stylesheets/variables';
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  .item-bottom {
+    font-size: 17px;
+    // display: none;
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background-color: #eef2f7;
+    .item-row {
+      padding: 2px 0;
+      display: grid;
+      grid-template-columns: 0.5fr 1.5fr;
+      margin-bottom: 3px;
+      border-bottom: 1px solid lighten(#000, 80%);
+      &:hover {
+        background-color: darken(#eef2f7, 5%);
+      }
+      &:last-child {
+        border: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .item-content {
+    @include flex-center;
+    .item-info {
+      display: grid;
+      grid-template-rows: 1fr 0.75fr;
+      justify-items: center;
+      align-items: center;
+      margin: 0 20px;
+      &-a {
+        font-weight: bold;
+        font-size: 16px;
+      }
+      &-b {
+        font-size: 11px;
+        color: lighten(#000, 50%);
+        align-self: end;
+      }
+    }
+  }
+
+  .item-head {
+    h4 {
+      margin: 0;
+      text-transform: capitalize;
+      font-size: 24px;
+    }
+    button {
+      font-weight: bold;
+      font-size: 16px;
+      color: $textColor;
+      background-color: $buttonColor;
+      width: 90px;
+      height: 30px;
+      border-radius: 50px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+  }
+
+  .item-del {
+    h4 {
+      margin: 0;
+      text-transform: capitalize;
+      font-size: 24px;
+    }
+    button {
+      font-size: 16px;
+      color: $textColor;
+      background-color: red;
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+  }
+}

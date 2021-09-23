@@ -16,6 +16,7 @@ export const FoodContextProvider = ({ children }) => {
     const [totalCarb, setTotalCarb] = useState(0);
     const [totalProtein, setTotalProtein] = useState(0);
     const [totalFat, setTotalFat] = useState(0);
+    const [totalCalorie, setTotalCalorie] = useState(0);
 
     const resetBasket = () => {
         setBasket([])
@@ -34,6 +35,8 @@ export const FoodContextProvider = ({ children }) => {
         setTotalProtein,
         totalFat,
         setTotalFat,
+        totalCalorie,
+        setTotalCalorie,
         resetBasket
     }
 

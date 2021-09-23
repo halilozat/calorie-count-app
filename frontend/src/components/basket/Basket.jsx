@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import BasketItem from './BasketItem'
-import './basket.css'
-import FoodContext from '../context/foodContext/FoodContext'
+import React, { useContext, useEffect } from 'react'
+import BasketItem from './basketItem/BasketItem'
+import './basket.scss'
+import FoodContext from '../../context/foodContext/FoodContext'
 
-const Basket = ({ foods }) => {
+const Basket = () => {
 
-    const { basket, resetBasket } = useContext(FoodContext)
+    const { basket, resetBasket, totalCalorie } = useContext(FoodContext)
 
     return (
         <>
@@ -18,6 +18,8 @@ const Basket = ({ foods }) => {
                         ))
                     }
                 </ul>
+                <div>_________________</div>
+                <div className="calorie">Total Calories: <span>{totalCalorie}</span></div>
                 <button className="basket-reset-btn" onClick={resetBasket}>Reset Basket</button>
             </div>
         </>
