@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import axios from 'axios'
+import React, { useContext, useEffect } from 'react'
+import { AuthContext } from '../../../context/AuthContext'
 import { useFoodContext } from '../../../context/foodContext/FoodContext'
 import './item.scss'
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
     const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie } = useFoodContext()
-
+    const { user } = useContext(AuthContext)
 
 
 
@@ -54,23 +56,51 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
     const basketItem = basket.find(item => item.name === food.name)
 
-    const addBasket = () => {
-        const checkBasket = basket.find(item => item.name === food.name)
-        if (checkBasket) {
-            checkBasket.amount += 1
-            setBasket([...basket.filter(item => item.name !== food.name), checkBasket])
-        } else {
-            setBasket([...basket, {
-                name: food.name,
-                amount: 1,
-                protein,
-                fat: fat_total,
-                carb: carbs,
-                gram: serve,
-                cal: calories
-            }])
+    const addBasket = async () => {
+        // const checkBasket = basket.find(item => item.name === food.name)
+        // if (checkBasket) {
+        //     checkBasket.amount += 1
+        //     setBasket([...basket.filter(item => item.name !== food.name), checkBasket])
+        // } else {
+        //     setBasket([...basket, {
+        //         name: food.name,
+        //         amount: 1,
+        //         protein,
+        //         fat: fat_total,
+        //         carb: carbs,
+        //         gram: serve,
+        //         cal: calories
+        //     }])
+        // }
+
+        const newFood = {
+            userId: user.user.id,
+            foodname: food.name,
+            amount: 1,
+            protein: Math.round(food.protein_g),
+            carb: Math.round(food.carbohydrates_total_g),
+            fat: Math.round(food.fat_total_g),
+            gram: Math.round(food.serving_size_g),
+            calorie: Math.round(food.calories)
         }
+        console.log(food.carbohydrates_total_g);
+        console.log(user.user);
+        try {
+            axios.post("http://localhost:5001/api/userFood/addFood", newFood, { withCredentials: true })
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(
+                    err => {
+                        console.log(err);
+                    }
+                )
+        } catch (error) {
+            console.log(error);
+        }
+
     }
+
     const removeBasket = () => {
         const checkBasket = basket.find(item => item.name === food.name)
         checkBasket.amount -= 1
