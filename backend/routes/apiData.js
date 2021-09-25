@@ -4,7 +4,7 @@ module.exports = function (fastify, opts, done) {
     //REGISTER
     fastify.post("/getFoods", async (req, res) => {
         try {
-            const query = req.body.query || "5 eggs and 100g oat and tea and bread";
+            const query = req.body.query || "5 eggs and 100g oat and tea and peanut butter";
             const foodApi = request.get({
                 url: `https://api.calorieninjas.com/v1/nutrition?query=${query}`,
                 headers: {

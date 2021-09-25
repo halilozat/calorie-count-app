@@ -6,7 +6,6 @@ import { useFoodContext } from '../../context/foodContext/FoodContext'
 const Basket = () => {
 
     const { basket, resetBasket, totalCalorie } = useFoodContext();
-
     return (
         <>
             <div className="basket-container container">
