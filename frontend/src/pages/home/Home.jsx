@@ -17,12 +17,12 @@ const Home = () => {
             <Macros />
             <CalorieFinder />
 
-            {
+            {/* {
                 totalProtein > 0 && (
                     <Basket />
                 )
-            }
-
+            } */}
+            <Basket />
 
         </div>
     )

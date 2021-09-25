@@ -83,8 +83,7 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
             gram: Math.round(food.serving_size_g),
             calorie: Math.round(food.calories)
         }
-        console.log(food.carbohydrates_total_g);
-        console.log(user.user);
+
         try {
             axios.post("http://localhost:5001/api/userFood/addFood", newFood, { withCredentials: true })
                 .then(res => {

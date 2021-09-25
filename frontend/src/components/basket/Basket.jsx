@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import BasketItem from './basketItem/BasketItem'
 import './basket.scss'
 import { useFoodContext } from '../../context/foodContext/FoodContext'
+import axios from 'axios'
+import { AuthContext } from '../../context/AuthContext'
 
 const Basket = () => {
+
+    const { user } = useContext(AuthContext)
+    const [foods, setFoods] = useState([])
+
+
+    useEffect(() => {
+        const getFoodsByUserId = async () => {
+            axios.get(`http://localhost:5001/api/userFood/${user.user.id}`)
+                .then(res => setFoods(res.data))
+        }
+        getFoodsByUserId()
+    }, [])
+
+    console.log(foods);
 
     const { basket, resetBasket, totalCalorie } = useFoodContext();
     return (
@@ -12,8 +28,8 @@ const Basket = () => {
                 <h3>My Meals</h3>
                 <ul>
                     {
-                        basket.map(item => (
-                            <BasketItem key={item.name} item={item} />
+                        foods.map(food => (
+                            <BasketItem key={food.id} item={food} />
                         ))
                     }
                 </ul>

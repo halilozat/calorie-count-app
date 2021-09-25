@@ -6,7 +6,7 @@ const BasketItem = ({ item, food }) => {
     return (
         <>
             <li className="basketItem">
-                {item.name} <span>x {item.amount}</span> <span>({item.gram * item.amount}g)</span>
+                {item.foodname} <span>x {item.amount}</span> <span>({item.gram * item.amount}g)</span>
             </li>
         </>
     )
