@@ -7,36 +7,50 @@ import { AuthContext } from '../../context/AuthContext'
 
 const Basket = () => {
 
+    const { foods, setFoods, resetBasket, totalCalorie } = useFoodContext();
     const { user } = useContext(AuthContext)
-    const [foods, setFoods] = useState([])
 
+    const removeBasket = async () => {
+        await axios.delete(`http://localhost:5001/api/userFood/${user.user.id}`)
+            .then(setFoods([]))
+    }
 
     useEffect(() => {
         const getFoodsByUserId = async () => {
-            axios.get(`http://localhost:5001/api/userFood/${user.user.id}`)
+            await axios.get(`http://localhost:5001/api/userFood/${user.user.id}`)
                 .then(res => setFoods(res.data))
+                .catch(err => console.log(err))
         }
         getFoodsByUserId()
     }, [])
 
-    console.log(foods);
-
-    const { basket, resetBasket, totalCalorie } = useFoodContext();
+    console.log(foods.length);
     return (
         <>
-            <div className="basket-container container">
-                <h3>My Meals</h3>
-                <ul>
-                    {
-                        foods.map(food => (
-                            <BasketItem key={food.id} item={food} />
-                        ))
-                    }
-                </ul>
-                <div>_________________</div>
-                <div className="calorie">Total Calories: <span>{totalCalorie}</span></div>
-                <button className="basket-reset-btn" onClick={resetBasket}>Reset Basket</button>
-            </div>
+            {
+                foods.length !== 0
+                    ?
+                    <div className="basket-container container">
+                        <h3>My Meals</h3>
+                        <ul>
+                            {
+                                foods.map(food => (
+                                    <BasketItem key={food.id} item={food} />
+                                ))
+                            }
+                        </ul>
+                        <div>_________________</div>
+                        <div className="calorie">Total Calories: {totalCalorie}<span></span></div>
+                        <button className="basket-reset-btn" onClick={removeBasket}>Reset Basket</button>
+                    </div>
+                    :
+                    <div className="basket-container container">
+                        <h3>My Meals</h3>
+                        <ul>
+                            No food found... <i className="fas fa-pizza-slice"></i>
+                        </ul>
+                    </div>
+            }
         </>
     )
 }

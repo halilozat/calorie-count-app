@@ -1,7 +1,7 @@
 @import '../../assets/stylesheets/variables';
 
 .basket-container {
-  padding: 30px;
+  padding: 20px;
   width: 50%;
   margin: 0 auto;
   background: $textColor;
@@ -15,7 +15,7 @@
   }
 
   .basket-reset-btn {
-    background: $buttonColor;
+    background: red;
     height: 40px;
     padding: 0 20px;
     font-size: 16px;

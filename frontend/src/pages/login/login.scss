@@ -1,10 +1,16 @@
 @import '../../assets/stylesheets/variables';
 
-body {
-  background: $darkColor !important;
-  font-family: $fontAsap;
-
+.login-form {
+  background-color: green;
   .login {
+    background: $darkColor;
+    background-image: radial-gradient(
+      rgb(55, 245, 55),
+      rgb(48, 221, 48),
+      #0c790c,
+      rgb(16, 15, 15)
+    );
+    font-family: $fontAsap;
     background-color: $darkColor;
     overflow: hidden;
     background-color: white;

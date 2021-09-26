@@ -4,26 +4,29 @@ import Basket from '../../components/basket/Basket';
 import CalorieFinder from '../../components/calorieFinder/CalorieFinder'
 import Header from '../../components/header/Header';
 import { useFoodContext } from '../../context/foodContext/FoodContext';
+import './home.scss'
 
 
 const Home = () => {
 
-    const { totalProtein } = useFoodContext()
-
     return (
-        <div>
-
+        <div >
             <Header />
-            <Macros />
-            <CalorieFinder />
 
-            {/* {
-                totalProtein > 0 && (
+            <div className="home">
+
+                <Macros />
+                <CalorieFinder />
+
+                {/* {
+                foods > 0 && (
                     <Basket />
                 )
             } */}
-            <Basket />
 
+                <Basket />
+
+            </div>
         </div>
     )
 }

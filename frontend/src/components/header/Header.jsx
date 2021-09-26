@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { logoutCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext';
 import './header.scss'
+import logoImg from '../../assets/images/logo.png'
 
 const Header = () => {
 
@@ -16,7 +17,7 @@ const Header = () => {
     return (
         <div>
             <header className="header">
-                <h1 className="logo">LOGO</h1>
+                <img className="logo" src={logoImg} alt="" />
                 <nav>
                     <ul className="nav__links">
                         <li><div>Home</div></li>

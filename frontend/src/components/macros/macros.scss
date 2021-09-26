@@ -2,7 +2,7 @@
 
 .macros {
   position: sticky;
-  height: 200px;
+  height: 300px;
   color: black;
   font-size: 20px;
   font-weight: 700;
@@ -20,36 +20,36 @@
   }
   .carb {
     margin: auto 25% !important;
-    background-color: rgb(236, 172, 0);
+    background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
 
     &:hover {
-      color: white;
+      color: $hoverColor;
     }
   }
   .protein {
     margin: auto 30% !important;
-    background-color: rgb(236, 200, 9);
+    background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
-      color: white;
+      color: $hoverColor;
     }
   }
   .fat {
     margin: auto 35% !important;
-    background-color: rgb(236, 230, 9);
+    background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
-      color: white;
+      color: $hoverColor;
     }
   }
 
   .calorie {
     margin: auto 40% !important;
-    background-color: rgb(236, 260, 29);
+    background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
-      color: white;
+      color: $hoverColor;
     }
   }
 }

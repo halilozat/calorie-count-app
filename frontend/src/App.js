@@ -17,7 +17,7 @@ function App() {
   const { user } = useContext(AuthContext)
 
   return (
-    <div>
+    <div >
       <Router>
         <Switch>
           <Route path="/" exact >

@@ -1,0 +1,8 @@
+@import '../../assets/stylesheets/variables';
+
+.home {
+  background: url(../../assets/images/home-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: $fontAsap;
+}

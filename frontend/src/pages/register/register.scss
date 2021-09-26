@@ -1,11 +1,15 @@
 @import '../../assets/stylesheets/variables';
 
 .register-form {
-  background-color: $darkColor;
   font-family: $fontAsap;
-
+  background-color: red;
   .register {
-    background-color: white;
+    background-image: radial-gradient(
+      rgb(55, 245, 55),
+      rgb(48, 221, 48),
+      #0c790c,
+      rgb(16, 15, 15)
+    );
     overflow: hidden;
     padding: 40px 30px 30px 30px;
     border-radius: 20px;

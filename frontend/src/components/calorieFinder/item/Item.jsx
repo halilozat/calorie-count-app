@@ -87,7 +87,8 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         try {
             axios.post("http://localhost:5001/api/userFood/addFood", newFood, { withCredentials: true })
                 .then(res => {
-                    console.log(res);
+                    console.log(res.data);
+                    window.location.reload();
                 })
                 .catch(
                     err => {

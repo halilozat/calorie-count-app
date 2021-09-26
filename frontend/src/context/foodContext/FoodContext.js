@@ -10,6 +10,7 @@ export const FoodContextProvider = ({ children }) => {
     const [status, setStatus] = useState('idle');
 
     const [basket, setBasket] = useState([])
+    const [foods, setFoods] = useState([])
     const [macros, setMacros] = useState(user ? {
         carb: user.user.userCarb || 0,
         protein: user.user.userProtein || 0,
@@ -30,6 +31,8 @@ export const FoodContextProvider = ({ children }) => {
     const values = {
         basket,
         setBasket,
+        foods,
+        setFoods,
         macros,
         setMacros,
         totalCarb,
