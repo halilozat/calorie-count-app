@@ -11,19 +11,33 @@ export const FoodContextProvider = ({ children }) => {
 
     // const [basket, setBasket] = useState([])
     const [foods, setFoods] = useState([])
-    const [macros, setMacros] = useState(user ? {
-        carb: user.user.userCarb || 0,
+    const [macros, setMacros] = useState({
+        carb: user?.user.userCarb || 0,
         protein: user.user.userProtein || 0,
         fat: user.user.userFat || 0,
-    } : {});
+    });
 
     const [totalCarb, setTotalCarb] = useState(0);
     const [totalProtein, setTotalProtein] = useState(0);
     const [totalFat, setTotalFat] = useState(0);
     const [totalCalorie, setTotalCalorie] = useState(0);
 
+    // const [state, setState] = useState({
+    //     foods: [],
+    //     macros: {
+    //         carb: user?.user.userCarb || 0,
+    //         protein: user.user.userProtein || 0,
+    //         fat: user.user.userFat || 0,
+    //     }
+    // })
 
-
+    // setState((previus) => ({
+    //     ...previus,
+    //     macros: {
+    //         ...previus.macros,
+    //         carb: 10
+    //     }
+    // }))
 
 
     const values = {
