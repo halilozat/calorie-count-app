@@ -16,13 +16,8 @@ const Home = () => {
             <div className="home">
 
                 <Macros />
-                <CalorieFinder />
 
-                {/* {
-                foods > 0 && (
-                    <Basket />
-                )
-            } */}
+                <CalorieFinder />
 
                 <Basket />
 

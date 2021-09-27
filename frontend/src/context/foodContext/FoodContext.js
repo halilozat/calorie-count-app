@@ -9,7 +9,7 @@ export const FoodContextProvider = ({ children }) => {
 
     const [status, setStatus] = useState('idle');
 
-    const [basket, setBasket] = useState([])
+    // const [basket, setBasket] = useState([])
     const [foods, setFoods] = useState([])
     const [macros, setMacros] = useState(user ? {
         carb: user.user.userCarb || 0,
@@ -22,15 +22,11 @@ export const FoodContextProvider = ({ children }) => {
     const [totalFat, setTotalFat] = useState(0);
     const [totalCalorie, setTotalCalorie] = useState(0);
 
-    const resetBasket = () => {
-        setBasket([])
-    }
+
 
 
 
     const values = {
-        basket,
-        setBasket,
         foods,
         setFoods,
         macros,
@@ -43,7 +39,6 @@ export const FoodContextProvider = ({ children }) => {
         setTotalFat,
         totalCalorie,
         setTotalCalorie,
-        resetBasket
     }
 
     return <FoodContext.Provider value={values}>{children}</FoodContext.Provider>

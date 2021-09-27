@@ -6,7 +6,7 @@ import './item.scss'
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
-    const { basket, setBasket, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie } = useFoodContext()
+    const { foods, setFoods, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie } = useFoodContext()
     const { user } = useContext(AuthContext)
 
 
@@ -14,65 +14,49 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
     useEffect(() => {
 
         setTotalCarb(
-            basket.reduce((acc, item) => {
+            foods.reduce((acc, item) => {
                 return (
                     (
-                        acc + (item.amount * (basket.find(food => food.name === item.name).carb))
+                        acc + (item.amount * (foods.find(food => food.foodname === item.foodname).carb))
                     )
                 );
             }, 0)
         )
 
         setTotalProtein(
-            basket.reduce((acc, item) => {
+            foods.reduce((acc, item) => {
                 return (
                     (
-                        acc + (item.amount * (basket.find(food => food.name === item.name).protein))
+                        acc + (item.amount * (foods.find(food => food.foodname === item.foodname).protein))
                     )
                 );
             }, 0)
         )
 
         setTotalFat(
-            basket.reduce((acc, item) => {
+            foods.reduce((acc, item) => {
                 return (
                     (
-                        acc + (item.amount * (basket.find(food => food.name === item.name).fat))
+                        acc + (item.amount * (foods.find(food => food.foodname === item.foodname).fat))
                     )
                 );
             }, 0)
         )
 
         setTotalCalorie(
-            basket.reduce((acc, item) => {
+            foods.reduce((acc, item) => {
                 return (
                     (
-                        acc + (item.amount * (basket.find(food => food.name === item.name).cal))
+                        acc + (item.amount * (foods.find(food => food.foodname === item.foodname).calorie))
                     )
                 );
             }, 0)
         )
-    }, [basket]);
+    }, [foods]);
 
-    const basketItem = basket.find(item => item.name === food.name)
+    const basketItem = foods.find(item => item.name === food.name)
 
     const addBasket = async () => {
-        // const checkBasket = basket.find(item => item.name === food.name)
-        // if (checkBasket) {
-        //     checkBasket.amount += 1
-        //     setBasket([...basket.filter(item => item.name !== food.name), checkBasket])
-        // } else {
-        //     setBasket([...basket, {
-        //         name: food.name,
-        //         amount: 1,
-        //         protein,
-        //         fat: fat_total,
-        //         carb: carbs,
-        //         gram: serve,
-        //         cal: calories
-        //     }])
-        // }
-
         const newFood = {
             userId: user.user.id,
             foodname: food.name,
@@ -87,8 +71,7 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         try {
             axios.post("http://localhost:5001/api/userFood/addFood", newFood, { withCredentials: true })
                 .then(res => {
-                    console.log(res.data);
-                    window.location.reload();
+                    setFoods([...foods, res.data])
                 })
                 .catch(
                     err => {
@@ -100,14 +83,14 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         }
 
     }
-
+    console.log(foods);
     const removeBasket = () => {
-        const checkBasket = basket.find(item => item.name === food.name)
+        const checkBasket = foods.find(item => item.name === food.name)
         checkBasket.amount -= 1
         if (checkBasket.amount === 0) {
-            setBasket([...basket.filter(item => item.name !== food.name)])
+            setFoods([...foods.filter(item => item.name !== food.name)])
         } else {
-            setBasket([...basket.filter(item => item.name !== food.name), checkBasket])
+            setFoods([...foods.filter(item => item.name !== food.name), checkBasket])
         }
 
     }

@@ -2,7 +2,7 @@
 
 .macros {
   position: sticky;
-  height: 300px;
+  height: 272px;
   color: black;
   font-size: 20px;
   font-weight: 700;
@@ -11,7 +11,8 @@
 
   li {
     padding: 1%;
-    border: 2px solid black;
+    // border: 2px solid rgb(85, 75, 75);
+    border: 1px solid grey;
     border-radius: 50px;
     align-items: center;
     span {
