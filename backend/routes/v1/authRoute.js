@@ -1,4 +1,4 @@
-const authController = require('../controllers/authController')
+const authController = require('../../controllers/v1/authController')
 
 module.exports = function (fastify, opts, done) {
     fastify.post("/register", authController.register);

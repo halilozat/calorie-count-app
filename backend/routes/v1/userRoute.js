@@ -1,4 +1,4 @@
-const userController = require('../controllers/userController')
+const userController = require('../../controllers/v1/userController')
 const verify = require("../verifyToken");
 
 module.exports = function (fastify, opts, done) {

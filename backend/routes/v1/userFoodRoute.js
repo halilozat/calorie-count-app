@@ -1,4 +1,4 @@
-const userFoodController = require('../controllers/userFoodController')
+const userFoodController = require('../../controllers/v1/userFoodController')
 
 module.exports = function (fastify, opts, done) {
     //Add new food for selected user

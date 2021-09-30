@@ -1,4 +1,4 @@
-const UserMacrosModel = require("../models/UserMacrosModel");
+const UserMacrosModel = require("../../models/UserMacrosModel");
 
 
 const addMacros = async (request, response) => {
@@ -22,10 +22,12 @@ const getByUserId = async (request, response) => {
     }
 }
 
-const UpdateByUserId = async (request, response) => {
+const updateByUserId = async (request, response) => {
+    const userId = request.params.userId
+    const updatedMacros = await UserMacrosModel.findOne({ where: { userId } })
     try {
-        await UserMacrosModel.update({ where: { userId: request.params.id } });
-        response.code(200).send("The food has been deleted...")
+        await updatedMacros.update(request.body);
+        response.code(200).send(updatedMacros)
     } catch (error) {
         response.code(403).send("You are not allowed!")
     }
@@ -36,5 +38,5 @@ const UpdateByUserId = async (request, response) => {
 module.exports = {
     addMacros,
     getByUserId,
-
+    updateByUserId
 }
