@@ -1,33 +1,33 @@
 const FoodModel = require("../models/Food");
 
 
-const addFood = async (req, res) => {
+const addFood = async (request, response) => {
     // const checkBasket = food.find(item => item.name === food.name)
     try {
-        const newFood = new FoodModel(req.body);
+        const newFood = new FoodModel(request.body);
         const savedFood = await newFood.save();
-        res.code(201).send(savedFood);
+        response.code(201).send(savedFood);
     } catch (err) {
-        res.code(500).send(err);
+        response.code(500).send(err);
     }
 }
 
-const getByUserId = async (req, res) => {
+const getByUserId = async (request, response) => {
     try {
-        const userId = req.params.userId
+        const userId = request.params.userId
         const getFoodById = await FoodModel.findAll({ where: { userId } })
-        res.code(200).send(getFoodById);
+        response.code(200).send(getFoodById);
     } catch (err) {
-        res.code(500).send(err);
+        response.code(500).send(err);
     }
 }
 
-const deleteByUserId = async (req, res) => {
+const deleteByUserId = async (request, response) => {
     try {
-        await FoodModel.destroy({ where: { userId: req.params.id } });
-        res.code(200).send("The food has been deleted...")
+        await FoodModel.destroy({ where: { userId: request.params.id } });
+        response.code(200).send("The food has been deleted...")
     } catch (error) {
-        res.code(403).send("You are not allowed!")
+        response.code(403).send("You are not allowed!")
     }
 }
 

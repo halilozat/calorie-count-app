@@ -3,7 +3,7 @@ import BasketItem from './basketItem/BasketItem'
 import './basket.scss'
 import { useFoodContext } from '../../context/foodContext/FoodContext'
 import axios from 'axios'
-import { AuthContext } from '../../context/AuthContext'
+import { AuthContext } from '../../context/authContext/AuthContext'
 
 const Basket = () => {
 

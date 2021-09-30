@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect } from 'react'
-import { AuthContext } from '../../../context/AuthContext'
+import { AuthContext } from '../../../context/authContext/AuthContext'
 import { useFoodContext } from '../../../context/foodContext/FoodContext'
 import './item.scss'
 

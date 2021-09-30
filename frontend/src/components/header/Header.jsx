@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { logoutCall } from '../../apiCalls'
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/authContext/AuthContext';
 import './header.scss'
 import logoImg from '../../assets/images/logo.png'
 

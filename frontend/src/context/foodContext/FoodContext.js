@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { AuthContext } from "../AuthContext";
+import { AuthContext } from "../authContext/AuthContext";
 
 const FoodContext = createContext();
 
@@ -9,13 +9,12 @@ export const FoodContextProvider = ({ children }) => {
 
     const [status, setStatus] = useState('idle');
 
-    // const [basket, setBasket] = useState([])
     const [foods, setFoods] = useState([])
-    const [macros, setMacros] = useState({
-        carb: user?.user.userCarb || 0,
+    const [macros, setMacros] = useState(user ? {
+        carb: user.user.userCarb || 0,
         protein: user.user.userProtein || 0,
         fat: user.user.userFat || 0,
-    });
+    } : {});
 
     const [totalCarb, setTotalCarb] = useState(0);
     const [totalProtein, setTotalProtein] = useState(0);

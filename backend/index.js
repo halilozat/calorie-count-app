@@ -19,6 +19,7 @@ db.authenticate().then(() => {
 const authRoute = require('./routes/auth');
 const userFood = require('./routes/userFood');
 const foodRoute = require('./routes/apiData');
+const macrosRoute = require('./routes/userMacros');
 
 fastify.register(require('fastify-cors'), {
     origin: true,
@@ -29,6 +30,7 @@ fastify.register(authRoute, { prefix: "/api/auth" });
 // fastify.register(userRoute, { prefix: "/api/users" });
 fastify.register(foodRoute, { prefix: "/api/food" });
 fastify.register(userFood, { prefix: "/api/userFood" });
+fastify.register(macrosRoute, { prefix: "/api/userMacros" });
 
 const start = async () => {
     try {

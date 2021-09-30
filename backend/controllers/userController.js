@@ -2,50 +2,50 @@ const UserModel = require("../models/User");
 const CryptoJS = require("crypto-js");
 
 
-const userUpdate = async (req, res) => {
-    if (req.user.id === req.params.id || req.user.isAdmin) {
-        if (req.body.password) {
-            req.body.password = CryptoJS.AES.encrypt(
-                req.body.password,
+const userUpdate = async (request, response) => {
+    if (request.user.id === request.params.id || request.user.isAdmin) {
+        if (request.body.password) {
+            request.body.password = CryptoJS.AES.encrypt(
+                request.body.password,
                 process.env.SECRET_KEY
             ).toString();
         }
 
         try {
             const updatedUser = await UserModel.findByIdAndUpdate(
-                req.params.id,
+                request.params.id,
                 {
-                    $set: req.body,
+                    $set: request.body,
                 },
                 { new: true }
             );
-            res.code(200).send(updatedUser);
+            response.code(200).send(updatedUser);
         } catch (err) {
-            res.code(500).send(err);
+            response.code(500).send(err);
         }
     } else {
-        res.code(403).send("You can update only your account!");
+        response.code(403).send("You can update only your account!");
     }
 }
 
-const userDelete = async (req, res) => {
-    if (req.user.id === req.params.id || req.user.isAdmin) {
+const userDelete = async (request, response) => {
+    if (request.user.id === request.params.id || request.user.isAdmin) {
         try {
-            await UserModel.findByIdAndDelete(req.params.id);
-            res.code(200).send("User has been deleted...");
+            await UserModel.findByIdAndDelete(request.params.id);
+            response.code(200).send("User has been deleted...");
         } catch (err) {
-            res.code(500).send(err);
+            response.code(500).send(err);
         }
     } else {
-        res.code(403).send("You can delete only your account!");
+        response.code(403).send("You can delete only your account!");
     }
 }
 
-const getUserById = async (req, res) => {
+const getUserById = async (request, response) => {
     try {
-        UserModel.findById(req.params.id)
+        UserModel.findById(request.params.id)
             .then((data) => {
-                res.send(data);
+                response.send(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -55,10 +55,10 @@ const getUserById = async (req, res) => {
     }
 }
 
-const getAll = async (req, res) => {
+const getAll = async (request, response) => {
     UserModel.findAll()
         .then((data) => {
-            res.send(data);
+            response.send(data);
         })
         .catch((error) => {
             console.log(error)

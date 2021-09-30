@@ -18,11 +18,11 @@ export const logoutCall = async (dispatch) => {
 };
 
 export const apiDataCall = async (query, dispatch) => {
-    dispatchEvent({ type: "GET_DATA_START" });
+    dispatch({ type: "GET_DATA_START" });
     try {
         const res = await axios.post("http://localhost:5001/api/food/getFoods", query)
         dispatch({ type: "GET_DATA_SUCCESS", payload: res.data })
     } catch (error) {
-        dispatchEvent({ type: "GET_DATA_FAILURE", payload: error })
+        dispatch({ type: "GET_DATA_FAILURE", payload: error })
     }
 }
