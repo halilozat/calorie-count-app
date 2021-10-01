@@ -1,8 +1,8 @@
 import { useContext, useRef } from "react";
-import './login.scss'
-import { loginCall } from "../../apiCalls";
+import { loginCall } from "../../services/apiCalls";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { Link } from "react-router-dom";
+import './login.scss'
 
 const Login = () => {
 

@@ -1,4 +1,4 @@
-export const LoginStart = (userCredentials) => ({
+export const LoginStart = () => ({
     type: "LOGIN_START",
 });
 
@@ -11,14 +11,17 @@ export const LoginFailure = () => ({
     type: "LOGIN_FAILURE",
 });
 
-export const Follow = (userId) => ({
-    type: "FOLLOW",
-    payload: userId,
+export const RegisterStart = () => ({
+    type: "REGISTER_START",
 });
 
-export const Unfollow = (userId) => ({
-    type: "UNFOLLOW",
-    payload: userId,
+export const RegisterSuccess = (user) => ({
+    type: "REGISTER_SUCCESS",
+    payload: user,
+});
+
+export const RegisterFailure = () => ({
+    type: "REGISTER_FAILURE",
 });
 
 export const Logout = () => ({

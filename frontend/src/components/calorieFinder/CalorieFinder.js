@@ -4,6 +4,8 @@ import axios from 'axios';
 import Item from './item/Item';
 import Search from './search/Search';
 import ContentLoader from "react-content-loader"
+import { getApiData } from "../../services/apiCalls";
+
 
 const CalorieFinder = () => {
 
@@ -29,6 +31,7 @@ const CalorieFinder = () => {
     const fetchItems = async (foodTerm) => {
         setLoading(true)
         try {
+            // const response = getApiData({query: foodTerm})
             const response = await axios.post(
                 'http://localhost:5001/api/v1/food/getFoods',
                 { query: foodTerm }

@@ -1,50 +1,37 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import './register.scss'
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+import { registerCall } from '../../apiCalls';
+import { AuthContext } from '../../context/authContext/AuthContext';
 
 const Register = () => {
     const history = useHistory();
+    const { isFetching, dispatch } = useContext(AuthContext);
 
     const username = useRef();
     const email = useRef();
     const password = useRef();
-    const passwordAgain = useRef();
-    const userProtein = useRef();
-    const userCarb = useRef();
-    const userFat = useRef();
 
     const handleClick = async (e) => {
         e.preventDefault();
-        if (passwordAgain.current.value !== password.current.value) {
-            passwordAgain.current.setCustomValidity("Passwords don't match!");
-        } else {
-            const user = {
-                username: username.current.value,
-                email: email.current.value,
-                password: password.current.value,
-                userProtein: userProtein.current.value,
-                userCarb: userCarb.current.value,
-                userFat: userFat.current.value,
-
-            };
-            try {
-                axios.post("http://localhost:5001/api/v1/auth/register", user, { withCredentials: true })
-                    .then(res => {
-                        console.log(res);
-                    })
-                    .catch(
-                        err => {
-                            console.log(err);
-                        }
-                    )
-                history.push("/login");
-            } catch (err) {
-                console.log(err);
-            }
+        try {
+            registerCall(
+                {
+                    username: username.current.value,
+                    email: email.current.value,
+                    password: password.current.value,
+                },
+                dispatch
+            )
+                .then(res => console.log(res))
+                .catch(error => console.log(error))
+            history.push("/login");
+        } catch (error) {
+            console.log(error);
         }
-    };
+    }
 
 
     return (
@@ -70,13 +57,13 @@ const Register = () => {
                     type="password"
                     minLength="6"
                 />
-                <input
+                {/* <input
                     placeholder="Password Again *"
                     required
                     ref={passwordAgain}
                     type="password"
-                />
-                <input
+                /> */}
+                {/* <input
                     placeholder="Your Daily Protein *"
                     required
                     ref={userProtein}
@@ -93,7 +80,7 @@ const Register = () => {
                     required
                     ref={userFat}
                     type="text"
-                />
+                /> */}
                 <button type="submit">Register</button>
                 <div href="">
                     <Link to="/login">
