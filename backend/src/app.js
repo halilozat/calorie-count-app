@@ -6,7 +6,7 @@ fastify.register(require('fastify-multipart'))
 require('dotenv').config();
 
 /** Database Connection */
-const db = require('./config/database');
+const db = require('./database/database');
 db.authenticate().then(() => {
     db.sync()
     console.log('Database connected...');

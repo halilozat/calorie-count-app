@@ -30,7 +30,7 @@ const CalorieFinder = () => {
         setLoading(true)
         try {
             const response = await axios.post(
-                'http://localhost:5001/api/food/getFoods',
+                'http://localhost:5001/api/v1/food/getFoods',
                 { query: foodTerm }
             );
             console.log(response.data.items);

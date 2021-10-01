@@ -11,13 +11,13 @@ const Basket = () => {
     const { user } = useContext(AuthContext)
 
     const removeBasket = async () => {
-        await axios.delete(`http://localhost:5001/api/userFood/${user.user.id}`)
+        await axios.delete(`http://localhost:5001/api/v1/userFood/${user.user.id}`)
             .then(setFoods([]))
     }
 
     useEffect(() => {
         const getFoodsByUserId = async () => {
-            await axios.get(`http://localhost:5001/api/userFood/${user.user.id}`)
+            await axios.get(`http://localhost:5001/api/v1/userFood/${user.user.id}`)
                 .then(res => setFoods(res.data))
                 .catch(err => console.log(err))
         }

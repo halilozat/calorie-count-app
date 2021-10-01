@@ -69,7 +69,7 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         }
 
         try {
-            axios.post("http://localhost:5001/api/userFood/addFood", newFood, { withCredentials: true })
+            axios.post("http://localhost:5001/api/v1/userFood/addFood", newFood, { withCredentials: true })
                 .then(res => {
                     setFoods([...foods, res.data])
                 })

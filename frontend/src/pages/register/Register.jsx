@@ -30,7 +30,7 @@ const Register = () => {
 
             };
             try {
-                axios.post("http://localhost:5001/api/auth/register", user, { withCredentials: true })
+                axios.post("http://localhost:5001/api/v1/auth/register", user, { withCredentials: true })
                     .then(res => {
                         console.log(res);
                     })
