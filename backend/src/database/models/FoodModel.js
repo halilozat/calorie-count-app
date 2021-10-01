@@ -1,43 +1,39 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 
-const User = db.define('users', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-    },
-    email: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    isAdmin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false
-    },
-    userProtein: {
+const Food = db.define('foods', {
+    userId: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    userCarb: {
+    foodname: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    gram: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    userFat: {
+    amount: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    calorie: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    carb: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    protein: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    fat: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
 });
 
-module.exports = User;
+module.exports = Food;

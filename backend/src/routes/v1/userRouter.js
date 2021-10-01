@@ -1,9 +1,8 @@
 const userController = require('../../controllers/v1/userController')
-const verify = require("../verifyToken");
 
 module.exports = function (fastify, opts, done) {
     //UPDATE
-    fastify.put("/:id", verify, userController.userUpdate);
+    fastify.put("/:id", userController.userUpdate);
 
     //DELETE
     fastify.delete("/:id", userController.userDelete);
@@ -12,7 +11,7 @@ module.exports = function (fastify, opts, done) {
     fastify.get("/:id", userController.getUserById);
 
     //GET ALL
-    fastify.get("/", verify, userController.getAll);
+    fastify.get("/", userController.getAll);
 
     done();
 }
