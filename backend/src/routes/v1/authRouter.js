@@ -5,5 +5,7 @@ module.exports = function (fastify, opts, done) {
 
     fastify.post("/login", authController.login);
 
+    fastify.post("/logout/:id", authController.logout);
+
     done();
 }
