@@ -1,31 +1,31 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
 const db = require('../database/database');
 
 const UserMacros = db.define('userMacros', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     userId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: true
     },
     protein: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     },
     carb: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     },
     fat: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     },
     calorie: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0
     }
 });
