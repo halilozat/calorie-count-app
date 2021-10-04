@@ -1,23 +1,64 @@
 const UserModel = require("../../models/UserModel");
+const tokenModel = require("../../models/TokenModel");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
-
 const register = async (request, response) => {
+    // const refreshToken = jwt.sign(
+    //     { email: user.email, id: user.id },
+    //     process.env.REFRESH_TOKEN_SECRET
+    // )
+
+    // await new tokenModel({ userId: user.id, refreshToken })
+    // try {
+    //     const user = await newUser.save();
+    //     response.code(201).send({ user, accessToken });
+    // } catch (err) {
+    //     response.code(500).send(err);
+    // }
+
+    const { email, password, confirmPassword, username } = request.body
+
+    const userExists = await UserModel.findOne({ where: { email } });
+    if (userExists) {
+        return response.code(400).send({ message: "user not exist" })
+    }
+    if (password !== confirmPassword) {
+        return response.code(400).send({ message: "password error" })
+    }
+    const hashedPassword = CryptoJS.AES.encrypt(
+        password,
+        process.env.SECRET_KEY
+    ).toString()
+
     const newUser = new UserModel({
-        username: request.body.username,
-        email: request.body.email,
-        password: CryptoJS.AES.encrypt(
-            request.body.password,
-            process.env.SECRET_KEY
-        ).toString(),
-        userProtein: request.body.userProtein,
-        userCarb: request.body.userCarb,
-        userFat: request.body.userFat
+        username,
+        email,
+        password: hashedPassword,
     });
+
+    const accessToken = jwt.sign(
+        { email: newUser.email, id: newUser.userRefId },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+            expiresIn: '3m',
+        }
+    )
+
+    const refreshToken = jwt.sign(
+        { email: newUser.email, id: newUser.userRefId },
+        process.env.REFRESH_TOKEN_SECRET
+    )
+    console.log(newUser)
+
+    await tokenModel.create({
+        userId: newUser.userRefId,
+        refreshToken: refreshToken,
+    })
+
     try {
         const user = await newUser.save();
-        response.code(201).send(user);
+        response.code(201).send({ user, accessToken });
     } catch (err) {
         response.code(500).send(err);
     }

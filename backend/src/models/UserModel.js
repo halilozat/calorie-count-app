@@ -1,45 +1,54 @@
-const Sequelize = require('sequelize');
+/** Dependencies */
+const { DataTypes } = require('sequelize');
+const crypto = require('crypto')
+
+/** Database */
 const db = require('../database/database');
+
 
 const User = db.define('users', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
+    userRefId: {
+        type: DataTypes.UUID,
+        defaultValue: crypto.randomUUID(),
+    },
     username: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
     email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         unique: true,
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         min: 6,
         max: 30
     },
     isAdmin: {
-        type: Sequelize.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         defaultValue: false,
         allowNull: false
     },
     userProtein: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0,
         allowNull: false
     },
     userCarb: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0,
         allowNull: false
     },
     userFat: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0
     },
