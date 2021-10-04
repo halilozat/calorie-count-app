@@ -1,13 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { AuthContext } from "../authContext/AuthContext";
+import FoodReducer from './FoodReducer'
 
 const FoodContext = createContext();
 
 export const FoodContextProvider = ({ children }) => {
 
+    const [state, dispatch] = useReducer(FoodReducer);
+
+
+
     const { user } = useContext(AuthContext)
 
-    const [status, setStatus] = useState('idle');
+    // const [status, setStatus] = useState('idle');
 
     const [foods, setFoods] = useState([])
     const [macros, setMacros] = useState(user ? {
@@ -52,6 +57,7 @@ export const FoodContextProvider = ({ children }) => {
         setTotalFat,
         totalCalorie,
         setTotalCalorie,
+        dispatch
     }
 
     return <FoodContext.Provider value={values}>{children}</FoodContext.Provider>

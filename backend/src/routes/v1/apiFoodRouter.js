@@ -1,6 +1,6 @@
-const apiDataController = require('../../controllers/v1/apiDataController')
+const apiFoodController = require('../../controllers/v1/apiFoodController')
 
 module.exports = function (fastify, opts, done) {
-    fastify.post("/getFoods", apiDataController.getFoodApiData);
+    fastify.post("/getFoods", apiFoodController.getFoodApiData);
     done();
 }

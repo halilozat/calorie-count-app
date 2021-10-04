@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import { loginCall } from "../../services/apiCalls";
+import { loginCall } from "../../services/authService/authService";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { Link } from "react-router-dom";
 import './login.scss'
