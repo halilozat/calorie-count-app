@@ -20,9 +20,9 @@ const Login = () => {
 
 
     return (
-        <div className="login-form">
-            <form className="login" onSubmit={handleClick}>
-                <h1 className="login-header">Login</h1>
+        <div classNameName="login-form">
+            {/* <form classNameName="login" onSubmit={handleClick}>
+                <h1 classNameName="login-header">Login</h1>
                 <input
                     type="email"
                     placeholder="Email"
@@ -36,7 +36,7 @@ const Login = () => {
                     minLength="6"
                     ref={password}
                 />
-                <button className="loginButton" type="submit" disabled={isFetching}>
+                <button classNameName="loginButton" type="submit" disabled={isFetching}>
                     {isFetching ? (
                         "loading..."
                     ) : (
@@ -52,7 +52,38 @@ const Login = () => {
                         </Link>
                     )}
                 </div>
-            </form>
+            </form> */}
+
+            <div className="auth-container">
+                <div className="auth-left">
+                    <div className="auth-header">
+                        <h2 className="animation a1">Login Page!</h2>
+                    </div>
+                    <form className="auth-form" onSubmit={handleClick}>
+                        <input
+                            type="email"
+                            className="form-field animation a3"
+                            placeholder="Email *"
+                            required
+                            ref={email}
+                        />
+                        <input
+                            type="password"
+                            className="form-field animation a4"
+                            placeholder="Password *"
+                            required
+                            ref={password}
+                        />
+                        <p className="animation a5">
+                            <Link to="/register">
+                                Create a New Account
+                            </Link>
+                        </p>
+                        <button type="submit" className="animation a6">LOGIN</button>
+                    </form>
+                </div>
+                <div className="right-login"></div>
+            </div>
         </div>
     )
 }

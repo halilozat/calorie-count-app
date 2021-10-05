@@ -20,7 +20,7 @@
     }
   }
   .carb {
-    margin: auto 25% !important;
+    margin: auto 25%;
     background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
 
@@ -29,7 +29,7 @@
     }
   }
   .protein {
-    margin: auto 30% !important;
+    margin: auto 30%;
     background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
@@ -37,7 +37,7 @@
     }
   }
   .fat {
-    margin: auto 35% !important;
+    margin: auto 35%;
     background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
@@ -46,11 +46,119 @@
   }
 
   .calorie {
-    margin: auto 40% !important;
+    margin: auto 40%;
     background-color: $macrosBackground;
     box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
     &:hover {
       color: $hoverColor;
+    }
+  }
+}
+
+@media screen and (max-width: 593px) {
+  .macros {
+    li {
+      .macro-header {
+        font-size: 1rem !important;
+      }
+      span {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+
+    .carb {
+      margin: auto 5%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+    .protein {
+      margin: auto 10%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+    .fat {
+      margin: auto 15%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+
+    .calorie {
+      margin: auto 20%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 594px) and (max-width: 768px) {
+  .macros {
+    li {
+      .macro-header {
+        font-size: 1rem !important;
+      }
+      span {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+
+    .carb {
+      margin: auto 20%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+    .protein {
+      margin: auto 25%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+    .fat {
+      margin: auto 30%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+
+    .calorie {
+      margin: auto 35%;
+      background-color: $macrosBackground;
+      box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 769) and (max-width: 1034px) {
+  .macros {
+    li {
+      .macro-header {
+        font-size: 2rem !important;
+      }
     }
   }
 }

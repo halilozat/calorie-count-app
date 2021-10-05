@@ -1,59 +1,145 @@
 @import '../../assets/stylesheets/variables';
 
-.register-form {
-  font-family: $fontAsap;
-  background-color: red;
-  .register {
+.auth-container {
+  display: flex;
+  height: 100vh;
+
+  .auth-left {
     overflow: hidden;
-    padding: 40px 30px 30px 30px;
-    border-radius: 20px;
-    position: absolute;
-    top: 15%;
-    left: 35%;
-    right: 35%;
-    width: 400px;
-    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    animation-name: left;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 1s;
 
-    .register-header {
-      text-align: center;
-      margin-bottom: 10px !important;
-      color: $darkColor;
+    .auth-header {
+      background-color: $textColor;
+
+      h2 {
+        margin: 0;
+        color: $buttonColor;
+      }
+
+      h4 {
+        margin-top: 10px;
+        font-weight: normal;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.4);
+      }
     }
 
-    > input {
-      font-family: $fontAsap;
-      display: block;
-      border-radius: 5px;
-      font-size: 16px;
-      background: white;
-      width: 100%;
+    .auth-form {
+      max-width: 80%;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        text-align: right;
+
+        a {
+          color: #000;
+          font-size: 14px;
+          color: $buttonColor;
+        }
+      }
+
+      .form-field {
+        height: 46px;
+        padding: 0 16px;
+        border: 2px solid #ddd;
+        border-radius: 30px;
+        font-family: 'Rubik', sans-serif;
+        outline: 0;
+        transition: 0.2s;
+        margin-top: 20px;
+
+        &:focus {
+          border-color: $buttonColor;
+        }
+      }
+    }
+
+    button {
+      padding: 17px 10px;
       border: 0;
-      padding: 10px 10px;
-      margin: 15px -10px;
-    }
-
-    > button {
-      font-family: $fontAsap;
-      cursor: pointer;
+      background: $buttonColor;
+      border-radius: 30px;
+      margin-top: 20px;
       color: #fff;
-      font-size: 16px;
-      text-transform: uppercase;
-      width: 100px;
-      border: 0;
-      padding: 10px 0;
-      margin-top: 10px;
-      margin-left: -5px;
-      border-radius: 10px;
-      background-color: $darkColor;
+      letter-spacing: 1px;
+      font-family: 'Rubik', sans-serif;
+      cursor: pointer;
+    }
+
+    .animation {
+      animation-name: move;
+      animation-duration: 0.4s;
+      animation-fill-mode: both;
+      animation-delay: 2s;
+
+      .a1 {
+        animation-delay: 2s;
+      }
+
+      .a2 {
+        animation-delay: 2.1s;
+      }
+
+      .a3 {
+        animation-delay: 2.2s;
+      }
+
+      .a4 {
+        animation-delay: 2.3s;
+      }
+
+      .a5 {
+        animation-delay: 2.4s;
+      }
+
+      .a6 {
+        animation-delay: 2.5s;
+      }
     }
   }
 
-  a {
-    text-decoration: none;
-    color: $darkColor;
-    font-size: 14px;
-    position: absolute;
-    right: 10%;
-    bottom: 10px;
+  .right-register {
+    flex: 1;
+    background-color: black;
+    transition: 1s;
+    background-image: url(https://images.unsplash.com/photo-1561043433-aaf687c4cf04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes left {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    padding: 20px 40px;
+    width: 440px;
   }
 }
