@@ -15,7 +15,7 @@ const Header = () => {
     }
 
     return (
-        <div>
+        <>
             <header className="header">
                 <img className="logo" src={logoImg} alt="" />
                 <nav>
@@ -27,7 +27,7 @@ const Header = () => {
                 </nav>
                 <div className="logout"><button onClick={handleLogout}>Logout</button></div>
             </header>
-        </div>
+        </>
     )
 }
 

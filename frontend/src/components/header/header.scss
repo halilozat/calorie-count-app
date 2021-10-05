@@ -1,21 +1,18 @@
 @import '../../assets/stylesheets/variables';
 
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0;
   box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
-}
-
-.header {
   box-sizing: border-box;
   margin: 0;
-  padding: 25px 40px;
+  padding: 25px 20px;
   background-color: rgb(40, 40, 40);
   color: $textColor;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   text-decoration: none;
 
   .logo {
@@ -32,7 +29,7 @@ header {
 
       li {
         display: inline-block;
-        padding: 0px 40px;
+        padding: 0px 30px;
         cursor: pointer;
         transition: all 0.3s ease 0s;
 
@@ -59,11 +56,87 @@ header {
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 346px) {
+  .header {
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    nav {
+      ul {
+        li {
+          flex-direction: column;
+          padding: 0px 5px !important;
+        }
+      }
+    }
+    .logo {
+      height: 0px;
+      width: 0px;
+    }
+    button {
+      padding: 5px 5px;
+      font-weight: 700;
+      font-size: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 347px) and (max-width: 480px) {
+  .header {
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    nav {
+      ul {
+        li {
+          flex-direction: column;
+          padding: 0px 5px !important;
+        }
+      }
+    }
+    .logo {
+      height: 40px;
+      width: 40px;
+    }
+    button {
+      padding: 5px 5px;
+      font-weight: 700;
+      font-size: 10px;
+    }
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
+  .header {
+    font-weight: 700;
+    font-size: 15px;
+    nav {
+      ul {
+        li {
+          padding: 0px 15px !important;
+        }
+      }
+    }
+    .logo {
+      height: 50px;
+      width: 70px;
+    }
+    button {
+      padding: 7px 10px;
+      font-weight: 800;
+      font-size: 12px;
+    }
+  }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 769) and (max-width: 1023) {
+  .header {
+    nav {
+      ul {
+        li {
+          padding: 0px 30px;
+        }
+      }
+    }
+  }
 }
