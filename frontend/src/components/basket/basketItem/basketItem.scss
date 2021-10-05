@@ -7,3 +7,43 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 346px) {
+  .basket-container {
+    ul {
+      li {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 347px) and (max-width: 480px) {
+  .basket-container {
+    ul {
+      li {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .basket-container {
+    ul {
+      li {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 769) and (max-width: 1023) {
+  .basket-container {
+    ul {
+      li {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}

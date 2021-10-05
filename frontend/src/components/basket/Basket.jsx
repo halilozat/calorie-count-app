@@ -30,7 +30,7 @@ const Basket = () => {
             {
                 foods.length !== 0
                     ?
-                    <div className="basket-container container">
+                    <div className="basket-container">
                         <h3>My Meals</h3>
                         <ul>
                             {

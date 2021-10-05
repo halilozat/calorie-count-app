@@ -2,7 +2,7 @@
 
 .basket-container {
   padding: 20px;
-  width: 50%;
+  width: 55%;
   margin: 0 auto;
   background: $textColor;
   border: 1px solid $textColor;
@@ -33,5 +33,68 @@
   span {
     color: red;
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 346px) {
+  .basket-container {
+    width: 85% !important;
+    h3 {
+      font-size: 1rem;
+    }
+
+    .calorie {
+      font-size: 0.8rem;
+    }
+
+    .basket-reset-btn {
+      height: 25;
+      padding: 0 15px;
+      font-size: 11px;
+    }
+  }
+}
+
+@media screen and (min-width: 347px) and (max-width: 480px) {
+  .basket-container {
+    width: 80% !important;
+    h3 {
+      font-size: 1rem;
+    }
+
+    .calorie {
+      font-size: 0.8rem;
+    }
+
+    .basket-reset-btn {
+      height: 25;
+      padding: 0 15px;
+      font-size: 11px;
+    }
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .basket-container {
+    width: 70% !important;
+    h3 {
+      font-size: 1rem;
+    }
+
+    .calorie {
+      font-size: 0.8rem;
+    }
+
+    .basket-reset-btn {
+      height: 30px;
+      padding: 0 20px;
+      font-size: 13px;
+    }
+  }
+}
+
+@media screen and (min-width: 769) and (max-width: 1023) {
+  .basket-container {
+    width: 60% !important;
   }
 }

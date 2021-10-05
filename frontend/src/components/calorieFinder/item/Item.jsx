@@ -101,7 +101,6 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
                 <div className='item-head'>
                     <h4>{name}</h4>
                 </div>
-
                 <div className='item-content'>
 
                     <div className='item-info'>
