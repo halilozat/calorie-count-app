@@ -1,37 +1,25 @@
-import React, { useContext, useRef } from 'react'
+import React, { useState } from 'react'
 import './register.scss'
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
-import { registerCall } from '../../apiCalls';
-import { AuthContext } from '../../context/authContext/AuthContext';
+import { useDispatch, useSelector } from 'react-redux'
+import { signup } from '../../redux/auth/AuthActions';
 
-const Register = () => {
-    const history = useHistory();
-    const { isFetching, dispatch } = useContext(AuthContext);
+const Register = ({ history }) => {
+    const initialFormData = {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    }
 
-    const username = useRef();
-    const email = useRef();
-    const password = useRef();
-    const confirmPassword = useRef();
+    const userState = useSelector((state) => state.user)
+    const { error } = userState
+    const [form, setForm] = useState(initialFormData)
+    const dispatch = useDispatch()
 
     const handleClick = async (e) => {
         e.preventDefault();
-        try {
-            registerCall(
-                {
-                    username: username.current.value,
-                    email: email.current.value,
-                    password: password.current.value,
-                    confirmPassword: confirmPassword.current.value,
-                },
-                dispatch
-            )
-                .then(res => console.log(res))
-                .catch(error => console.log(error))
-            history.push("/login");
-        } catch (error) {
-            console.log(error);
-        }
+        dispatch(signup(form, history))
     }
 
 
@@ -47,20 +35,26 @@ const Register = () => {
                         className="form-field animation a3"
                         placeholder="Email *"
                         required
-                        ref={email}
+                        onChange={(e) =>
+                            setForm({ ...form, email: e.target.value })
+                        }
                     />
                     <input
                         type="text"
                         className="form-field animation a3"
                         placeholder="Username *"
-                        ref={username}
                         required
+                        onChange={(e) =>
+                            setForm({ ...form, username: e.target.value })
+                        }
                     />
                     <input
                         type="password"
                         className="form-field animation a4"
                         placeholder="Password *"
-                        ref={password}
+                        onChange={(e) =>
+                            setForm({ ...form, password: e.target.value })
+                        }
                         minLength="6"
                         required
                     />
@@ -68,7 +62,9 @@ const Register = () => {
                         type="password"
                         className="form-field animation a4"
                         placeholder="Password Again *"
-                        ref={confirmPassword}
+                        onChange={(e) =>
+                            setForm({ ...form, confirmPassword: e.target.value })
+                        }
                         minLength="6"
                         required
                     />
