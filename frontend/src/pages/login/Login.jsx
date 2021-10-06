@@ -21,38 +21,6 @@ const Login = () => {
 
     return (
         <div classNameName="login-form">
-            {/* <form classNameName="login" onSubmit={handleClick}>
-                <h1 classNameName="login-header">Login</h1>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    required
-                    ref={email}
-                />
-                <input
-                    placeholder="Password"
-                    type="password"
-                    required
-                    minLength="6"
-                    ref={password}
-                />
-                <button classNameName="loginButton" type="submit" disabled={isFetching}>
-                    {isFetching ? (
-                        "loading..."
-                    ) : (
-                        "Log In"
-                    )}
-                </button>
-                <div>
-                    {isFetching ? (
-                        "loading..."
-                    ) : (
-                        <Link to="/register">
-                            Create a New Account
-                        </Link>
-                    )}
-                </div>
-            </form> */}
 
             <div className="auth-container">
                 <div className="auth-left">

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import './register.scss'
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { signup } from '../../redux/auth/AuthActions';
+import Message from '../../components/message/Message';
 
-const Register = ({ history }) => {
+const Register = () => {
     const initialFormData = {
         username: '',
         email: '',
@@ -13,13 +15,15 @@ const Register = ({ history }) => {
     }
 
     const userState = useSelector((state) => state.user)
+    const history = useHistory()
     const { error } = userState
     const [form, setForm] = useState(initialFormData)
     const dispatch = useDispatch()
 
     const handleClick = async (e) => {
         e.preventDefault();
-        dispatch(signup(form, history))
+        history.push('/')
+        dispatch(signup(form))
     }
 
 
@@ -28,6 +32,7 @@ const Register = ({ history }) => {
             <div className="auth-left">
                 <div className="auth-header">
                     <h2 className="animation a1">Register Page!</h2>
+                    {error && <Message>{error}</Message>}
                 </div>
                 <form className="auth-form" onSubmit={handleClick}>
                     <input
