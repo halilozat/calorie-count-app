@@ -1,11 +1,5 @@
 @import '../../../assets/stylesheets/variables';
 
-@mixin flex-center() {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .item {
   .item-bottom {
     font-size: 17px;
@@ -31,19 +25,22 @@
 
   .item-top {
     .item-content {
-      @include flex-center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       .item-info {
-        display: grid;
+        display: flex;
         grid-template-rows: 1fr 0.75fr;
         justify-items: center;
         align-items: center;
-        margin: 0 20px;
+        margin: 5px 20px;
         &-a {
           font-weight: bold;
-          font-size: 16px;
+          font-size: 15px;
         }
         &-b {
           font-size: 11px;
+          margin-left: 3px;
           color: lighten(#000, 50%);
           align-self: end;
         }
@@ -87,4 +84,30 @@
       cursor: pointer;
     }
   }
+}
+
+@media screen and (max-width: 346px) {
+  .item {
+    .item-top {
+      .item-content {
+        display: grid;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 347px) and (max-width: 480px) {
+  .item {
+    .item-top {
+      .item-content {
+        display: grid;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+}
+
+@media screen and (min-width: 769) and (max-width: 1023) {
 }

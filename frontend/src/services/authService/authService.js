@@ -5,6 +5,12 @@ import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE, LOGIN_START, LOGIN_
 const API = axios.create({ baseURL: 'http://localhost:5001/api/v1/auth' })
 
 
+export const singUp = async (FormData) => await API.post('/register', FormData)
+
+
+
+
+
 
 export const registerCall = async (userCredential, dispatch) => {
     dispatch({ type: REGISTER_START });

@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/authContext/AuthContext'
 
 const Basket = () => {
 
-    const { foods, setFoods, resetBasket, totalCalorie } = useFoodContext();
+    const { foods, setFoods, totalCalorie } = useFoodContext();
     const { user } = useContext(AuthContext)
 
     const removeBasket = async () => {
@@ -24,24 +24,25 @@ const Basket = () => {
         getFoodsByUserId()
     }, [])
 
-    console.log(foods.length);
     return (
         <>
             {
                 foods.length !== 0
                     ?
-                    <div className="basket-container">
-                        <h3>My Meals</h3>
-                        <ul>
-                            {
-                                foods.map(food => (
-                                    <BasketItem key={food.id} item={food} />
-                                ))
-                            }
-                        </ul>
-                        <div>_________________</div>
-                        <div className="calorie">Total Calories: {totalCalorie}<span></span></div>
-                        <button className="basket-reset-btn" onClick={removeBasket}>Reset Basket</button>
+                    <div className="basket-container container">
+                        <div className="basket-content">
+                            <h3>My Meals</h3>
+                            <ul>
+                                {
+                                    foods.map(food => (
+                                        <BasketItem key={food.id} item={food} />
+                                    ))
+                                }
+                            </ul>
+                            <div>_________________</div>
+                            <div className="calorie">Total Calories: {totalCalorie}<span></span></div>
+                            <button className="basket-reset-btn" onClick={removeBasket}>Reset Basket</button>
+                        </div>
                     </div>
                     :
                     <div className="basket-container container">

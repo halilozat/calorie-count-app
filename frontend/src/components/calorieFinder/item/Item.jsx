@@ -112,15 +112,7 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
                         <span className='item-info-a'>{serve}g</span>
                         <span className='item-info-b'>Serve (grams)</span>
                     </div>
-                    {
-                        basketItem ?
-                            <div className='item-del'>
-                                <button onClick={removeBasket}>X</button>
-                            </div>
-                            :
-                            <div></div>
 
-                    }
                     <div className='item-head'>
                         <button onClick={addBasket}>Add</button>
                     </div>
