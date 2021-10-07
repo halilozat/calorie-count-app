@@ -5,7 +5,8 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 import './header.scss'
 import { useLocation, useHistory } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.png'
-import { logout } from '../../redux/auth/AuthActions'
+import { logout, getAccessToken } from '../../redux/auth/AuthActions'
+import decode from 'jwt-decode'
 
 const Header = () => {
 
@@ -23,12 +24,32 @@ const Header = () => {
         history.push('/login')
     }
 
+    const renewAccessToken = async (id) => {
+        await dispatch(getAccessToken(id))
+        setUser(JSON.parse(localStorage.getItem('user')))
+    }
+
     useEffect(() => {
-        console.log(user)
         if (localStorage.getItem('user') && !user) {
             setUser(JSON.parse(localStorage.getItem('user')))
         }
-        console.log(user)
+
+        const interval = setInterval(() => {
+            const accessToken = user?.accessToken
+
+            if (accessToken) {
+                const decodedAccessToken = decode(accessToken)
+
+                if (decodedAccessToken.exp * 1000 < new Date().getTime()) {
+                    console.log(decodedAccessToken.exp)
+                    renewAccessToken(user.user._id)
+                }
+            }
+        }, 5000)
+
+        return () => {
+            clearInterval(interval)
+        }
     }, [location, user])
 
     const handleLogout = () => {

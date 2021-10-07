@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { signin } from '../../redux/auth/AuthActions'
-import './login.scss'
 import { useDispatch } from "react-redux";
+import './login.scss'
 
 const Login = ({ history }) => {
 

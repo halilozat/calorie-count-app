@@ -12,7 +12,8 @@ export const signIn = async (formData) =>
 
 export const logOut = async (id) => await API.get(`/logout/${id}`)
 
-
+export const refreshAccessToken = async (userId) =>
+    await API.get(`/users/refresh/${userId}`)
 
 
 

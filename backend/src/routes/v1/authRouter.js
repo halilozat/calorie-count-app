@@ -7,5 +7,7 @@ module.exports = function (fastify, opts, done) {
 
     fastify.post("/logout/:id", authController.logout);
 
+    fastify.get("/refresh/:id", authController.refreshToken);
+
     done();
 }

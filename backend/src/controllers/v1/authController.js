@@ -24,7 +24,7 @@ const register = async (request, response) => {
     const accessToken = jwt.sign(
         { id: newUser.userRefId, isAdmin: newUser.isAdmin },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "5d" }
+        { expiresIn: "3d" }
     );
 
     const refreshToken = jwt.sign(
@@ -65,7 +65,7 @@ const login = async (request, response) => {
         const accessToken = jwt.sign(
             { id: user.userRefId, isAdmin: user.isAdmin },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "5d" }
+            { expiresIn: "3d" }
         );
 
         const refreshToken = jwt.sign(
@@ -95,11 +95,34 @@ const logout = async (request, response) => {
         response.code(500).send(error)
 
     }
-
 }
+
+const refreshToken = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { refreshToken } = await tokenModel.findOne({ userId: id })
+        if (!refreshToken) return res.code(401)
+
+        jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, x) => {
+            if (err) return res.code(403).send(err)
+
+            const accessToken = jwt.sign(
+                { email: x.email, id: x.id },
+                process.env.ACCESS_TOKEN_SECRET,
+                { expiresIn: '3m' }
+            )
+
+            res.code(200).send(accessToken)
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    refreshToken
 }
