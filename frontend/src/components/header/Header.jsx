@@ -10,47 +10,8 @@ import decode from 'jwt-decode'
 
 const Header = () => {
 
-    const dispatch = useDispatch()
-    const history = useHistory()
-    const location = useLocation()
-    const [user, setUser] = useState()
 
-    // const { user, dispatch } = useContext(AuthContext);
-
-    const exit = async (id) => {
-        await dispatch(logout(id))
-        localStorage.removeItem('user')
-        setUser(null)
-        history.push('/login')
-    }
-
-    const renewAccessToken = async (id) => {
-        await dispatch(getAccessToken(id))
-        setUser(JSON.parse(localStorage.getItem('user')))
-    }
-
-    useEffect(() => {
-        if (localStorage.getItem('user') && !user) {
-            setUser(JSON.parse(localStorage.getItem('user')))
-        }
-
-        const interval = setInterval(() => {
-            const accessToken = user?.accessToken
-
-            if (accessToken) {
-                const decodedAccessToken = decode(accessToken)
-
-                if (decodedAccessToken.exp * 1000 < new Date().getTime()) {
-                    console.log(decodedAccessToken.exp)
-                    renewAccessToken(user.user._id)
-                }
-            }
-        }, 5000)
-
-        return () => {
-            clearInterval(interval)
-        }
-    }, [location, user])
+    const { user, dispatch } = useContext(AuthContext);
 
     const handleLogout = () => {
         logoutCall(
@@ -69,13 +30,7 @@ const Header = () => {
                         <li><div>My Macros</div></li>
                     </ul>
                 </nav>
-                <div className="logout">
-                    <button
-                        onClick={(e) => {
-                            exit(user.user.id)
-                        }}
-                    >Logout
-                    </button></div>
+                <div className="logout"><button onClick={handleLogout}>Logout</button></div>
             </header>
         </>
     )

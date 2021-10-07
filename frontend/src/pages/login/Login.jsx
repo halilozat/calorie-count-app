@@ -1,26 +1,26 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { signin } from '../../redux/auth/AuthActions'
-import { useDispatch } from "react-redux";
 import './login.scss'
+import { useContext, useRef } from "react";
+import { loginCall } from "../../services/authService/authService";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-const Login = ({ history }) => {
+const Login = () => {
+    const email = useRef();
+    const password = useRef();
 
-    const initialFormData = {
-        email: '',
-        password: '',
-    }
-    const [form, setForm] = useState(initialFormData)
-    const dispatch = useDispatch()
+    const { dispatch } = useContext(AuthContext);
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(signin(form, history))
+        loginCall(
+            { email: email.current.value, password: password.current.value },
+            dispatch
+        );
     };
 
 
     return (
-        <div classNameName="login-form">
+        <div className="login-form">
 
             <div className="auth-container">
                 <div className="auth-left">
@@ -33,18 +33,14 @@ const Login = ({ history }) => {
                             className="form-field animation a3"
                             placeholder="Email *"
                             required
-                            onChange={(e) =>
-                                setForm({ ...form, email: e.target.value })
-                            }
+                            ref={email}
                         />
                         <input
                             type="password"
                             className="form-field animation a4"
                             placeholder="Password *"
                             required
-                            onChange={(e) =>
-                                setForm({ ...form, password: e.target.value })
-                            }
+                            ref={password}
                         />
                         <p className="animation a5">
                             <Link to="/register">

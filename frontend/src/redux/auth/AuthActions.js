@@ -23,7 +23,7 @@ export const signup = (formData, history) => async (dispatch) => {
     }
 }
 
-export const signin = (formData, history) => async (dispatch) => {
+export const signin = (formData) => async (dispatch) => {
     try {
         const { data } = await api.signIn(formData)
 

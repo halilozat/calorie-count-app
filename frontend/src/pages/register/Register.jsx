@@ -1,26 +1,39 @@
-import React, { useState } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
-import { signup } from '../../redux/auth/AuthActions';
-import Message from '../../components/message/Message';
+import { useHistory } from "react-router";
+import { registerCall } from '../../apiCalls';
+import { AuthContext } from '../../context/authContext/AuthContext';
 import './register.scss'
 
-const Register = ({ history }) => {
-    const initialFormData = {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-    }
+const Register = () => {
 
-    const userState = useSelector((state) => state.user)
-    const { error } = userState
-    const [form, setForm] = useState(initialFormData)
-    const dispatch = useDispatch()
+    const history = useHistory();
+    const { dispatch } = useContext(AuthContext);
+
+    const username = useRef();
+    const email = useRef();
+    const password = useRef();
+    const confirmPassword = useRef();
+
 
     const handleClick = async (e) => {
         e.preventDefault();
-        dispatch(signup(form))
+        try {
+            registerCall(
+                {
+                    username: username.current.value,
+                    email: email.current.value,
+                    password: password.current.value,
+                    confirmPassword: confirmPassword.current.value,
+                },
+                dispatch
+            )
+                .then(res => console.log(res))
+                .catch(error => console.log(error))
+            history.push("/");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
@@ -29,7 +42,6 @@ const Register = ({ history }) => {
             <div className="auth-left">
                 <div className="auth-header">
                     <h2 className="animation a1">Register Page!</h2>
-                    {error && <Message>{error}</Message>}
                 </div>
                 <form className="auth-form" onSubmit={handleClick}>
                     <input
@@ -37,26 +49,20 @@ const Register = ({ history }) => {
                         className="form-field animation a3"
                         placeholder="Email *"
                         required
-                        onChange={(e) =>
-                            setForm({ ...form, email: e.target.value })
-                        }
+                        ref={email}
                     />
                     <input
                         type="text"
                         className="form-field animation a3"
                         placeholder="Username *"
                         required
-                        onChange={(e) =>
-                            setForm({ ...form, username: e.target.value })
-                        }
+                        ref={username}
                     />
                     <input
                         type="password"
                         className="form-field animation a4"
                         placeholder="Password *"
-                        onChange={(e) =>
-                            setForm({ ...form, password: e.target.value })
-                        }
+                        ref={password}
                         minLength="6"
                         required
                     />
@@ -64,9 +70,7 @@ const Register = ({ history }) => {
                         type="password"
                         className="form-field animation a4"
                         placeholder="Password Again *"
-                        onChange={(e) =>
-                            setForm({ ...form, confirmPassword: e.target.value })
-                        }
+                        ref={confirmPassword}
                         minLength="6"
                         required
                     />

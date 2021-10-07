@@ -103,11 +103,11 @@ const refreshToken = async (req, res) => {
         const { refreshToken } = await tokenModel.findOne({ userId: id })
         if (!refreshToken) return res.code(401)
 
-        jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, x) => {
+        jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, token) => {
             if (err) return res.code(403).send(err)
 
             const accessToken = jwt.sign(
-                { email: x.email, id: x.id },
+                { email: token.email, id: token.id },
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: '3m' }
             )
