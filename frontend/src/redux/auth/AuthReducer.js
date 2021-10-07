@@ -1,4 +1,4 @@
-import { AUTH, SIGNUP_FAIL } from "../actionTypes/actionTypes"
+import { AUTH, SIGNUP_FAIL, SIGNIN_FAIL, LOGOUT, LOGOUT_FAIL } from "../actionTypes/actionTypes";
 
 const authReducer = (state = { userData: null }, action) => {
     switch (action.type) {
@@ -6,7 +6,17 @@ const authReducer = (state = { userData: null }, action) => {
             localStorage.setItem('user', JSON.stringify(action.payload))
             return { ...state, userData: action.payload }
 
+        case SIGNIN_FAIL:
+            return { error: action.payload }
+
         case SIGNUP_FAIL:
+            return { error: action.payload }
+
+        case LOGOUT:
+            localStorage.removeItem('user')
+            return { ...state, userData: null }
+
+        case LOGOUT_FAIL:
             return { error: action.payload }
 
         default:

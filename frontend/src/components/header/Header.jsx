@@ -1,12 +1,35 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { logoutCall } from '../../apiCalls'
+import { useDispatch } from 'react-redux'
 import { AuthContext } from '../../context/authContext/AuthContext';
 import './header.scss'
+import { useLocation, useHistory } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.png'
+import { logout } from '../../redux/auth/AuthActions'
 
 const Header = () => {
 
-    const { user, dispatch } = useContext(AuthContext);
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const location = useLocation()
+    const [user, setUser] = useState()
+
+    // const { user, dispatch } = useContext(AuthContext);
+
+    const exit = async (id) => {
+        await dispatch(logout(id))
+        localStorage.removeItem('user')
+        setUser(null)
+        history.push('/login')
+    }
+
+    useEffect(() => {
+        console.log(user)
+        if (localStorage.getItem('user') && !user) {
+            setUser(JSON.parse(localStorage.getItem('user')))
+        }
+        console.log(user)
+    }, [location, user])
 
     const handleLogout = () => {
         logoutCall(
@@ -25,7 +48,13 @@ const Header = () => {
                         <li><div>My Macros</div></li>
                     </ul>
                 </nav>
-                <div className="logout"><button onClick={handleLogout}>Logout</button></div>
+                <div className="logout">
+                    <button
+                        onClick={(e) => {
+                            exit(user.user.id)
+                        }}
+                    >Logout
+                    </button></div>
             </header>
         </>
     )

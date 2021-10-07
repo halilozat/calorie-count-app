@@ -1,21 +1,21 @@
-import { useContext, useRef } from "react";
-import { loginCall } from "../../services/authService/authService";
-import { AuthContext } from "../../context/authContext/AuthContext";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { signin } from '../../redux/auth/AuthActions'
 import './login.scss'
+import { useDispatch } from "react-redux";
 
-const Login = () => {
+const Login = ({ history }) => {
 
-    const email = useRef();
-    const password = useRef();
-    const { isFetching, dispatch } = useContext(AuthContext);
+    const initialFormData = {
+        email: '',
+        password: '',
+    }
+    const [form, setForm] = useState(initialFormData)
+    const dispatch = useDispatch()
 
     const handleClick = (e) => {
         e.preventDefault();
-        loginCall(
-            { email: email.current.value, password: password.current.value },
-            dispatch
-        );
+        dispatch(signin(form, history))
     };
 
 
@@ -33,14 +33,18 @@ const Login = () => {
                             className="form-field animation a3"
                             placeholder="Email *"
                             required
-                            ref={email}
+                            onChange={(e) =>
+                                setForm({ ...form, email: e.target.value })
+                            }
                         />
                         <input
                             type="password"
                             className="form-field animation a4"
                             placeholder="Password *"
                             required
-                            ref={password}
+                            onChange={(e) =>
+                                setForm({ ...form, password: e.target.value })
+                            }
                         />
                         <p className="animation a5">
                             <Link to="/register">

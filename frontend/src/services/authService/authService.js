@@ -7,6 +7,10 @@ const API = axios.create({ baseURL: 'http://localhost:5001/api/v1/auth' })
 
 export const signUp = async (FormData) => await API.post('/register', FormData)
 
+export const signIn = async (formData) =>
+    await API.post('/login', formData)
+
+export const logOut = async (id) => await API.get(`/logout/${id}`)
 
 
 
