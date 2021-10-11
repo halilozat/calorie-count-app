@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+
+/** Styles */
+import './index.css';
+
+/** Contexts */
 import { AuthContextProvider } from './context/authContext/AuthContext'
 import { FoodContextProvider } from './context/foodContext/FoodContext';
 
