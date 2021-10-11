@@ -14,11 +14,11 @@ const Home = () => {
 
             <div className="home">
 
-                <Macros />
+                {/* <Macros />
 
                 <CalorieFinder />
 
-                <Basket />
+                <Basket /> */}
 
             </div>
         </div>

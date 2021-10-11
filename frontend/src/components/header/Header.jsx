@@ -1,18 +1,21 @@
-import React, { useContext } from 'react'
-import { logoutCall } from '../../apiCalls'
-import { AuthContext } from '../../context/authContext/AuthContext';
-import './header.scss'
+/** Images */
 import logoImg from '../../assets/images/logo.png'
 
-const Header = () => {
+/** Contexts */
+import { useAuth } from '../../context/authContext/AuthContext';
+
+/** Styles */
+import './header.scss'
+
+const Header = ({ history }) => {
+    const { logout } = useAuth();
 
 
-    const { dispatch } = useContext(AuthContext);
 
     const handleLogout = () => {
-        logoutCall(
-            dispatch
-        )
+        logout(() => {
+            history.push("/login");
+        });
     }
 
     return (
@@ -26,7 +29,11 @@ const Header = () => {
                         <li><div>My Macros</div></li>
                     </ul>
                 </nav>
-                <div className="logout"><button onClick={handleLogout}>Logout</button></div>
+                <div className="logout">
+                    <button onClick={handleLogout}>
+                        Logout
+                    </button>
+                </div>
             </header>
         </>
     )

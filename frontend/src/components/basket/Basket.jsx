@@ -3,12 +3,13 @@ import BasketItem from './basketItem/BasketItem'
 import './basket.scss'
 import { useFoodContext } from '../../context/foodContext/FoodContext'
 import axios from 'axios'
-import { AuthContext } from '../../context/authContext/AuthContext'
+import { AuthContext, useAuth } from '../../context/authContext/AuthContext'
 
 const Basket = () => {
 
     const { foods, setFoods, totalCalorie } = useFoodContext();
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth();
+
 
     const removeBasket = async () => {
         await axios.delete(`http://localhost:5001/api/v1/userFood/${user.user.id}`)

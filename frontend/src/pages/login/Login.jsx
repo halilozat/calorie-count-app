@@ -1,21 +1,29 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { fetchLogin } from "../../services/authService/authService";
+import { useAuth } from "../../context/authContext/AuthContext";
+import { useHistory } from "react-router";
 import './login.scss'
-import { useContext, useRef } from "react";
-import { loginCall } from "../../services/authService/authService";
-import { AuthContext } from "../../context/authContext/AuthContext";
 
 const Login = () => {
+    const { login } = useAuth();
+    const history = useHistory()
+
     const email = useRef();
     const password = useRef();
 
-    const { dispatch } = useContext(AuthContext);
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
-        loginCall(
-            { email: email.current.value, password: password.current.value },
-            dispatch
-        );
+        try {
+            const loginResponse = await fetchLogin(
+                { email: email.current.value, password: password.current.value },
+            );
+            login(loginResponse)
+            history.push("/")
+        } catch (error) {
+            console.log(error);
+        }
     };
 
 

@@ -1,16 +1,14 @@
-import React, { useContext, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
-import { registerCall } from '../../apiCalls';
-import { AuthContext } from '../../context/authContext/AuthContext';
-
+import { useAuth } from '../../context/authContext/AuthContext';
+import { fetchRegister } from '../../services/authService/authService';
 import './register.scss'
+import { useHistory } from 'react-router';
 
 const Register = () => {
+    const { login } = useAuth()
 
-    const history = useHistory();
-    const { dispatch } = useContext(AuthContext);
-
+    const history = useHistory()
     const username = useRef();
     const email = useRef();
     const password = useRef();
@@ -20,18 +18,18 @@ const Register = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            registerCall(
+            const registerResponse = await fetchRegister(
                 {
                     username: username.current.value,
                     email: email.current.value,
                     password: password.current.value,
                     confirmPassword: confirmPassword.current.value,
                 },
-                dispatch
             )
-                .then(res => console.log(res))
-                .catch(error => console.log(error))
+            login(registerResponse);
+
             history.push("/");
+
         } catch (error) {
             console.log(error);
         }
