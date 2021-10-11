@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import { registerCall } from '../../apiCalls';
 import { AuthContext } from '../../context/authContext/AuthContext';
+
 import './register.scss'
 
 const Register = () => {

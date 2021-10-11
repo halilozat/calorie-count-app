@@ -6,7 +6,15 @@ import './item.scss'
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
-    const { foods, setFoods, setTotalCarb, setTotalProtein, setTotalFat, setTotalCalorie } = useFoodContext()
+    const
+        {
+            foods,
+            setFoods,
+            setTotalFat,
+            setTotalCarb,
+            setTotalProtein,
+            setTotalCalorie
+        } = useFoodContext()
     const { user } = useContext(AuthContext)
 
 
@@ -54,7 +62,6 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         )
     }, [foods]);
 
-    const basketItem = foods.find(item => item.name === food.name)
 
     const addBasket = async () => {
         const newFood = {
@@ -84,16 +91,6 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
     }
     console.log(foods);
-    const removeBasket = () => {
-        const checkBasket = foods.find(item => item.name === food.name)
-        checkBasket.amount -= 1
-        if (checkBasket.amount === 0) {
-            setFoods([...foods.filter(item => item.name !== food.name)])
-        } else {
-            setFoods([...foods.filter(item => item.name !== food.name), checkBasket])
-        }
-
-    }
 
     return (
         <div className='item'>

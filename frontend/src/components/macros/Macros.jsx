@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../context/authContext/AuthContext';
+import React from 'react';
 import { useFoodContext } from '../../context/foodContext/FoodContext';
 import './macros.scss'
 
 const Header = () => {
 
   const { macros, totalCarb, totalProtein, totalFat, totalCalorie } = useFoodContext();
-  const { user } = useContext(AuthContext)
 
 
   return (

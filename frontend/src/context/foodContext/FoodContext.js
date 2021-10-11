@@ -6,7 +6,7 @@ const FoodContext = createContext();
 
 export const FoodContextProvider = ({ children }) => {
 
-    const [state, dispatch] = useReducer(FoodReducer);
+    const [dispatch] = useReducer(FoodReducer);
 
 
 

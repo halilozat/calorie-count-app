@@ -3,7 +3,6 @@ import Macros from '../../components/macros/Macros';
 import Basket from '../../components/basket/Basket';
 import CalorieFinder from '../../components/calorieFinder/CalorieFinder'
 import Header from '../../components/header/Header';
-import { useFoodContext } from '../../context/foodContext/FoodContext';
 import './home.scss'
 
 

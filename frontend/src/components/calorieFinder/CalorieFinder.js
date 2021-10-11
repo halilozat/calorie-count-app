@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './calorieFinder.scss';
 import axios from 'axios';
 import Item from './item/Item';
 import Search from './search/Search';
 import ContentLoader from "react-content-loader"
-import { getApiData } from "../../services/apiFoodService/apiFoodService";
 
 
 const CalorieFinder = () => {
@@ -25,11 +24,6 @@ const CalorieFinder = () => {
         </ContentLoader>
     )
 
-    useEffect(() => {
-        fetchItems(foodState.term);
-    }, []);
-
-
     const fetchItems = async (foodTerm) => {
         setLoading(true)
         try {
@@ -48,6 +42,10 @@ const CalorieFinder = () => {
             console.log(error.message);
         }
     };
+
+    useEffect(() => {
+        fetchItems(foodState.term);
+    }, []);
 
     const getItems = () => {
         let foodItems = [];

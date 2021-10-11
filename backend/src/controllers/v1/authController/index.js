@@ -1,5 +1,5 @@
-const UserModel = require("../../models/UserModel");
-const tokenModel = require("../../models/TokenModel");
+const UserModel = require("../../../models/UserModel");
+const tokenModel = require("../../../models/TokenModel");
 const bcrypt = require('bcryptjs')
 const jwt = require("jsonwebtoken");
 
@@ -24,7 +24,7 @@ const register = async (request, response) => {
     const accessToken = jwt.sign(
         { id: newUser.userRefId, isAdmin: newUser.isAdmin },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "3d" }
+        { expiresIn: "300d" }
     );
 
     const refreshToken = jwt.sign(
@@ -40,7 +40,7 @@ const register = async (request, response) => {
 
     try {
         const user = await newUser.save();
-        response.code(201).send({ user, accessToken });
+        response.code(201).send({ user, accessToken, refreshToken });
     } catch (error) {
         response.code(500).send(error);
     }
@@ -63,19 +63,19 @@ const login = async (request, response) => {
 
 
         const accessToken = jwt.sign(
-            { id: user.userRefId, isAdmin: user.isAdmin },
+            { id: user.userRefId },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "3d" }
+            { expiresIn: "300d" }
         );
 
         const refreshToken = jwt.sign(
-            { email: user.email, id: user.userRefId },
+            { id: user.userRefId },
             process.env.REFRESH_TOKEN_SECRET
         )
         const token = await tokenModel.findOne({ where: { userId: user.userRefId } })
         token.update({ refreshToken: null }, { new: true })
 
-        response.code(200).send({ user, accessToken })
+        response.code(200).send({ user, accessToken, refreshToken })
     } catch (error) {
         response.code(500).send(error)
     }
@@ -119,10 +119,36 @@ const refreshToken = async (req, res) => {
     }
 }
 
+const me = async (req, res, next) => {
+    const authorizationToken = req.headers["authorization"];
+
+    if (!authorizationToken) {
+        return response.code(400).send({ message: "error" })
+    }
+
+    jwt.verify(authorizationToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
+        if (err) {
+            return response.code(400).send({ message: "error" })
+        }
+        req.payload = payload;
+    })
+
+    const { userRefId } = req.payload
+    try {
+        const user = UserModel.findOne(userRefId)
+        user.then(function (result) {
+            res.send(result)
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = {
     register,
     login,
     logout,
-    refreshToken
+    refreshToken,
+    me
 }

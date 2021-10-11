@@ -1,8 +1,7 @@
-const UserMacrosModel = require("../../models/UserMacrosModel");
+const UserMacrosModel = require("../../../models/UserMacrosModel");
 
 
 const addMacros = async (request, response) => {
-    // const checkBasket = food.find(item => item.name === food.name)
     try {
         const newMacros = new UserMacrosModel(request.body);
         const savedMacros = await newMacros.save();

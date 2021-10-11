@@ -1,17 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { logoutCall } from '../../apiCalls'
-import { useDispatch } from 'react-redux'
 import { AuthContext } from '../../context/authContext/AuthContext';
 import './header.scss'
-import { useLocation, useHistory } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.png'
-import { logout, getAccessToken } from '../../redux/auth/AuthActions'
-import decode from 'jwt-decode'
 
 const Header = () => {
 
 
-    const { user, dispatch } = useContext(AuthContext);
+    const { dispatch } = useContext(AuthContext);
 
     const handleLogout = () => {
         logoutCall(

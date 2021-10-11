@@ -4,19 +4,6 @@ import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE, LOGIN_START, LOGIN_
 
 const API = axios.create({ baseURL: 'http://localhost:5001/api/v1/auth' })
 
-
-export const signUp = async (FormData) => await API.post('/register', FormData)
-
-export const signIn = async (formData) =>
-    await API.post('/login', formData)
-
-export const logOut = async (id) => await API.get(`/logout/${id}`)
-
-export const refreshAccessToken = async (userId) =>
-    await API.get(`/users/refresh/${userId}`)
-
-
-
 export const registerCall = async (userCredential, dispatch) => {
     dispatch({ type: REGISTER_START });
     try {
@@ -26,6 +13,10 @@ export const registerCall = async (userCredential, dispatch) => {
         dispatch({ type: REGISTER_FAILURE, payload: error });
     }
 };
+
+export const signup = async (formData) => {
+    await API.post("/register", formData)
+}
 
 export const loginCall = async (userCredential, dispatch) => {
     dispatch({ type: LOGIN_START });

@@ -8,32 +8,50 @@ import {
     LOGOUT
 } from "../actionTypes/actionTypes";
 
-export const LoginStart = () => ({
-    type: LOGIN_START,
-});
+import { AUTH, SIGNUP_FAIL } from "../actionTypes/actionTypes";
 
-export const LoginSuccess = (user) => ({
-    type: LOGIN_SUCCESS,
-    payload: user,
-});
+import * as api from '../../services/authService/authService'
 
-export const LoginFailure = () => ({
-    type: LOGIN_FAILURE,
-});
 
-export const RegisterStart = () => ({
-    type: REGISTER_START,
-});
+export const signup = (formData, history) => async (dispatch) => {
+    try {
+        const { data } = await api.signup(formData)
 
-export const RegisterSuccess = (user) => ({
-    type: REGISTER_SUCCESS,
-    payload: user,
-});
+        dispatch({ type: AUTH, payload: data })
 
-export const RegisterFailure = () => ({
-    type: REGISTER_FAILURE,
-});
+        history.push('/')
+    } catch (error) {
+        dispatch({
+            type: SIGNUP_FAIL, payload: error
+        })
+    }
 
-export const Logout = () => ({
-    type: LOGOUT,
-})
+    export const LoginStart = () => ({
+        type: LOGIN_START,
+    });
+
+    export const LoginSuccess = (user) => ({
+        type: LOGIN_SUCCESS,
+        payload: user,
+    });
+
+    export const LoginFailure = () => ({
+        type: LOGIN_FAILURE,
+    });
+
+    export const RegisterStart = () => ({
+        type: REGISTER_START,
+    });
+
+    export const RegisterSuccess = (user) => ({
+        type: REGISTER_SUCCESS,
+        payload: user,
+    });
+
+    export const RegisterFailure = () => ({
+        type: REGISTER_FAILURE,
+    });
+
+    export const Logout = () => ({
+        type: LOGOUT,
+    })

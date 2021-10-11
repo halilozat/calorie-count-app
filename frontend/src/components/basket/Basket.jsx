@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import BasketItem from './basketItem/BasketItem'
 import './basket.scss'
 import { useFoodContext } from '../../context/foodContext/FoodContext'
