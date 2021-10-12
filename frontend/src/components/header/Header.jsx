@@ -10,6 +10,7 @@ import './header.scss'
 /** Dependencies */
 import { useHistory } from 'react-router';
 import Cookies from 'js-cookie'
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -35,8 +36,8 @@ const Header = () => {
                 <img className="logo" src={logoImg} alt="" />
                 <nav>
                     <ul className="nav__links">
-                        <li><div>Home</div></li>
-                        <li><div>Calorie Calc</div></li>
+                        <li><Link to="/" style={{ textDecoration: "none", color: "white" }}><div>Home</div></Link></li>
+                        <li><Link to="/foodCalendar" style={{ textDecoration: "none", color: "white" }}><div>Food Calendar</div></Link></li>
                         <li><div>My Macros</div></li>
                     </ul>
                 </nav>
