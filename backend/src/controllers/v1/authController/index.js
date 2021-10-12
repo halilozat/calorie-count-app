@@ -123,12 +123,12 @@ const me = async (req, res, next) => {
     const authorizationToken = req.headers["authorization"];
 
     if (!authorizationToken) {
-        return response.code(400).send({ message: "error" })
+        return response.code(400).send({ message: "authorization error" })
     }
 
     jwt.verify(authorizationToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
         if (err) {
-            return response.code(400).send({ message: "error" })
+            return response.code(400).send({ message: "verify error" })
         }
         req.payload = payload;
     })

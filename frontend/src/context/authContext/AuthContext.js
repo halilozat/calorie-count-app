@@ -14,11 +14,12 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         (async () => {
             try {
+
                 const me = await fetchMe();
                 setLoggedIn(true);
                 setUser(me);
                 setLoading(false);
-                console.log("user: " + user)
+
             } catch (e) {
                 setLoading(false);
             }
@@ -29,10 +30,14 @@ export const AuthContextProvider = ({ children }) => {
     const login = (data) => {
         setLoggedIn(true)
         setUser(data.user)
+        console.log(data.user)
+        console.log(user)
 
-        localStorage.setItem("access-token", JSON.stringify(data.user));
         localStorage.setItem("access-token", JSON.stringify(data.accessToken));
+        Cookies.set("access", data.accessToken);
+
         localStorage.setItem("refresh-token", JSON.stringify(data.refreshToken));
+        Cookies.set("refresh", data.refreshToken);
     }
 
     const logout = async (callback) => {
@@ -43,6 +48,9 @@ export const AuthContextProvider = ({ children }) => {
 
         localStorage.removeItem("access-token");
         localStorage.removeItem("refresh-token");
+
+        Cookies.remove("access");
+        Cookies.remove("refresh");
 
         callback()
     };

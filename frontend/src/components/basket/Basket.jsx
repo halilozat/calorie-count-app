@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import BasketItem from './basketItem/BasketItem'
 import './basket.scss'
 import { useFoodContext } from '../../context/foodContext/FoodContext'
 import axios from 'axios'
-import { AuthContext, useAuth } from '../../context/authContext/AuthContext'
+import { useAuth } from '../../context/authContext/AuthContext'
 
 const Basket = () => {
 

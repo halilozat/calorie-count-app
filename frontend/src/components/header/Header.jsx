@@ -7,15 +7,26 @@ import { useAuth } from '../../context/authContext/AuthContext';
 /** Styles */
 import './header.scss'
 
-const Header = ({ history }) => {
-    const { logout } = useAuth();
+/** Dependencies */
+import { useHistory } from 'react-router';
+import Cookies from 'js-cookie'
 
+
+const Header = () => {
+    const { logout } = useAuth();
+    const history = useHistory()
 
 
     const handleLogout = () => {
-        logout(() => {
-            history.push("/login");
-        });
+
+        localStorage.removeItem("access-token");
+        localStorage.removeItem("refresh-token");
+
+        Cookies.remove("access");
+        Cookies.remove("refresh");
+
+        history.push("/login");
+
     }
 
     return (
