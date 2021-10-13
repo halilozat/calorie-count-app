@@ -13,6 +13,7 @@ import logoImg from '../../assets/images/logo.png'
 import './header.scss'
 
 
+
 const Header = () => {
     const { logout } = useAuth();
     const history = useHistory()
@@ -22,7 +23,6 @@ const Header = () => {
 
         localStorage.removeItem("access-token");
         Cookies.remove("access");
-
         history.push("/login");
 
     }

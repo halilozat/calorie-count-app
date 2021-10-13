@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
+/** Dependencies */
 import { useRef } from "react";
-import { fetchLogin } from "../../../services/authService/authService";
-import { useAuth } from "../../../context/authContext/AuthContext";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+
+/** Services */
+import CalorieCountService from '../../../services/CalorieCountService';
+
+/** Contexts */
+import { useAuth } from "../../../context/authContext/AuthContext";
+
+/** Stylesheets */
 import './login.scss'
+
+
 
 const Login = () => {
     const { login } = useAuth();
@@ -16,9 +25,11 @@ const Login = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            const loginResponse = await fetchLogin(
-                { email: email.current.value, password: password.current.value },
-            );
+            const loginResponse = await CalorieCountService.AuthLogin({
+                email: email.current.value,
+                password: password.current.value
+            })
+
             login(loginResponse)
             history.push("/")
         } catch (error) {

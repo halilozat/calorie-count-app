@@ -11,8 +11,9 @@ import Header from '../header/Header'
 /** Styles */
 import './foodCalendar.scss'
 
-const FoodCalendar = () => {
 
+
+const FoodCalendar = () => {
 
     return (
         <div>

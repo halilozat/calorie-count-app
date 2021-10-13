@@ -11,6 +11,9 @@ import { useAuth } from '../../../context/authContext/AuthContext'
 /** Components */
 import BasketItem from './basketItem/BasketItem'
 
+/** Services */
+import CalorieCountService from '../../../services/CalorieCountService'
+
 /** Stylesheets */
 import './basket.scss'
 
@@ -23,17 +26,22 @@ const Basket = () => {
 
 
     const removeBasket = async () => {
-        await axios.delete(`http://localhost:5001/api/v1/userFood/${user.user.id}`)
+
+        await CalorieCountService.removeBasketItems(user.user.id)
             .then(setFoods([]))
+            .catch(err => console.log(err))
+
     }
 
     useEffect(() => {
-        const getFoodsByUserId = async () => {
-            await axios.get(`http://localhost:5001/api/v1/userFood/${user.user.id}`)
+
+        const getUserBasketItems = async () => {
+            await CalorieCountService.getBasketItems(user.user.id)
                 .then(res => setFoods(res.data))
                 .catch(err => console.log(err))
         }
-        getFoodsByUserId()
+
+        getUserBasketItems()
     }, [])
 
     return (

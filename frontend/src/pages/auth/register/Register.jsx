@@ -1,14 +1,24 @@
+/** Dependencies */
 import React, { useRef } from 'react'
 import { Link } from "react-router-dom";
-import { useAuth } from '../../../context/authContext/AuthContext';
-import { fetchRegister } from '../../../services/authService/authService';
-import './register.scss'
 import { useHistory } from 'react-router';
+
+/** Contexts */
+import { useAuth } from '../../../context/authContext/AuthContext';
+
+/** Services */
+import CalorieCountService from '../../../services/CalorieCountService';
+
+/** Stylesheets */
+import './register.scss'
+
+
 
 const Register = () => {
     const { login } = useAuth()
 
     const history = useHistory()
+
     const username = useRef();
     const email = useRef();
     const password = useRef();
@@ -18,7 +28,8 @@ const Register = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            const registerResponse = await fetchRegister(
+
+            const registerResponse = await CalorieCountService.AuthRegister(
                 {
                     username: username.current.value,
                     email: email.current.value,
@@ -26,6 +37,7 @@ const Register = () => {
                     confirmPassword: confirmPassword.current.value,
                 },
             )
+
             login(registerResponse);
 
             history.push("/");
