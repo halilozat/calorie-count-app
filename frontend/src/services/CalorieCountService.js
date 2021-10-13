@@ -1,9 +1,12 @@
 /** Dependencies */
 import axios from "axios";
 
+
 const fetcher = axios.create({
-  baseURL: process.env.REACT_API_URL,
+  baseURL: process.env.REACT_BASE_ENDPOINT,
 });
+
+console.log("api: " + process.env.REACT_BASE_ENDPOINT)
 
 export default class CalorieCountService {
 

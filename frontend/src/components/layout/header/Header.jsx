@@ -4,10 +4,10 @@ import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom';
 
 /** Contexts */
-import { useAuth } from '../../context/authContext/AuthContext';
+import { useAuth } from '../../../context/authContext/AuthContext';
 
 /** Images */
-import logoImg from '../../assets/images/logo.png'
+import logoImg from '../../../assets/images/logo.png'
 
 /** Styles */
 import './header.scss'

@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import ContentLoader from "react-content-loader"
 
-/** Stylesheets */
-import './calorieFinder.scss';
-
+/** Components */
+import Item from './finderItem/FinderItem';
+import Search from './finderSearch/FinderSearch';
 
 /** Services */
 import CalorieCountService from '../../../services/CalorieCountService'
 
-/** Components */
-import Item from './finderItem/FinderItem';
-import Search from './finderSearch/FinderSearch';
+/** Stylesheets */
+import './calorieFinder.scss';
+
 
 
 const CalorieFinder = () => {

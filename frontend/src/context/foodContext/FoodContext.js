@@ -1,17 +1,16 @@
-import { createContext, useContext, useReducer, useState } from "react";
+/** Dependencies */
+import { createContext, useContext, useState } from "react";
+
+/** Contexts */
 import { useAuth } from "../authContext/AuthContext";
-import FoodReducer from './FoodReducer'
+
+
 
 const FoodContext = createContext();
 
 export const FoodContextProvider = ({ children }) => {
 
-    const [dispatch] = useReducer(FoodReducer);
-
-
     const { user } = useAuth();
-
-    // const [status, setStatus] = useState('idle');
 
     const [foods, setFoods] = useState([])
     const [macros, setMacros] = useState(user ? {
@@ -24,8 +23,6 @@ export const FoodContextProvider = ({ children }) => {
     const [totalProtein, setTotalProtein] = useState(0);
     const [totalFat, setTotalFat] = useState(0);
     const [totalCalorie, setTotalCalorie] = useState(0);
-
-
 
     const values = {
         foods,
@@ -40,7 +37,6 @@ export const FoodContextProvider = ({ children }) => {
         setTotalFat,
         totalCalorie,
         setTotalCalorie,
-        dispatch
     }
 
     return <FoodContext.Provider value={values}>{children}</FoodContext.Provider>

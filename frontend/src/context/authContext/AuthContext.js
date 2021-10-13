@@ -1,9 +1,9 @@
 /** Dependencies */
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Cookies from 'js-cookie'
 
 /** Services */
-import { fetchMe, fetchLogout } from "../../services/authService/authService";
+import CalorieCountService from "../../services/CalorieCountService";
 
 
 export const AuthContext = createContext();
@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
         (async () => {
             try {
 
-                const me = await fetchMe();
+                const me = await CalorieCountService.AuthMe();
                 setLoggedIn(true);
                 setUser(me);
                 setLoading(false);
@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }) => {
         setLoggedIn(false);
         setUser(null);
 
-        await fetchLogout();
+        await CalorieCountService.AuthLogout();
 
         localStorage.removeItem("access-token");
         Cookies.remove("access");

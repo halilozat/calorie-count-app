@@ -1,8 +1,8 @@
 /** Dependencies */
 import React, { useEffect } from 'react'
 
-/** Axios */
-import axios from 'axios'
+/** Services */
+import CalorieCountService from '../../../services/CalorieCountService'
 
 /** Contexts */
 import { useFoodContext } from '../../../context/foodContext/FoodContext'
@@ -10,9 +10,6 @@ import { useAuth } from '../../../context/authContext/AuthContext'
 
 /** Components */
 import BasketItem from './basketItem/BasketItem'
-
-/** Services */
-import CalorieCountService from '../../../services/CalorieCountService'
 
 /** Stylesheets */
 import './basket.scss'

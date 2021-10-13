@@ -5,7 +5,7 @@ import CookieConsent from 'react-cookie-consent'
 import Macros from '../../components/home/userMacros/UserMacros';
 import Basket from '../../components/home/basket/Basket';
 import CalorieFinder from '../../components/home/calorieFinder/CalorieFinder'
-import Header from '../../components/header/Header';
+import Header from '../../components/layout/header/Header';
 
 /** Styles */
 import './home.scss'
