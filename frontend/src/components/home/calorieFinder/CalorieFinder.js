@@ -1,16 +1,17 @@
 /** Dependencies */
 import React, { useEffect, useState } from 'react';
+import ContentLoader from "react-content-loader"
 
 /** Stylesheets */
 import './calorieFinder.scss';
 
 
 /** Services */
-import CalorieCountService from '../../services/CalorieCountService'
+import CalorieCountService from '../../../services/CalorieCountService'
 
-import Item from './item/Item';
-import Search from './search/Search';
-import ContentLoader from "react-content-loader"
+/** Components */
+import Item from './finderItem/FinderItem';
+import Search from './finderSearch/FinderSearch';
 
 
 const CalorieFinder = () => {
@@ -32,7 +33,7 @@ const CalorieFinder = () => {
         setLoading(true)
         try {
             const response = await CalorieCountService.GetFoods(foodTerm);
-            
+
             setFoodState({
                 ...foodState,
                 items: response.data.items,

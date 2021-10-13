@@ -1,16 +1,16 @@
-/** Images */
-import logoImg from '../../assets/images/logo.png'
-
-/** Contexts */
-import { useAuth } from '../../context/authContext/AuthContext';
-
-/** Styles */
-import './header.scss'
-
 /** Dependencies */
 import { useHistory } from 'react-router';
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom';
+
+/** Contexts */
+import { useAuth } from '../../context/authContext/AuthContext';
+
+/** Images */
+import logoImg from '../../assets/images/logo.png'
+
+/** Styles */
+import './header.scss'
 
 
 const Header = () => {

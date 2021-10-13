@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Link } from "react-router-dom";
-import { useAuth } from '../../context/authContext/AuthContext';
-import { fetchRegister } from '../../services/authService/authService';
+import { useAuth } from '../../../context/authContext/AuthContext';
+import { fetchRegister } from '../../../services/authService/authService';
 import './register.scss'
 import { useHistory } from 'react-router';
 

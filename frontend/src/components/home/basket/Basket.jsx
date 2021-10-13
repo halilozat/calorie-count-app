@@ -1,9 +1,20 @@
+/** Dependencies */
 import React, { useEffect } from 'react'
-import BasketItem from './basketItem/BasketItem'
-import './basket.scss'
-import { useFoodContext } from '../../context/foodContext/FoodContext'
+
+/** Axios */
 import axios from 'axios'
-import { useAuth } from '../../context/authContext/AuthContext'
+
+/** Contexts */
+import { useFoodContext } from '../../../context/foodContext/FoodContext'
+import { useAuth } from '../../../context/authContext/AuthContext'
+
+/** Components */
+import BasketItem from './basketItem/BasketItem'
+
+/** Stylesheets */
+import './basket.scss'
+
+
 
 const Basket = () => {
 

@@ -11,7 +11,7 @@ import Header from '../header/Header'
 /** Styles */
 import './foodCalendar.scss'
 
-const index = () => {
+const FoodCalendar = () => {
 
 
     return (
@@ -42,4 +42,4 @@ const index = () => {
 
 
 
-export default index
+export default FoodCalendar

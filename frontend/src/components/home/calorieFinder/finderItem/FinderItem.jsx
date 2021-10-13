@@ -1,8 +1,17 @@
-import axios from 'axios'
+/** Dependencies */
 import React, { useContext, useEffect } from 'react'
-import { AuthContext } from '../../../context/authContext/AuthContext'
-import { useFoodContext } from '../../../context/foodContext/FoodContext'
-import './item.scss'
+
+/** Axios */
+import axios from 'axios'
+
+/** Components */
+import { AuthContext } from '../../../../context/authContext/AuthContext'
+import { useFoodContext } from '../../../../context/foodContext/FoodContext'
+
+/** Stylesheets */
+import './finderItem.scss'
+
+
 
 const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
@@ -90,7 +99,6 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         }
 
     }
-    console.log(foods);
 
     return (
         <div className='item'>

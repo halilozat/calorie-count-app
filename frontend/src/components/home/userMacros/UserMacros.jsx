@@ -1,6 +1,13 @@
+/** Dependencies */
 import React from 'react';
-import { useFoodContext } from '../../context/foodContext/FoodContext';
-import './macros.scss'
+
+/** Contexts */
+import { useFoodContext } from '../../../context/foodContext/FoodContext';
+
+/** Stylesheets */
+import './userMacros.scss'
+
+
 
 const Header = () => {
 

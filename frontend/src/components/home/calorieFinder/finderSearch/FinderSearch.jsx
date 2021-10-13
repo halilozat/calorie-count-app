@@ -1,5 +1,8 @@
+/** Dependencies */
 import React, { useState } from 'react'
-import './search.scss'
+
+/** Stylesheets */
+import './finderSearch.scss'
 
 const Search = ({ defaultValue, onChange }) => {
 

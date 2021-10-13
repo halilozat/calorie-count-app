@@ -2,9 +2,9 @@
 import CookieConsent from 'react-cookie-consent'
 
 /** Components */
-import Macros from '../../components/macros/Macros';
-import Basket from '../../components/basket/Basket';
-import CalorieFinder from '../../components/calorieFinder/CalorieFinder'
+import Macros from '../../components/home/userMacros/UserMacros';
+import Basket from '../../components/home/basket/Basket';
+import CalorieFinder from '../../components/home/calorieFinder/CalorieFinder'
 import Header from '../../components/header/Header';
 
 /** Styles */
@@ -20,11 +20,11 @@ const Home = () => {
 
             <div className="home">
 
-                {/* <Macros />
+                <Macros />
 
                 <CalorieFinder />
 
-                <Basket /> */}
+                <Basket />
 
             </div>
 

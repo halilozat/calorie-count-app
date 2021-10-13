@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { fetchLogin } from "../../services/authService/authService";
-import { useAuth } from "../../context/authContext/AuthContext";
+import { fetchLogin } from "../../../services/authService/authService";
+import { useAuth } from "../../../context/authContext/AuthContext";
 import { useHistory } from "react-router";
 import './login.scss'
 

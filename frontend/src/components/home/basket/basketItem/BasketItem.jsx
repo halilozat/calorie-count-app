@@ -1,5 +1,10 @@
+/** Dependencies */
 import React from 'react'
+
+/** Stylesheets */
 import './basketItem.scss'
+
+
 
 const BasketItem = ({ item, food }) => {
 
