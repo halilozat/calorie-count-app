@@ -5,10 +5,12 @@ const userFoodRouter = require('./userFoodRouter');
 const userMacrosRouter = require('./userMacrosRouter');
 
 module.exports = function v1Routes(fastify, options, done) {
-    fastify.register(authRouter, { prefix: '/auth' })
-    fastify.register(apiFoodRouter, { prefix: '/foods' })
-    fastify.register(userFoodRouter, { prefix: '/userFood' })
-    fastify.register(userMacrosRouter, { prefix: '/userMacros' })
+    fastify.register(authRouter, {
+        prefix: '/auth'
+    })
+    fastify.register(apiFoodRouter, {
+        prefix: '/foods'
+    })
 
     done();
 }

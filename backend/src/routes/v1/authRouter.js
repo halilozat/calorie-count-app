@@ -1,19 +1,15 @@
-const authController = require('../../controllers/v1/authController')
+const AuthController = require('../../controllers/v1/AuthController/AuthController');
 const authenticationMiddleware = require('../../middlewares/authMiddleware')
 
 
 module.exports = function (fastify, opts, done) {
-    fastify.addHook('preHandler', authenticationMiddleware)
-
-    fastify.post("/register", authController.register);
-
-    fastify.post("/login", authController.login);
-
-    fastify.post("/logout/:id", authController.logout);
-
-    fastify.get("/refresh/:id", authController.refreshToken);
-
-    fastify.get("/me", authController.me)
-
+    // fastify.addHook('preHandler', authenticationMiddleware)
+    fastify.post("/login", (...params) => AuthController.Login(fastify.repositories, ...params));
+    fastify.post("/register", (...params) => AuthController.Register(fastify.repositories, ...params));
+    fastify.get("/logout", AuthController.Logout);
+    fastify.get("/me", {
+            preHandler: authenticationMiddleware,
+        },
+        AuthController.me)
     done();
 }

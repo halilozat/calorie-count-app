@@ -1,13 +1,14 @@
-const jwt = require('jsonwebtoken')
+/** Dependencies */
+const jwt = require('jsonwebtoken');
 
 function authenticationMiddleware(request, response) {
     const decode = jwt.verify(request.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
 
-    if (decode) {
-        request.body.userData = decode
+    if (!decode) {
+        response.code(401).send();
     }
 
-    response.code(401).send()
+    request.body.userData = decode
 }
 
-module.exports = authenticationMiddleware
+module.exports = authenticationMiddleware;
