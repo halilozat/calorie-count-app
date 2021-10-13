@@ -1,23 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
 /** Styles */
-import './index.css';
-
-/** Contexts */
-import { AuthContextProvider } from './context/authContext/AuthContext'
-import { FoodContextProvider } from './context/foodContext/FoodContext';
-
-
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <FoodContextProvider>
-        <App />
-      </FoodContextProvider>
-    </AuthContextProvider>
+    <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

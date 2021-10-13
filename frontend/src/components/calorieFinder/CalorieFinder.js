@@ -1,15 +1,19 @@
+/** Dependencies */
 import React, { useEffect, useState } from 'react';
+
+/** Stylesheets */
 import './calorieFinder.scss';
-import axios from 'axios';
+
+
+/** Services */
+import CalorieCountService from '../../services/CalorieCountService'
+
 import Item from './item/Item';
 import Search from './search/Search';
 import ContentLoader from "react-content-loader"
 
 
 const CalorieFinder = () => {
-
-
-
     const [loading, setLoading] = useState(false)
     const [foodState, setFoodState] = useState({
         items: [],
@@ -27,11 +31,8 @@ const CalorieFinder = () => {
     const fetchItems = async (foodTerm) => {
         setLoading(true)
         try {
-            const response = await axios.post(
-                'http://localhost:5001/api/v1/food/getFoods',
-                { query: foodTerm }
-            );
-            console.log(response.data.items);
+            const response = await CalorieCountService.GetFoods(foodTerm);
+            
             setFoodState({
                 ...foodState,
                 items: response.data.items,

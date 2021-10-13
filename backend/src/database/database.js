@@ -1,18 +1,5 @@
 const { Sequelize } = require('sequelize');
 
-const db = new Sequelize('database_development_dev2', 'postgres', 'passwod', {
-    host: 'localhost',
-    dialect: 'postgres',
-    port: '5432',
-    logging: false,
-
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    }
-});
-
+const db = new Sequelize(process.env.POSTGRESQL_DATABASE_URI, {});
 
 module.exports = db;

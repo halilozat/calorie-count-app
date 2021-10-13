@@ -34,8 +34,8 @@ const register = async (request, response) => {
 
     try {
         const user = await newUser.save();
-        response.code(201).setCookie('jwt', accessToken, {
-            domain: 'calorie-count.app',
+        response.code(201).setCookie(process.env.JWT_COOKIE_NAME, accessToken, {
+            domain: process.env.UI_DOMAIN_URL,
             path: '/'
         }).send({ user, accessToken });
     } catch (error) {
@@ -70,8 +70,8 @@ const login = async (request, response) => {
         token.update({ refreshToken: null }, { new: true })
 
 
-        response.code(200).setCookie('jwt', accessToken, {
-            domain: 'calorie-count.app',
+        response.code(200).setCookie(process.env.JWT_COOKIE_NAME, accessToken, {
+            domain: process.env.UI_DOMAIN_URL,
             path: '/'
         }).send({ user, accessToken })
     } catch (error) {
