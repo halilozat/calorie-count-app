@@ -1,3 +1,4 @@
+/** Dependencies */
 import axios from 'axios'
 
 
@@ -37,11 +38,7 @@ export const fetchMe = async () => {
 };
 
 export const fetchLogout = async () => {
-    const { data } = await API.post("/logout",
-        {
-            refresh_token: localStorage.getItem("refresh-token"),
-        }
-    );
+    const { data } = await API.post("/logout");
 
     return data;
 };

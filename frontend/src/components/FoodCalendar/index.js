@@ -13,43 +13,29 @@ import './foodCalendar.scss'
 
 const index = () => {
 
-    const handleDateClick = (arg) => { // bind with an arrow function
-        alert(arg.dateStr)
-    }
-
-    function renderEventContent(eventInfo) {
-        return (
-            <>
-                <b>{eventInfo.timeText}</b>
-                <i>{eventInfo.event.title}</i>
-            </>
-        )
-    }
 
     return (
         <div>
             <Header />
-            <br />
-            <br />
-            <br />
 
-            <FullCalendar
-                plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-                initialView="dayGridMonth"
-                events={[
-                    { title: 'event 1', date: '2021-10-01' },
-                    { title: 'event 2', date: '2021-10-02' }
-                ]}
-                firstDay={1}
-                selectable={true}
-                editable={true}
-                headerToolbar={{
-                    left: "prev,next,today",
-                    center: "title",
-                    right: "dayGridMonth, timeGridWeek, timeGridDay"
-                }}
-
-            />
+            <div className="foodCalendar">
+                <FullCalendar
+                    plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+                    initialView="dayGridMonth"
+                    events={[
+                        { title: 'event 1', date: '2021-10-01' },
+                        { title: 'event 2', date: '2021-10-02' }
+                    ]}
+                    firstDay={1}
+                    selectable={true}
+                    editable={true}
+                    headerToolbar={{
+                        left: "prev,next,today",
+                        center: "title",
+                        right: "dayGridMonth, timeGridWeek, timeGridDay"
+                    }}
+                />
+            </div>
         </div>
     )
 }

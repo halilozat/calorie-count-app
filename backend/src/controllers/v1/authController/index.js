@@ -27,12 +27,6 @@ const register = async (request, response) => {
         { expiresIn: "300d" }
     );
 
-    const refreshToken = jwt.sign(
-        { email: newUser.email, id: newUser.userRefId },
-        process.env.REFRESH_TOKEN_SECRET
-    )
-    console.log(newUser)
-
     await tokenModel.create({
         userId: newUser.userRefId,
         refreshToken: refreshToken,
@@ -40,7 +34,10 @@ const register = async (request, response) => {
 
     try {
         const user = await newUser.save();
-        response.code(201).send({ user, accessToken, refreshToken });
+        response.code(201).setCookie('jwt', accessToken, {
+            domain: 'calorie-count.app',
+            path: '/'
+        }).send({ user, accessToken });
     } catch (error) {
         response.code(500).send(error);
     }
@@ -68,14 +65,15 @@ const login = async (request, response) => {
             { expiresIn: "300d" }
         );
 
-        const refreshToken = jwt.sign(
-            { id: user.userRefId },
-            process.env.REFRESH_TOKEN_SECRET
-        )
+
         const token = await tokenModel.findOne({ where: { userId: user.userRefId } })
         token.update({ refreshToken: null }, { new: true })
 
-        response.code(200).send({ user, accessToken, refreshToken })
+
+        response.code(200).setCookie('jwt', accessToken, {
+            domain: 'calorie-count.app',
+            path: '/'
+        }).send({ user, accessToken })
     } catch (error) {
         response.code(500).send(error)
     }

@@ -21,10 +21,7 @@ const Header = () => {
     const handleLogout = () => {
 
         localStorage.removeItem("access-token");
-        localStorage.removeItem("refresh-token");
-
         Cookies.remove("access");
-        Cookies.remove("refresh");
 
         history.push("/login");
 

@@ -1,5 +1,8 @@
+/** Dependencies */
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import Cookies from 'js-cookie'
+
+/** Services */
 import { fetchMe, fetchLogout } from "../../services/authService/authService";
 
 
@@ -30,14 +33,12 @@ export const AuthContextProvider = ({ children }) => {
     const login = (data) => {
         setLoggedIn(true)
         setUser(data.user)
+
         console.log(data.user)
         console.log(user)
 
         localStorage.setItem("access-token", JSON.stringify(data.accessToken));
         Cookies.set("access", data.accessToken);
-
-        localStorage.setItem("refresh-token", JSON.stringify(data.refreshToken));
-        Cookies.set("refresh", data.refreshToken);
     }
 
     const logout = async (callback) => {
@@ -47,10 +48,7 @@ export const AuthContextProvider = ({ children }) => {
         await fetchLogout();
 
         localStorage.removeItem("access-token");
-        localStorage.removeItem("refresh-token");
-
         Cookies.remove("access");
-        Cookies.remove("refresh");
 
         callback()
     };
