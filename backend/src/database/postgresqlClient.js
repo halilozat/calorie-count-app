@@ -2,11 +2,14 @@
 const { Sequelize } = require('sequelize');
 
 /** Models */
-const userModel = require('./models/UserModel')
+const UserModel = require('./models/UserModel')
+const UserFoodModel = require('./models/UserFoodModel')
+const UserMacroModel = require('./models/UserMacroModel')
 
 /** UserRepository */
 const UserRepository = require('./repositories/UserRepository')
-
+const UserFoodRepository = require('./repositories/UserFoodRepository');
+const UserMacroRepository = require('./repositories/UserMacroRepository')
 
 
 function postgreSQLClient(mediator) {
@@ -20,17 +23,23 @@ function postgreSQLClient(mediator) {
       }
     });
 
-    const UserModel = userModel(sequelize);
+    const userModel = UserModel(sequelize);
+    const userFoodModel = UserFoodModel(sequelize);
+    const userMacroModel = UserMacroModel(sequelize);
 
     (async () => {
       await sequelize.authenticate();
       await sequelize.sync({ force: true });
     })()
 
-    const userRepository = new UserRepository(UserModel);
+    const userRepository = new UserRepository(userModel);
+    const userFoodRepository = new UserFoodRepository(userFoodModel)
+    const userMacroRepository = new UserMacroRepository(userMacroModel)
 
     const repositories = {
-      userRepository
+      userRepository,
+      userFoodRepository,
+      userMacroRepository
     }
 
     mediator.emit('db:ready', repositories);
@@ -38,6 +47,5 @@ function postgreSQLClient(mediator) {
     mediator.emit('db:failed');
   }
 }
-
 
 module.exports = postgreSQLClient;
