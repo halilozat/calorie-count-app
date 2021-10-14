@@ -8,8 +8,8 @@ module.exports = function (fastify, opts, done) {
     fastify.post("/register", (...params) => AuthController.Register(fastify.repositories, ...params));
     fastify.get("/logout", AuthController.Logout);
     fastify.get("/me", {
-            preHandler: authenticationMiddleware,
-        },
-        AuthController.me)
+        preHandler: authenticationMiddleware,
+    },
+        AuthController.Me)
     done();
 }

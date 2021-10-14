@@ -1,38 +1,33 @@
 /** Dependencies */
-const fastify = require('fastify')({
-    logger: true
-})
-fastify.register(require('fastify-cors'), {
-    origin: true,
-    credentials: true
-});
 const EventEmitter = require('events');
+const fastify = require('fastify')({ logger: true })
+
 require('dotenv').config();
 
+fastify.register(require('fastify-cors'), { origin: true, credentials: true });
+fastify.register(require('fastify-cookie'), { secret: "my-secret", parseOptions: {} })
+
+/** Instance */
 const mediator = new EventEmitter();
 
 /** Database */
 const postgreSQLClient = require('./database/postgresqlClient');
-const UserRepository = require('./database/repositories/UserRepository');
 
 /** Routes */
 const routes = require('./routes');
 
-mediator.on('db:ready', async () => {
+mediator.on('db:ready', async (repositories) => {
     try {
-        const userRepository = new UserRepository();
-
-        fastify.register(routes, {
-            prefix: '/api'
-        });
-
-        fastify.decorate('repositories', {
-            userRepository,
-        })
+        fastify.decorate('repositories', repositories);
+        fastify.register(routes, { prefix: '/api' });
 
         await fastify.listen(process.env.NODE_PORT || 5001);
+
+        mediator.emit('api:ready');
+
     } catch (err) {
         fastify.log.error(err);
+        mediator.emit('api:failed');
         process.exit(1);
     }
 });

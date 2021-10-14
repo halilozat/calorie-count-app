@@ -1,17 +1,13 @@
-/** Models */
-const UserModel = require('../models/UserModel');
-
 class UserRepository {
-  constructor() {
-    this.model = UserModel;
+  constructor(model) {
+    this.model = model;
   }
 
-  addUser(payload) {
-    return new Promise((response, reject) => {
+  addUser(user) {
+    return new Promise(async (response, reject) => {
       try {
-        const user = new this.model(payload);
-
-        const output = await user.save();
+        const userBuild = this.model.build(user);
+        const output = await userBuild.save();
 
         response(output);
       } catch (error) {
@@ -21,9 +17,9 @@ class UserRepository {
   }
 
   findUserById(userId) {
-    return new Promise((response, reject) => {
+    return new Promise(async (response, reject) => {
       try {
-        const user = await this.model.findOne({ where: { id: userId } });
+        const user = await this.model.findOne({ where: { userId } });
 
         response(user);
       } catch (error) {
@@ -33,7 +29,7 @@ class UserRepository {
   }
 
   findUserByEmail(userEmail) {
-    return new Promise((response, reject) => {
+    return new Promise(async (response, reject) => {
       try {
         const user = await this.model.findOne({ where: { email: userEmail } });
 

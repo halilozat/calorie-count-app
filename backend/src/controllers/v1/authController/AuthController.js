@@ -1,15 +1,16 @@
 /** Dependencies */
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
 function jwtTokenGenerator(payload) {
   const accessToken = jwt.sign({
-      Id: payload.Id,
-      UserName: payload.UserName,
-      Email: payload.Email,
-    },
+    Id: payload.Id,
+    UserName: payload.UserName,
+    Email: payload.Email,
+  },
     process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "300d"
-    }
+    expiresIn: "300d"
+  }
   );
 
   return accessToken
@@ -23,11 +24,11 @@ class AuthController {
         Password
       } = request.body;
 
+      console.log("1")
       const {
         userRepository
       } = repositories;
-
-      const findUser = await userRepository.findByEmail(Email);
+      const findUser = await userRepository.findUserByEmail(Email);
 
       if (!findUser) {
         throw new Error('NotFound');
@@ -52,9 +53,9 @@ class AuthController {
         .setCookie(
           process.env.JWT_COOKIE_NAME,
           jwtToken, {
-            domain: process.env.UI_DOMAIN_URL,
-            path: '/'
-          }
+          domain: process.env.UI_DOMAIN_URL,
+          path: '/'
+        }
         )
         .send(userData);
 
@@ -80,16 +81,16 @@ class AuthController {
         userRepository
       } = repositories;
 
-
       if (Password !== ConfirmPassword) {
         throw new Error('Founded')
       }
 
-      const findUser = await userRepository.findByEmail(Email);
+      const findUser = await userRepository.findUserByEmail(Email);
 
       if (findUser) {
         throw new Error('BadRequest');
       }
+
 
       const hashedPassword = await bcrypt.hash(Password, 10)
 
@@ -98,6 +99,7 @@ class AuthController {
         email: Email,
         password: hashedPassword,
       })
+      console.log("4")
 
       const userData = {
         Id: user.id,
@@ -105,16 +107,19 @@ class AuthController {
         Email: user.email,
       }
 
+      console.log("5")
+
       const jwtToken = jwtTokenGenerator(userData);
 
+      console.log("6")
       reply
         .code(201)
         .setCookie(
           process.env.JWT_COOKIE_NAME,
           jwtToken, {
-            domain: process.env.UI_DOMAIN_URL,
-            path: '/'
-          }
+          domain: process.env.UI_DOMAIN_URL,
+          path: '/'
+        }
         )
         .send(userData);
 
@@ -142,6 +147,17 @@ class AuthController {
 
       reply.code(500).send();
     }
+  }
+
+  static async Logout(request, reply) {
+    reply
+      .code(200)
+      .clearCookie(
+        process.env.JWT_COOKIE_NAME,
+        jwtToken, {
+        domain: process.env.UI_DOMAIN_URL,
+        path: '/'
+      })
   }
 }
 
