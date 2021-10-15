@@ -1,7 +1,11 @@
-const FoodsController = require('../../controllers/v1/FoodsController/FoodsController')
+const UserMacroController = require('../../controllers/v1/UserMacroController/UserMacroController')
 
 
 module.exports = function (fastify, opts, done) {
+
+
+
+    /** User Macros */
     fastify.get("/getApiFoods", FoodsController.GetFoodFromApi);
     fastify.get("/getFoods", (...params) => FoodsController.GetFoodByUserId(fastify.repositories, ...params));
     fastify.post("/addFood", (...params) => FoodsController.AddFood(fastify.repositories, ...params));

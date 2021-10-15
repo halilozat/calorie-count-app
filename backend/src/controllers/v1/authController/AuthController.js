@@ -17,6 +17,7 @@ function jwtTokenGenerator(payload) {
 }
 
 class AuthController {
+
   static async Login(repositories, request, reply) {
     try {
       const {
@@ -153,6 +154,7 @@ class AuthController {
         path: '/'
       })
   }
+
 }
 
 module.exports = AuthController;

@@ -2,7 +2,12 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = function userFoodModel(sequelize) {
-    return sequelize.define('UserFoods', {
+    return sequelize.define('UserFood', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -37,5 +42,7 @@ module.exports = function userFoodModel(sequelize) {
         },
     }, {
         tableName: 'userFoods',
+        indexes: [{ fields: ['userId'] }]
+
     });
 }

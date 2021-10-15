@@ -1,16 +1,14 @@
 /** Routes */
-const authRouter = require('./authRouter');
-// const apiFoodRouter = require('./apiFoodRouter');
-// const userFoodRouter = require('./userFoodRouter');
-// const userMacrosRouter = require('./userMacrosRouter');
+const authRouter = require('./AuthRouter');
+const foodsRouter = require('./FoodsRouter');
+const userRouter = require('./UserRouter')
+
 
 module.exports = function v1Routes(fastify, options, done) {
-    fastify.register(authRouter, {
-        prefix: '/auth'
-    })
-    // fastify.register(apiFoodRouter, {
-    //     prefix: '/foods'
-    // })
+
+    fastify.register(authRouter, { prefix: '/auth' })
+    fastify.register(foodsRouter, { prefix: '/foods' })
+    fastify.register(userRouter, { prefix: '/users' })
 
     done();
 }

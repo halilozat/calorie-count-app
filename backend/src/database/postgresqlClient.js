@@ -29,7 +29,7 @@ function postgreSQLClient(mediator) {
 
     (async () => {
       await sequelize.authenticate();
-      await sequelize.sync({ force: true });
+      await sequelize.sync({ force: false });
     })()
 
     const userRepository = new UserRepository(userModel);
