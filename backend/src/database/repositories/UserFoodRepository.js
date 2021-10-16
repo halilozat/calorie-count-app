@@ -16,7 +16,27 @@ class UserFoodRepository {
         })
     }
 
-    deleteFood(payload) {
+    getFoodByUserId(userId) {
+        return new Promise(async (response, reject) => {
+            try {
+                const foods = await this.model.findAll({ where: { userId } }) //userId: request.params.id
+                response.send(foods)
+
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+
+    deleteFood(userId) {
+        return new Promise(async (response, reject) => {
+            try {
+                await this.model.destroy({ where: { userId } }); //userId: request.params.id
+                response.send("Food has been deleted!")
+            } catch (error) {
+                reject(error)
+            }
+        })
 
     }
 }
