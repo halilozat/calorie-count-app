@@ -8,14 +8,14 @@ import {
 } from "react-router-dom";
 
 /** Pages && Components */
-import Home from "./pages/home/Home";
-import Login from "./pages/auth/login/Login";
-import Register from "./pages/auth/register/Register";
-import FoodCalendar from "./pages/calendar/FoodCalendar";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Auth/login/Login";
+import Register from "./pages/Auth/register/Register";
+import FoodCalendar from "./pages/Calendar/FoodCalendar";
 
 /** Contexts */
-import { useAuth, AuthContextProvider } from "./context/authContext/AuthContext";
-import { FoodContextProvider } from "./context/foodContext/FoodContext";
+import { useAuth, AuthContextProvider } from "./context/AuthContext/AuthContext";
+import { FoodContextProvider } from "./context/FoodContext/FoodContext";
 
 function App() {
   // const { user } = useAuth();
@@ -29,7 +29,8 @@ function App() {
               <Route path="/" exact>
                 {/* {user ? <Home /> : 
                 } */}
-                <Register />
+                <Home />
+                {/* <Register /> */}
               </Route>
 
               <Route path="/login">

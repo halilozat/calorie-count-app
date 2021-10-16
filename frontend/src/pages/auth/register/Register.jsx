@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from 'react-router';
 
 /** Contexts */
-import { useAuth } from '../../../context/authContext/AuthContext';
+import { useAuth } from '../../../context/AuthContext/AuthContext';
 
 /** Services */
 import CalorieCountService from '../../../services/CalorieCountService';

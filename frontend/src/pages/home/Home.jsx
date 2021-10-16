@@ -2,10 +2,10 @@
 import CookieConsent from 'react-cookie-consent'
 
 /** Components */
-import Macros from '../../components/home/userMacros/UserMacros';
-import Basket from '../../components/home/basket/Basket';
-import CalorieFinder from '../../components/home/calorieFinder/CalorieFinder'
-import Header from '../../components/layout/header/Header';
+import Macros from '../../components/Home/UserMacros/UserMacros';
+import Basket from '../../components/Home/Basket/Basket';
+import CalorieFinder from '../../components/Home/CalorieFinder/CalorieFinder'
+import Header from '../../components/Layout/Header/Header';
 
 /** Styles */
 import './home.scss'

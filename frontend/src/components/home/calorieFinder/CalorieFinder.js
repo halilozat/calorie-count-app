@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import ContentLoader from "react-content-loader"
 
 /** Components */
-import Item from './finderItem/FinderItem';
-import Search from './finderSearch/FinderSearch';
+import Item from './FinderItem/FinderItem';
+import Search from "./FinderSearch/FinderSearch";
 
 /** Services */
 import CalorieCountService from '../../../services/CalorieCountService'

@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 import timeGridPlugin from "@fullcalendar/timegrid" // needed for dayClick
 
 /** Components */
-import Header from '../layout/header/Header'
+import Header from "../Layout/Header/Header"
 
 /** Styles */
 import './foodCalendar.scss'

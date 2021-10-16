@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import CalorieCountService from '../../../services/CalorieCountService';
 
 /** Contexts */
-import { useAuth } from "../../../context/authContext/AuthContext";
+import { useAuth } from "../../../context/AuthContext/AuthContext";
 
 /** Stylesheets */
 import './login.scss'

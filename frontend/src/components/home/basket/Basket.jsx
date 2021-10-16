@@ -5,11 +5,11 @@ import React, { useEffect } from 'react'
 import CalorieCountService from '../../../services/CalorieCountService'
 
 /** Contexts */
-import { useFoodContext } from '../../../context/foodContext/FoodContext'
-import { useAuth } from '../../../context/authContext/AuthContext'
+import { useFoodContext } from '../../../context/FoodContext/FoodContext'
+import { useAuth } from '../../../context/AuthContext/AuthContext'
 
 /** Components */
-import BasketItem from './basketItem/BasketItem'
+import BasketItem from "./BasketItem/BasketItem"
 
 /** Stylesheets */
 import './basket.scss'

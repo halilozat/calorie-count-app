@@ -2,7 +2,7 @@
 import React from 'react';
 
 /** Contexts */
-import { useFoodContext } from '../../../context/foodContext/FoodContext';
+import { useFoodContext } from '../../../context/FoodContext/FoodContext';
 
 /** Stylesheets */
 import './userMacros.scss'

@@ -2,7 +2,7 @@
 import { createContext, useContext, useState } from "react";
 
 /** Contexts */
-import { useAuth } from "../authContext/AuthContext";
+import { useAuth } from "../AuthContext/AuthContext";
 
 
 

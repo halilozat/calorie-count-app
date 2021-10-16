@@ -2,7 +2,7 @@
 import React from 'react'
 
 /** Components */
-import FoodCalendarComponent from '../../components/calendar/FoodCalendar'
+import FoodCalendarComponent from '../../components/Calendar/FoodCalendar'
 
 
 

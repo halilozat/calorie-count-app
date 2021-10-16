@@ -5,8 +5,8 @@ import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
 
 /** Components */
-import { AuthContext } from '../../../../context/authContext/AuthContext'
-import { useFoodContext } from '../../../../context/foodContext/FoodContext'
+import { AuthContext } from '../../../../context/AuthContext/AuthContext'
+import { useFoodContext } from '../../../../context/FoodContext/FoodContext'
 
 /** Stylesheets */
 import './finderItem.scss'
