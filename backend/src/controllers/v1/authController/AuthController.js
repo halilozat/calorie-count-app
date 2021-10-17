@@ -2,6 +2,10 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
+/** Validations */
+const AuthValidationSchema = require('./AuthValidations')
+
+
 function jwtTokenGenerator(payload) {
   const accessToken = jwt.sign({
     Id: payload.Id,
@@ -24,6 +28,12 @@ class AuthController {
         Email,
         Password
       } = request.body;
+
+      const { error } = AuthValidationSchema.validate(request.body)
+
+      if (error) {
+        return error.details[0].message
+      }
 
       const {
         userRepository
@@ -76,6 +86,12 @@ class AuthController {
         Password,
         ConfirmPassword,
       } = request.body;
+
+      const { error } = AuthValidationSchema.validate(request.body)
+
+      if (error) {
+        return error.details[0].message
+      }
 
       const {
         userRepository
