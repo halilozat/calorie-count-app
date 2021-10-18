@@ -10,39 +10,39 @@ module.exports = function userFoodModel(sequelize) {
         },
         userId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         foodname: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: "egg1"
         },
         gram: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         amount: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         calorie: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         carb: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         protein: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         fat: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
     }, {
         tableName: 'userFoods',
         indexes: [{ fields: ['userId'] }]
-
     });
 }

@@ -5,7 +5,8 @@ const fastify = require('fastify')({ logger: true })
 require('dotenv').config();
 
 fastify.register(require('fastify-cors'), { origin: true, credentials: true });
-fastify.register(require('fastify-cookie'), { secret: "my-secret", parseOptions: {} })
+fastify.register(require('fastify-cookie'), { secret: "my-secret", parseOptions: {} });
+
 
 /** Instance */
 const mediator = new EventEmitter();
@@ -15,6 +16,7 @@ const postgreSQLClient = require('./database/postgresqlClient');
 
 /** Routes */
 const routes = require('./routes');
+
 
 mediator.on('db:ready', async (repositories) => {
     try {

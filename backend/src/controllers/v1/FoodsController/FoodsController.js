@@ -1,3 +1,7 @@
+/** Validations */
+const FoodValidations = require('./FoodsValidations')
+
+
 class FoodsController {
 
   static async GetFoodFromApi(req, res) {
@@ -19,11 +23,11 @@ class FoodsController {
     }
   }
 
-  static async AddFood(repositories, request, reject) {
+  static async AddFood(repositories, request, reply) {
     try {
       const {
         UserId,
-        Foodname,
+        FoodName,
         Gram,
         Amount,
         Calorie,
@@ -36,23 +40,22 @@ class FoodsController {
         userFoodRepository
       } = repositories;
 
-      const food = await userFoodRepository.addFood({
+      const dbPayload = {
         userId: UserId,
-        foodname: Foodname,
+        foodname: FoodName,
         gram: Gram,
         amount: Amount,
         calorie: Calorie,
         carb: Carb,
         protein: Protein,
         fat: Fat
-      })
+      }
 
-      console.log("food : " + food)
+      const food = await userFoodRepository.addFood(dbPayload)
 
-      reject.code(201).send(food)
-
-    } catch (err) {
-      reject.code(500).send(err);
+      reply.code(201).send(food)
+    } catch (error) {
+      reply.code(500).send(error);
     }
   }
 

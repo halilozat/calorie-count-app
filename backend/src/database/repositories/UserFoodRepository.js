@@ -3,10 +3,10 @@ class UserFoodRepository {
         this.model = model;
     }
 
-    addFood(food) {
+    addFood(payload) {
         return new Promise(async (response, reject) => {
             try {
-                const newFood = this.model.build(food);
+                const newFood = new this.model(payload);
                 const output = await newFood.save();
 
                 response(output);

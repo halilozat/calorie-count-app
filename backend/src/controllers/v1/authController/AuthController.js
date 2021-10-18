@@ -20,6 +20,7 @@ function jwtTokenGenerator(payload) {
   return accessToken
 }
 
+
 class AuthController {
 
   static async Login(repositories, request, reply) {
@@ -68,7 +69,6 @@ class AuthController {
         )
         .send(userData);
 
-      reply.code(200).send()
     } catch (error) {
       if (['NotFound', 'BadRequest'].includes(error.message)) {
         reply.code(400).send();
@@ -93,9 +93,7 @@ class AuthController {
         return error.details[0].message
       }
 
-      const {
-        userRepository
-      } = repositories;
+      const { userRepository } = repositories;
 
       if (Password !== ConfirmPassword) {
         throw new Error('Founded')
@@ -136,7 +134,7 @@ class AuthController {
 
     } catch (error) {
       if (['Founded', 'BadRequest'].includes(error.message)) {
-        reply.code(400).send();
+        reply.code(400).send(error.message);
       }
 
       reply.code(500).send();

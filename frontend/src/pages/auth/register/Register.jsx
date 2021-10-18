@@ -31,10 +31,10 @@ const Register = () => {
 
             const registerResponse = await CalorieCountService.AuthRegister(
                 {
-                    username: username.current.value,
-                    email: email.current.value,
-                    password: password.current.value,
-                    confirmPassword: confirmPassword.current.value,
+                    UserName: username.current.value,
+                    Email: email.current.value,
+                    Password: password.current.value,
+                    ConfirmPassword: confirmPassword.current.value,
                 },
             )
 

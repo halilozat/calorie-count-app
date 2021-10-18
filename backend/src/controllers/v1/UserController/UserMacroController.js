@@ -1,12 +1,33 @@
-class UserMacroController {
-    static async AddUserMacros(repositories, request, reject) {
-        try {
-            const { userMacroRepository } = repositories;
+/** Validations */
+const UserMacroValidations = require('./UserMacroValidations')
 
-            const userMacros = userMacroRepository.addUserMacros(request.body)
-            reject.code(201).send(userMacros);
+
+class UserMacroController {
+    static async AddUserMacros(repositories, request, reply) {
+        try {
+            const {
+                UserId,
+                Calorie,
+                Carb,
+                Protein,
+                Fat
+            } = request.body;
+
+            const {
+                userMacroRepository
+            } = repositories;
+
+            const userMacros = await userMacroRepository.addUserMacros({
+                userId: UserId,
+                calorie: Calorie,
+                carb: Carb,
+                protein: Protein,
+                fat: Fat
+            })
+
+            reply.code(201).send(userMacros);
         } catch (error) {
-            reject.code(500).send(error);
+            reply.code(500).send(error);
         }
     }
 

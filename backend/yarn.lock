@@ -9,10 +9,48 @@
   dependencies:
     "ajv" "^6.12.6"
 
+"@hapi/address@^2.1.2":
+  "integrity" "sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ=="
+  "resolved" "https://registry.npmjs.org/@hapi/address/-/address-2.1.4.tgz"
+  "version" "2.1.4"
+
+"@hapi/formula@^1.2.0":
+  "integrity" "sha512-UFbtbGPjstz0eWHb+ga/GM3Z9EzqKXFWIbSOFURU0A/Gku0Bky4bCk9/h//K2Xr3IrCfjFNhMm4jyZ5dbCewGA=="
+  "resolved" "https://registry.npmjs.org/@hapi/formula/-/formula-1.2.0.tgz"
+  "version" "1.2.0"
+
+"@hapi/hoek@^8.2.4", "@hapi/hoek@^8.3.0":
+  "integrity" "sha512-yN7kbciD87WzLGc5539Tn0sApjyiGHAJgKvG9W8C7O+6c7qmoQMfVs0W4bX17eqz6C78QJqqFrtgdK5EWf6Qow=="
+  "resolved" "https://registry.npmjs.org/@hapi/hoek/-/hoek-8.5.1.tgz"
+  "version" "8.5.1"
+
 "@hapi/hoek@^9.0.0":
   "integrity" "sha512-gfta+H8aziZsm8pZa0vj04KO6biEiisppNgA1kbJvFrrWu9Vm7eaUEy76DIxsuTaWvti5fkJVhllWc6ZTE+Mdw=="
   "resolved" "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.1.tgz"
   "version" "9.2.1"
+
+"@hapi/joi@^16.1.8":
+  "integrity" "sha512-wAsVvTPe+FwSrsAurNt5vkg3zo+TblvC5Bb1zMVK6SJzZqw9UrJnexxR+76cpePmtUZKHAPxcQ2Bf7oVHyahhg=="
+  "resolved" "https://registry.npmjs.org/@hapi/joi/-/joi-16.1.8.tgz"
+  "version" "16.1.8"
+  dependencies:
+    "@hapi/address" "^2.1.2"
+    "@hapi/formula" "^1.2.0"
+    "@hapi/hoek" "^8.2.4"
+    "@hapi/pinpoint" "^1.0.2"
+    "@hapi/topo" "^3.1.3"
+
+"@hapi/pinpoint@^1.0.2":
+  "integrity" "sha512-dtXC/WkZBfC5vxscazuiJ6iq4j9oNx1SHknmIr8hofarpKUZKmlUVYVIhNVzIEgK5Wrc4GMHL5lZtt1uS2flmQ=="
+  "resolved" "https://registry.npmjs.org/@hapi/pinpoint/-/pinpoint-1.0.2.tgz"
+  "version" "1.0.2"
+
+"@hapi/topo@^3.1.3":
+  "integrity" "sha512-tAag0jEcjwH+P2quUfipd7liWCNX2F8NvYjQp2wtInsZxnMlypdw0FtAOLxtvvkO+GSRRbmNi8m/5y42PQJYCQ=="
+  "resolved" "https://registry.npmjs.org/@hapi/topo/-/topo-3.1.6.tgz"
+  "version" "3.1.6"
+  dependencies:
+    "@hapi/hoek" "^8.3.0"
 
 "@hapi/topo@^5.0.0":
   "integrity" "sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg=="
@@ -476,6 +514,13 @@
   "resolved" "https://registry.npmjs.org/fastify-error/-/fastify-error-0.3.1.tgz"
   "version" "0.3.1"
 
+"fastify-formbody@^5.1.0":
+  "integrity" "sha512-dLFQ8gMQeLuV45J72svDbrp6CZ3hxsaiK2dd3vzoiCs9wEmCSbbJV+/afQl1cfvf19+NfCIzYVQIg1r4yO4Epw=="
+  "resolved" "https://registry.npmjs.org/fastify-formbody/-/fastify-formbody-5.1.0.tgz"
+  "version" "5.1.0"
+  dependencies:
+    "fastify-plugin" "^3.0.0"
+
 "fastify-plugin@^3.0.0":
   "integrity" "sha512-ZdCvKEEd92DNLps5n0v231Bha8bkz1DjnPP/aEz37rz/q42Z5JVLmgnqR4DYuNn3NXAO3IDCPyRvgvxtJ4Ym4w=="
   "resolved" "https://registry.npmjs.org/fastify-plugin/-/fastify-plugin-3.0.0.tgz"
@@ -850,7 +895,7 @@
   "resolved" "https://registry.npmjs.org/lodash.once/-/lodash.once-4.1.1.tgz"
   "version" "4.1.1"
 
-"lodash@^4.17.20":
+"lodash@^4.17.15", "lodash@^4.17.20":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -1371,6 +1416,14 @@
   "integrity" "sha1-PFMZQukIwml8DsNEhYwobHygpgo="
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz"
   "version" "2.0.1"
+
+"structure@^2.0.1":
+  "integrity" "sha512-LdnXV1OjH52fKReVdCqXIaYawbb3elMJP1GXOkBetVoZCvInOn+zrGpxgay4J+mRF7mj1yKcpUf1lPGNZE57fw=="
+  "resolved" "https://registry.npmjs.org/structure/-/structure-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "@hapi/joi" "^16.1.8"
+    "lodash" "^4.17.15"
 
 "supports-color@^5.5.0":
   "integrity" "sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow=="

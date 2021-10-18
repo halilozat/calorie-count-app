@@ -26,8 +26,8 @@ const Login = () => {
         e.preventDefault();
         try {
             const loginResponse = await CalorieCountService.AuthLogin({
-                email: email.current.value,
-                password: password.current.value
+                Email: email.current.value,
+                Password: password.current.value
             })
 
             login(loginResponse)

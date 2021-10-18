@@ -11,26 +11,28 @@ module.exports = function userMacroModel(sequelize) {
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            unique: true,
+            defaultValue: 1
         },
         protein: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 1
         },
         carb: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 1
         },
         fat: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 1
         },
         calorie: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 1
         }
     }, {
         tableName: 'userMacros',
+        indexes: [{ fields: ['userId'] }]
     });
 }
 
