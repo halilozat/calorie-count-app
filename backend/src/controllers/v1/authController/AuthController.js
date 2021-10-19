@@ -68,7 +68,6 @@ class AuthController {
         }
         )
         .send(userData);
-
     } catch (error) {
       if (['NotFound', 'BadRequest'].includes(error.message)) {
         reply.code(400).send(error.message);
@@ -159,6 +158,11 @@ class AuthController {
   }
 
   static async Logout(request, reply) {
+    const {
+      userData,
+    } = request.body;
+    const jwtToken = jwtTokenGenerator(userData);
+
     reply
       .code(200)
       .clearCookie(

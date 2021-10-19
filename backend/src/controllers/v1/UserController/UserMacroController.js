@@ -13,9 +13,7 @@ class UserMacroController {
                 Fat
             } = request.body;
 
-            const {
-                userMacroRepository
-            } = repositories;
+            const { userMacroRepository } = repositories;
 
             const userMacros = await userMacroRepository.addUserMacros({
                 userId: UserId,
@@ -46,14 +44,29 @@ class UserMacroController {
 
     static async UpdateMacrosByUserId(repositories, request, reject) {
         try {
+            const {
+                UserId,
+                Calorie,
+                Carb,
+                Protein,
+                Fat
+            } = request.body;
+
             const { userMacroRepository } = repositories;
 
             const userId = request.params.userId
-            const updatedMacros = await userMacroRepository.updateUserMacros(userId, request.body)
 
-            response.code(200).send(updatedMacros)
+            const updatedMacros = await userMacroRepository.updateUserMacros(userId, {
+                userId: UserId,
+                calorie: Calorie,
+                carb: Carb,
+                protein: Protein,
+                fat: Fat
+            })
+
+            reject.code(200).send(updatedMacros)
         } catch (error) {
-            response.code(403).send("You are not allowed!")
+            reject.code(403).send("You are not allowed!")
         }
     }
 }

@@ -17,35 +17,35 @@ class UserMacroRepository {
         })
     }
 
-    // updateUserMacros(userId, updateMacros) {
-    //     return new Promise(async (response, reject) => {
-    //         try {
-    //             const macros = await this.model.findOne({ where: { userId } }); //request.params.userId
-    //             macros.update(updateMacros); //request.body
+    updateUserMacros(userId, updateMacros) {
+        return new Promise(async (response, reject) => {
+            try {
+                const macros = await this.model.findOne({ where: { userId } }); //request.params.userId
+                macros.update(updateMacros); //request.body
 
-    //             response.send(macros)
+                response(macros)
 
-    //         } catch (error) {
-    //             reject(error)
-    //         }
-    //     })
-    // }
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
 
-    // findMacrosByUserId(userId) {
-    //     return new Promise(async (response, reject) => {
-    //         try {
-    //             const macros = await this.model.findOne({ where: { userId } });
+    findMacrosByUserId(userId) {
+        return new Promise(async (response, reject) => {
+            try {
+                const macros = await this.model.findOne({ where: { userId } });
 
-    //             response(macros);
-    //         } catch (error) {
-    //             reject(error);
-    //         }
-    //     })
-    // }
+                response(macros);
+            } catch (error) {
+                reject(error);
+            }
+        })
+    }
 
-    // deleteUserMacros(payload) {
+    deleteUserMacros(payload) {
 
-    // }
+    }
 }
 
 module.exports = UserMacroRepository;
