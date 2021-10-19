@@ -25,30 +25,18 @@ class AuthController {
 
   static async Login(repositories, request, reply) {
     try {
-      const {
-        Email,
-        Password
-      } = request.body;
-
+      const { userRepository } = repositories;
+      const { Email, Password } = request.body;
       const { error } = AuthValidationSchema.validate(request.body)
 
-      if (error) {
-        return error.details[0].message
-      }
+      if (error) { return error.details[0].message }
 
-      const {
-        userRepository
-      } = repositories;
 
       const findUser = await userRepository.findUserByEmail(Email);
-
       if (!findUser) { throw new Error('NotFound'); }
 
       const isPasswordCorrect = await bcrypt.compare(Password, findUser.password)
-
-      if (!isPasswordCorrect) {
-        throw new Error('BadRequest')
-      }
+      if (!isPasswordCorrect) { throw new Error('BadRequest') }
 
       const userData = {
         Id: findUser.id,

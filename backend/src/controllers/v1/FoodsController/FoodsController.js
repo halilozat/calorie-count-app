@@ -2,6 +2,9 @@
 const { message } = require('./FoodsValidations');
 const FoodValidations = require('./FoodsValidations')
 
+/** Services */
+const UserFoodDomainService = require('../../../domain/services/UserFoodDomainService')
+
 
 class FoodsController {
 
@@ -37,10 +40,6 @@ class FoodsController {
         Fat
       } = request.body;
 
-      const {
-        userFoodRepository
-      } = repositories;
-
       const dbPayload = {
         userId: UserId,
         foodname: FoodName,
@@ -52,7 +51,7 @@ class FoodsController {
         fat: Fat
       }
 
-      const food = await userFoodRepository.addFood(dbPayload)
+      const food = await UserFoodDomainService.AddFood(repositories, dbPayload)
 
       reply.code(201).send(food)
     } catch (error) {
@@ -62,11 +61,8 @@ class FoodsController {
 
   static async GetFoodByUserId(repositories, request, response) {
     try {
-      const { userFoodRepository } = repositories;
       const userId = request.params.userId
-
-      const getFoodById = await userFoodRepository.getFoodByUserId(userId)
-
+      const getFoodById = await UserFoodDomainService.GetFoodsById(repositories, userId)
       response.code(200).send(getFoodById);
 
     } catch (err) {
@@ -80,11 +76,23 @@ class FoodsController {
 
       const userId = request.params.userId
 
-      const deleteFood = await userFoodRepository.deleteFood(userId);
+      const getFoodById = await UserFoodDomainService.GetFoodsById(repositories, userId)
+
+      if (getFoodById.length === 0) {
+        throw new Error('NotFound')
+      }
+
+      const deleteFood = await UserFoodDomainService.DeleteFood(repositories, userId)
 
       response.code(200).send(deleteFood)
     } catch (error) {
-      response.code(403).send("You are not allowed!")
+
+      if (['NotFound'].includes(error.message)) {
+        response.code(400).send(error.message);
+      }
+      else {
+        response.code(403).send("You are not allowed!")
+      }
     }
   }
 
