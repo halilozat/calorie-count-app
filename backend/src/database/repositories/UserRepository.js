@@ -28,10 +28,10 @@ class UserRepository {
     })
   }
 
-  findUserByEmail(userEmail) {
+  findUserByEmail(email) {
     return new Promise(async (response, reject) => {
       try {
-        const user = await this.model.findOne({ where: { email: userEmail } });
+        const user = await this.model.findOne({ where: { email } });
 
         response(user);
       } catch (error) {

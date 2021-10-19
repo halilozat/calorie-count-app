@@ -1,4 +1,4 @@
-class UserDomainService {
+class UserMacrosDomainService {
     static async GetFoodsById(repositories, userId) {
         const { userFoodRepository } = repositories;
         const getFoodByIdRepositoryResponse = await userFoodRepository.getFoodByUserId(userId)
@@ -21,4 +21,4 @@ class UserDomainService {
     }
 }
 
-module.exports = UserDomainService
+module.exports = UserMacrosDomainService

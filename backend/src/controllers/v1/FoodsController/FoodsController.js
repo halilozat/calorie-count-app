@@ -72,15 +72,10 @@ class FoodsController {
 
   static async DeleteFoodByUserId(repositories, request, response) {
     try {
-      const { userFoodRepository } = repositories;
-
       const userId = request.params.userId
 
       const getFoodById = await UserFoodDomainService.GetFoodsById(repositories, userId)
-
-      if (getFoodById.length === 0) {
-        throw new Error('NotFound')
-      }
+      if (getFoodById.length === 0) { throw new Error('NotFound') }
 
       const deleteFood = await UserFoodDomainService.DeleteFood(repositories, userId)
 
@@ -89,8 +84,7 @@ class FoodsController {
 
       if (['NotFound'].includes(error.message)) {
         response.code(400).send(error.message);
-      }
-      else {
+      } else {
         response.code(403).send("You are not allowed!")
       }
     }

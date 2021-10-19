@@ -1,20 +1,23 @@
-/** DTOs */
-const UserDTO = require("../DTOs/UserDTO");
-
 class UserDomainService {
-    static async Register(repositories) {
+    static async AddUser(repositories, payload) {
         const { userRepository } = repositories;
-
         const addUserRepositoryResponse = await userRepository.addUser(payload);
 
-        const userDTO = new UserDTO({
-            UserName: addUserRepositoryResponse.UserName,
-            Email: addUserRepositoryResponse.Email,
-            Password: addUserRepositoryResponse.Password,
-        })
+        return addUserRepositoryResponse;
+    }
 
-        return userDTO.toJSON();
+    static async FindUserByEmail(repositories, email) {
+        const { userRepository } = repositories;
+        const findUserByEmailRepositoryResponse = await userRepository.findUserByEmail(email)
 
+        return findUserByEmailRepositoryResponse;
+    }
+
+    static async FindUserById(repositories, userId) {
+        const { userRepository } = repositories;
+        const findUserByUserIdRepositoryResponse = await userRepository.FindUserById(userId)
+
+        return findUserByUserIdRepositoryResponse;
     }
 }
 

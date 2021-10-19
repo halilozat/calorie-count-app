@@ -5,6 +5,9 @@ const jwt = require('jsonwebtoken')
 /** Validations */
 const AuthValidationSchema = require('./AuthValidations')
 
+/** Services */
+const UserDomainService = require('../../../domain/services/UserDomainService')
+
 
 function jwtTokenGenerator(payload) {
   const accessToken = jwt.sign({
@@ -25,14 +28,12 @@ class AuthController {
 
   static async Login(repositories, request, reply) {
     try {
-      const { userRepository } = repositories;
       const { Email, Password } = request.body;
       const { error } = AuthValidationSchema.validate(request.body)
 
       if (error) { return error.details[0].message }
 
-
-      const findUser = await userRepository.findUserByEmail(Email);
+      const findUser = await UserDomainService.FindUserByEmail(repositories, Email);
       if (!findUser) { throw new Error('NotFound'); }
 
       const isPasswordCorrect = await bcrypt.compare(Password, findUser.password)
@@ -76,25 +77,17 @@ class AuthController {
 
       const { error } = AuthValidationSchema.validate(request.body)
 
-      if (error) {
-        return error.details[0].message
-      }
+      if (error) { return error.details[0].message }
 
-      const { userRepository } = repositories;
+      if (Password !== ConfirmPassword) { throw new Error('Founded') }
 
-      if (Password !== ConfirmPassword) {
-        throw new Error('Founded')
-      }
+      const findUser = await UserDomainService.FindUserByEmail(repositories, Email);
 
-      const findUser = await userRepository.findUserByEmail(Email);
-
-      if (findUser) {
-        throw new Error('BadRequest');
-      }
+      if (findUser) { throw new Error('BadRequest') }
 
       const hashedPassword = await bcrypt.hash(Password, 10)
 
-      const user = await userRepository.addUser({
+      const user = await UserDomainService.AddUser(repositories, {
         username: UserName,
         email: Email,
         password: hashedPassword,
@@ -130,9 +123,7 @@ class AuthController {
 
   static async Me(request, reply) {
     try {
-      const {
-        userData,
-      } = request.body;
+      const { userData } = request.body;
 
       reply.code(200).send(userData);
 
@@ -146,9 +137,7 @@ class AuthController {
   }
 
   static async Logout(request, reply) {
-    const {
-      userData,
-    } = request.body;
+    const { userData } = request.body;
     const jwtToken = jwtTokenGenerator(userData);
 
     reply
