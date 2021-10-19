@@ -49,12 +49,24 @@ class AuthController {
 
       reply
         .code(200)
+        // .setCookie(
+        //   process.env.JWT_COOKIE_NAME,
+        //   jwtToken, {
+        //   domain: process.env.UI_DOMAIN_URL,
+        //   path: '/'
+        // }
+        // )
+        // .setCookie(
+        //   'jwt',
+        //   jwtToken,
+        //   {
+        //     domain: process.env.UI_DOMAIN_URL,
+        //     path: '/'
+        //   }
+        // )
         .setCookie(
-          process.env.JWT_COOKIE_NAME,
-          jwtToken, {
-          domain: process.env.UI_DOMAIN_URL,
-          path: '/'
-        }
+          'jwt',
+          jwtToken
         )
         .send(userData);
     } catch (error) {
@@ -104,11 +116,8 @@ class AuthController {
       reply
         .code(201)
         .setCookie(
-          process.env.JWT_COOKIE_NAME,
-          jwtToken, {
-          domain: process.env.UI_DOMAIN_URL,
-          path: '/'
-        }
+          'jwt',
+          jwtToken
         )
         .send(userData);
 
@@ -142,12 +151,13 @@ class AuthController {
 
     reply
       .code(200)
-      .clearCookie(
-        process.env.JWT_COOKIE_NAME,
-        jwtToken, {
-        domain: process.env.UI_DOMAIN_URL,
-        path: '/'
-      })
+      .clearCookie('jwt', jwtToken)
+    // .clearCookie(
+    //   process.env.JWT_COOKIE_NAME,
+    //   jwtToken, {
+    //   domain: process.env.UI_DOMAIN_URL,
+    //   path: '/'
+    // })
   }
 
 }
