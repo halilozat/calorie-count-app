@@ -19,8 +19,8 @@ class UserFoodRepository {
     getFoodByUserId(userId) {
         return new Promise(async (response, reject) => {
             try {
-                const foods = await this.model.findAll({ where: { userId } }) //userId: request.params.id
-                response.send(foods)
+                const foods = await this.model.findAll({ where: { userId } })
+                response(foods)
 
             } catch (error) {
                 reject(error)
@@ -32,7 +32,7 @@ class UserFoodRepository {
         return new Promise(async (response, reject) => {
             try {
                 await this.model.destroy({ where: { userId } }); //userId: request.params.id
-                response.send("Food has been deleted!")
+                response("Foods has been deleted!")
             } catch (error) {
                 reject(error)
             }

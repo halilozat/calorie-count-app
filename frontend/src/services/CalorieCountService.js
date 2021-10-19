@@ -32,7 +32,7 @@ export default class CalorieCountService {
   /** Foods */
 
   static GetFoods(foodTerm) {
-    return fetcher.get("/v1/foods", {
+    return fetcher.get("/v1/foods/getApiFoods", {
       params: {
         query: foodTerm
       }

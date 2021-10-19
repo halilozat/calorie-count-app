@@ -32,13 +32,11 @@ export const AuthContextProvider = ({ children }) => {
 
     const login = (data) => {
         setLoggedIn(true)
-        setUser(data.user)
+        setUser(data)
 
-        console.log(data.user)
-        console.log(user)
+        console.log(data)
+        console.log(data.UserName)
 
-        localStorage.setItem("access-token", JSON.stringify(data.accessToken));
-        Cookies.set("access", data.accessToken);
     }
 
     const logout = async (callback) => {
@@ -46,9 +44,6 @@ export const AuthContextProvider = ({ children }) => {
         setUser(null);
 
         await CalorieCountService.AuthLogout();
-
-        localStorage.removeItem("access-token");
-        Cookies.remove("access");
 
         callback()
     };

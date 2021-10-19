@@ -71,10 +71,10 @@ class AuthController {
 
     } catch (error) {
       if (['NotFound', 'BadRequest'].includes(error.message)) {
-        reply.code(400).send();
+        reply.code(400).send(error.message);
       }
 
-      reply.code(500).send({ message: "asfgasfg" });
+      reply.code(500).send({ message: "error : " + error.message });
     }
   }
 

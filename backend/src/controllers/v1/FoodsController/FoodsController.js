@@ -1,4 +1,5 @@
 /** Validations */
+const { message } = require('./FoodsValidations');
 const FoodValidations = require('./FoodsValidations')
 
 
@@ -61,13 +62,13 @@ class FoodsController {
 
   static async GetFoodByUserId(repositories, request, response) {
     try {
-      const {
-        userFoodRepository
-      } = repositories;
+      const { userFoodRepository } = repositories;
       const userId = request.params.userId
 
       const getFoodById = await userFoodRepository.getFoodByUserId(userId)
+
       response.code(200).send(getFoodById);
+
     } catch (err) {
       response.code(500).send(err);
     }
@@ -75,12 +76,12 @@ class FoodsController {
 
   static async DeleteFoodByUserId(repositories, request, response) {
     try {
-      const {
-        userFoodRepository
-      } = repositories;
+      const { userFoodRepository } = repositories;
+
       const userId = request.params.userId
 
       const deleteFood = await userFoodRepository.deleteFood(userId);
+
       response.code(200).send(deleteFood)
     } catch (error) {
       response.code(403).send("You are not allowed!")

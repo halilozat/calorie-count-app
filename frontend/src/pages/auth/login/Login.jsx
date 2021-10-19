@@ -29,8 +29,8 @@ const Login = () => {
                 Email: email.current.value,
                 Password: password.current.value
             })
-
-            login(loginResponse)
+            console.log(loginResponse.data.Id);
+            login(loginResponse.data)
             history.push("/")
         } catch (error) {
             console.log(error);

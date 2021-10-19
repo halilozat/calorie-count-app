@@ -5,8 +5,7 @@ const fastify = require('fastify')({ logger: true })
 require('dotenv').config();
 
 fastify.register(require('fastify-cors'), { origin: true, credentials: true });
-fastify.register(require('fastify-cookie'), { secret: "my-secret", parseOptions: {} });
-
+fastify.register(require('fastify-cookie'), { secret: process.env.JWT_SECRET_KEY, parseOptions: {} });
 
 /** Instance */
 const mediator = new EventEmitter();
