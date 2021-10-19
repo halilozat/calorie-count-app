@@ -1,6 +1,9 @@
 /** Validations */
 const UserMacroValidations = require('./UserMacroValidations')
 
+/** Services */
+const UserMacrosDomainService = require('../../../domain/services/UserMacrosDomainServices')
+
 
 class UserMacroController {
     static async AddUserMacros(repositories, request, reply) {
@@ -13,9 +16,7 @@ class UserMacroController {
                 Fat
             } = request.body;
 
-            const { userMacroRepository } = repositories;
-
-            const userMacros = await userMacroRepository.addUserMacros({
+            const userMacros = await UserMacrosDomainService.AddUserMacros(repositories, {
                 userId: UserId,
                 calorie: Calorie,
                 carb: Carb,
@@ -31,10 +32,8 @@ class UserMacroController {
 
     static async GetMacrosByUserId(repositories, request, reject) {
         try {
-            const { userMacroRepository } = repositories;
-
             const userId = request.params.userId
-            const getMacrosById = await userMacroRepository.findMacrosByUserId(userId)
+            const getMacrosById = await UserMacrosDomainService.FindUserMacrosByUserId(repositories, userId)
 
             reject.code(200).send(getMacrosById);
         } catch (error) {
@@ -52,11 +51,9 @@ class UserMacroController {
                 Fat
             } = request.body;
 
-            const { userMacroRepository } = repositories;
-
             const userId = request.params.userId
 
-            const updatedMacros = await userMacroRepository.updateUserMacros(userId, {
+            const updatedMacros = await UserMacrosDomainService.UpdateUserMacrosByUserId(repositories, userId, {
                 userId: UserId,
                 calorie: Calorie,
                 carb: Carb,

@@ -13,7 +13,7 @@ class UserDomainService {
         return findUserByEmailRepositoryResponse;
     }
 
-    static async FindUserById(repositories, userId) {
+    static async FindUserByUserId(repositories, userId) {
         const { userRepository } = repositories;
         const findUserByUserIdRepositoryResponse = await userRepository.FindUserById(userId)
 

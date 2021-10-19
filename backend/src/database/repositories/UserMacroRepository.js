@@ -17,7 +17,7 @@ class UserMacroRepository {
         })
     }
 
-    updateUserMacros(userId, updateMacros) {
+    updateUserMacrosByUserId(userId, updateMacros) {
         return new Promise(async (response, reject) => {
             try {
                 const macros = await this.model.findOne({ where: { userId } }); //request.params.userId
