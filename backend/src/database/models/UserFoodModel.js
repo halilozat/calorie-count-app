@@ -15,7 +15,6 @@ module.exports = function userFoodModel(sequelize) {
         foodname: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: "egg1"
         },
         gram: {
             type: DataTypes.INTEGER,
@@ -40,6 +39,10 @@ module.exports = function userFoodModel(sequelize) {
         fat: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        createDateTime: {
+            type: DataTypes.DATEONLY(),
+            defaultValue: new Date(),
         },
     }, {
         tableName: 'userFoods',

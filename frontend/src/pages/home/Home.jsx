@@ -28,13 +28,13 @@ const Home = () => {
 
             </div>
 
-            <CookieConsent
+            {/* <CookieConsent
                 debug={true}
                 style={{ background: 'rgb(40, 40, 40)', textAlign: "center", fontSize: "2rem" }}
                 buttonStyle={{ background: 'white', fontSize: "1.7rem", borderRadius: "50px" }}
                 buttonText="I understand"
             >This site uses cookies.
-            </CookieConsent>
+            </CookieConsent> */}
         </div>
     )
 }

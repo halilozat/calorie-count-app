@@ -1,5 +1,5 @@
 /** Validations */
-const UserMacroValidations = require('./UserMacroValidations')
+const UserMacroValidations = require('../../../validations/UserMacroValidations')
 
 /** Services */
 const UserMacrosDomainService = require('../../../domain/services/UserMacrosDomainServices')

@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
 /** Validations */
-const AuthValidationSchema = require('./AuthValidations')
+const AuthValidationSchema = require('../../../validations/AuthValidations')
 
 /** Services */
 const UserDomainService = require('../../../domain/services/UserDomainService')

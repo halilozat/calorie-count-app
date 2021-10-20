@@ -1,6 +1,8 @@
+/** Dependencies */
+const moment = require('moment')
+
 /** Validations */
-const { message } = require('./FoodsValidations');
-const FoodValidations = require('./FoodsValidations')
+const FoodValidations = require('../../../validations/FoodsValidations')
 
 /** Services */
 const UserFoodDomainService = require('../../../domain/services/UserFoodDomainService')
@@ -37,8 +39,10 @@ class FoodsController {
         Calorie,
         Carb,
         Protein,
-        Fat
+        Fat,
       } = request.body;
+
+      const now = new Date();
 
       const dbPayload = {
         userId: UserId,
@@ -48,7 +52,7 @@ class FoodsController {
         calorie: Calorie,
         carb: Carb,
         protein: Protein,
-        fat: Fat
+        fat: Fat,
       }
 
       const food = await UserFoodDomainService.AddFood(repositories, dbPayload)
@@ -63,6 +67,7 @@ class FoodsController {
     try {
       const userId = request.params.userId
       const getFoodById = await UserFoodDomainService.GetFoodsById(repositories, userId)
+
       response.code(200).send(getFoodById);
 
     } catch (err) {
