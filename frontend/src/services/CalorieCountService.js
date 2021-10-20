@@ -4,8 +4,10 @@ import axios from "axios";
 
 const fetcher = axios.create({
   baseURL: "http://dev.calorie-count.com:5001/api",
+  withCredentials: true
 });
 
+//fetcher.interceptors
 
 export default class CalorieCountService {
 
@@ -19,8 +21,8 @@ export default class CalorieCountService {
     return fetcher.post("/v1/auth/login", payload);
   }
 
-  static AuthMe(payload) {
-    return fetcher.post("/v1/auth/me", payload);
+  static AuthMe() {
+    return fetcher.get("/v1/auth/me");
   }
 
   static AuthLogout(payload) {

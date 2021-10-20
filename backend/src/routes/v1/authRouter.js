@@ -7,6 +7,6 @@ module.exports = function (fastify, opts, done) {
     fastify.post("/login", (...params) => AuthController.Login(fastify.repositories, ...params));
     fastify.post("/register", (...params) => AuthController.Register(fastify.repositories, ...params));
     fastify.get("/logout", AuthController.Logout);
-    fastify.get("/me", { preHandler: authenticationMiddleware, }, AuthController.Me)
+    fastify.get("/me", { preHandler: [authenticationMiddleware] }, AuthController.Me)
     done();
 }

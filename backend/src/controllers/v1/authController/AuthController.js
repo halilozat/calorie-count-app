@@ -16,7 +16,7 @@ function jwtTokenGenerator(payload) {
     Email: payload.Email,
   },
     process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "300d"
+    expiresIn: "1d"
   }
   );
 
@@ -46,7 +46,7 @@ class AuthController {
       }
 
       const jwtToken = jwtTokenGenerator(userData);
-
+      console.log(jwtToken)
       reply
         .code(200)
         // .setCookie(
@@ -56,18 +56,19 @@ class AuthController {
         //   path: '/'
         // }
         // )
-        // .setCookie(
-        //   'jwt',
-        //   jwtToken,
-        //   {
-        //     domain: process.env.UI_DOMAIN_URL,
-        //     path: '/'
-        //   }
-        // )
         .setCookie(
           'jwt',
-          jwtToken
+          jwtToken,
+          {
+            domain: 'dev.calorie-count.com',
+            path: '/',
+            maxAge: 24 * 3600
+          }
         )
+        // .setCookie(
+        //   'jwt',
+        //   jwtToken
+        // )
         .send(userData);
     } catch (error) {
       if (['NotFound', 'BadRequest'].includes(error.message)) {
