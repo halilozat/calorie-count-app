@@ -25,8 +25,8 @@ export default class CalorieCountService {
     return fetcher.get("/v1/auth/me");
   }
 
-  static AuthLogout(payload) {
-    return fetcher.post("/v1/auth/logout", payload);
+  static AuthLogout() {
+    return fetcher.get("/v1/auth/logout");
   }
 
 

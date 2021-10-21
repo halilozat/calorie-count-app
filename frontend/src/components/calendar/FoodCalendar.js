@@ -1,5 +1,5 @@
 /** Dependencies */
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
@@ -10,17 +10,28 @@ import Header from "../Layout/Header/Header"
 
 /** Styles */
 import './foodCalendar.scss'
+import EventModal from './EventModal/EventModal'
 
 
 
 const FoodCalendar = () => {
+
+    const [modalOpen, setModalOpen] = useState(false)
+    const calendarRef = useRef(null)
+
+    const onEventAdded = event => {
+        let calendarApi = calendarRef.current.getApi()
+        calendarApi.addEvent(event)
+    }
 
     return (
         <div>
             <Header />
 
             <div className="foodCalendar">
+                <button className="addButton" onClick={() => setModalOpen(true)} type="submit">Add Meal</button>
                 <FullCalendar
+                    ref={calendarRef}
                     plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                     initialView="dayGridMonth"
                     events={[
@@ -36,6 +47,7 @@ const FoodCalendar = () => {
                         right: "dayGridMonth, timeGridWeek, timeGridDay"
                     }}
                 />
+                <EventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} />
             </div>
         </div>
     )

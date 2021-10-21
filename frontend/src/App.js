@@ -18,7 +18,6 @@ import { useAuth, AuthContextProvider } from "./context/AuthContext/AuthContext"
 import { FoodContextProvider } from "./context/FoodContext/FoodContext";
 
 function App() {
-  // const { user } = useAuth();
 
   return (
     <AuthContextProvider>

@@ -20,11 +20,9 @@ const Header = () => {
 
 
     const handleLogout = () => {
-
-        localStorage.removeItem("access-token");
-        Cookies.remove("access");
+        logout()
         history.push("/login");
-
+        Cookies.remove('jwt')
     }
 
     return (

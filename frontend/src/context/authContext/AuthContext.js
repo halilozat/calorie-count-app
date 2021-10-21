@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
                 setLoggedIn(true);
                 setUser(me);
                 setLoading(false);
+                console.log(loggedIn)
 
             } catch (e) {
                 setLoading(false);
@@ -35,17 +36,14 @@ export const AuthContextProvider = ({ children }) => {
         setUser(data)
 
         console.log(data)
-        console.log(data.UserName)
-
+        console.log(user.data)
     }
 
-    const logout = async (callback) => {
+    const logout = async () => {
         setLoggedIn(false);
         setUser(null);
 
         await CalorieCountService.AuthLogout();
-
-        callback()
     };
 
     const values = {

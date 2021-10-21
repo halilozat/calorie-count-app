@@ -46,16 +46,9 @@ class AuthController {
       }
 
       const jwtToken = jwtTokenGenerator(userData);
-      console.log(jwtToken)
+
       reply
         .code(200)
-        // .setCookie(
-        //   process.env.JWT_COOKIE_NAME,
-        //   jwtToken, {
-        //   domain: process.env.UI_DOMAIN_URL,
-        //   path: '/'
-        // }
-        // )
         .setCookie(
           'jwt',
           jwtToken,
@@ -65,10 +58,6 @@ class AuthController {
             maxAge: 24 * 3600
           }
         )
-        // .setCookie(
-        //   'jwt',
-        //   jwtToken
-        // )
         .send(userData);
     } catch (error) {
       if (['NotFound', 'BadRequest'].includes(error.message)) {
@@ -147,18 +136,17 @@ class AuthController {
   }
 
   static async Logout(request, reply) {
-    const { userData } = request.body;
-    const jwtToken = jwtTokenGenerator(userData);
 
     reply
       .code(200)
-      .clearCookie('jwt', jwtToken)
-    // .clearCookie(
-    //   process.env.JWT_COOKIE_NAME,
-    //   jwtToken, {
-    //   domain: process.env.UI_DOMAIN_URL,
-    //   path: '/'
-    // })
+      .clearCookie('jwt')
+      // .clearCookie(
+      //   process.env.JWT_COOKIE_NAME,
+      //   jwtToken, {
+      //   domain: process.env.UI_DOMAIN_URL,
+      //   path: '/'
+      // })
+      .send({ message: "Logout successfull!" })
   }
 
 }

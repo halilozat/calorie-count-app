@@ -1,3 +1,19 @@
 .foodCalendar {
   margin: 50px;
 }
+
+.addButton {
+  padding: 9px 25px;
+  margin-bottom: 10px;
+  background-color: grey;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 20px;
+  transition: all 0.3s ease 0s;
+  color: white;
+  &:hover {
+    color: black;
+  }
+}
