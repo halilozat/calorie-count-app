@@ -146,11 +146,6 @@ class AuthController {
       .code(200)
       .clearCookie('jwt', { path: "/", domain: "dev.calorie-count.com" })
       .send({ message: "Logout successfull!" })
-
-    request.session.destroy(function (err) {
-      reply.redirect('/')
-    }
-    )
   }
 
 }

@@ -33,12 +33,8 @@ export default class CalorieCountService {
 
   /** Foods */
 
-  static GetFoods(foodTerm) {
-    return fetcher.get("/v1/foods/getApiFoods", {
-      params: {
-        query: foodTerm
-      }
-    });
+  static GetFoods(query) {
+    return axios.post("http://dev.calorie-count.com:5001/api/v1/foods/apiFoods", query);
   }
 
   static getBasketItems(userId) {

@@ -1,6 +1,7 @@
 /** Dependencies */
 import React, { useEffect, useState } from 'react';
 import ContentLoader from "react-content-loader"
+import axios from 'axios';
 
 /** Components */
 import Item from './FinderItem/FinderItem';
@@ -32,7 +33,8 @@ const CalorieFinder = () => {
     const fetchItems = async (foodTerm) => {
         setLoading(true)
         try {
-            const response = await CalorieCountService.GetFoods(foodTerm);
+            const response = await CalorieCountService.GetFoods({ query: foodTerm });
+            console.log(response.data.items);
 
             setFoodState({
                 ...foodState,

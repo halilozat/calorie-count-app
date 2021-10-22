@@ -1,4 +1,4 @@
-*,
+/* *,
 *:before,
 *:after {
   box-sizing: border-box;
@@ -259,4 +259,4 @@ textarea {
   .screen-body-item {
     padding: 0;
   }
-}
+} */

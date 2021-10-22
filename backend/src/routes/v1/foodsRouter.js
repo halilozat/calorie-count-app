@@ -2,7 +2,7 @@ const FoodsController = require('../../controllers/v1/FoodsController/FoodsContr
 
 
 module.exports = function (fastify, opts, done) {
-    fastify.get("/getApiFoods", FoodsController.GetFoodFromApi);
+    fastify.post("/apiFoods", FoodsController.GetFoodFromApi);
     fastify.get("/getFoods/:userId", (...params) => FoodsController.GetFoodByUserId(fastify.repositories, ...params));
     fastify.post("/addFood", (...params) => FoodsController.AddFood(fastify.repositories, ...params));
     fastify.delete("/deleteFoods/:userId", (...params) => FoodsController.DeleteFoodByUserId(fastify.repositories, ...params));

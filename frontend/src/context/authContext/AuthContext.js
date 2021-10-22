@@ -16,7 +16,6 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         (async () => {
             try {
-
                 const me = await CalorieCountService.AuthMe();
                 setLoggedIn(true);
                 setUser(me);
