@@ -3,11 +3,25 @@ import { Modal } from '@material-ui/core';
 import './modal.css'
 import CalorieFinder from '../../Home/CalorieFinder/CalorieFinder';
 
+import Datetime from 'react-datetime';
 
 
 
-export default function SimpleModal() {
+export default function SimpleModal({ isOpen, onClose, onEventAdded }) {
 
+    const [foodname, setFoodname] = useState("");
+    const [start, setStart] = useState(new Date());
+    const [end, setEnd] = useState(new Date());
+
+    const onSubmit = (event) => {
+        event.preventDefault()
+        onEventAdded({
+            foodname,
+            start,
+            end
+        })
+        onClose()
+    }
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -40,28 +54,40 @@ export default function SimpleModal() {
                         </div>
                     </div>
                     <div className="screen-body">
-                        <div className="screen-body-item left">
+                        {/* <div className="screen-body-item left">
                             <div className="app-title">
                                 <span>ADD A</span>
                                 <span>FOOD</span>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="screen-body-item">
                             <div className="app-form">
                                 <div className="app-form-group">
+                                    <CalorieFinder />
+                                </div>
+                                <hr />
+                                <div className="app-form-group">
+                                    <Datetime
+                                        className="dateTimePicker"
+                                        value={start}
+                                        onChange={date => setStart(date)}
+                                    />
+                                </div>
+                                <div className="app-form-group">
+                                    <Datetime
+                                        className="dateTimePicker"
+                                        value={end}
+                                        onChange={date => setEnd(date)}
+                                    />
+                                </div>
+                                {/* <div className="app-form-group">
                                     <input
                                         className="app-form-control"
                                         placeholder="Kitap Adı"
                                         required
                                     />
-                                </div>
-                                <div className="app-form-group">
-                                    <input
-                                        className="app-form-control"
-                                        placeholder="Yazar Adı"
-                                    />
-                                </div>
-
+                                </div> */}
+                                <br />
                                 <div className="app-form-group buttons">
                                     <form onSubmit={submitHandler}>
                                         <button className="app-form-button" type="submit">ADD</button>
@@ -79,7 +105,7 @@ export default function SimpleModal() {
 
     return (
         <div>
-            <button type="button" className="sidebarAddButton" onClick={handleOpen}>
+            <button type="button" className="addMealButton" onClick={handleOpen}>
                 <div className="modalContent" style={{ wordWrap: 'break-word' }}>Add Meal</div>
             </button>
             <Modal

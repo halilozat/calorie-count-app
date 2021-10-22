@@ -4,7 +4,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 body {
   font-size: 12px;
@@ -148,6 +148,7 @@ textarea {
 .app-form-group.buttons {
   margin-bottom: 0;
   text-align: right;
+  margin-left: 10px !important;
 }
 
 .app-form-control {
@@ -163,7 +164,7 @@ textarea {
 }
 
 .app-form-control::placeholder {
-  color: #666;
+  color: white;
 }
 
 .app-form-control:focus {
@@ -174,9 +175,10 @@ textarea {
   background: none;
   border: none;
   color: #ea1d6f;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
   outline: none;
+  margin: 5px;
 }
 
 .app-form-button:hover {
@@ -248,9 +250,32 @@ textarea {
 .shareOptionText {
   font-size: 10px;
   font-weight: 200;
-  color: #888;
+  color: white;
 }
 
+.addMealButton {
+  padding: 9px 25px;
+  margin-bottom: 10px;
+  background-color: rgb(40, 40, 40);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 20px;
+  transition: all 0.3s ease 0s;
+  color: white;
+}
+
+.dateTimePicker {
+  background-color: white;
+  margin: 20px 40px 0px;
+  border-radius: 30px;
+  border: 0px solid;
+  height: 46px;
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+}
 @media screen and (max-width: 600px) {
   .screen-body {
     padding: 40px;
@@ -259,4 +284,4 @@ textarea {
   .screen-body-item {
     padding: 0;
   }
-} */
+}

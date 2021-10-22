@@ -31,7 +31,6 @@ const FoodCalendar = () => {
 
             <div className="foodCalendar">
                 <AddFoodModal />
-                <button className="addButton" onClick={() => setModalOpen(true)} type="submit">Add Meal</button>
                 <FullCalendar
                     ref={calendarRef}
                     plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}

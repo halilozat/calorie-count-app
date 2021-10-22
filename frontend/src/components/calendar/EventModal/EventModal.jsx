@@ -48,6 +48,7 @@ const EventModal = ({ isOpen, onClose, onEventAdded }) => {
             >
                 <form className="auth-form" onSubmit={onSubmit}>
                     <CalorieFinder />
+
                     <input
                         className="form-field animation a3"
                         placeholder="Email *"
