@@ -1,6 +1,5 @@
 /** Dependencies */
 import { createContext, useContext, useEffect, useState } from "react";
-import Cookies from 'js-cookie'
 
 /** Services */
 import CalorieCountService from "../../services/CalorieCountService";
@@ -33,10 +32,10 @@ export const AuthContextProvider = ({ children }) => {
 
     const login = (data) => {
         setLoggedIn(true)
-        setUser(data)
+        setUser(data.user)
 
         console.log(data)
-        console.log(user.data)
+        console.log(data.user)
     }
 
     const logout = async () => {

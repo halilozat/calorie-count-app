@@ -4,6 +4,7 @@ import App from "./App";
 
 /** Styles */
 import "./index.css";
+import "react-datetime/css/react-datetime.css";
 
 ReactDOM.render(
   <React.StrictMode>

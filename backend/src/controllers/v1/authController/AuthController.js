@@ -107,7 +107,12 @@ class AuthController {
         .code(201)
         .setCookie(
           'jwt',
-          jwtToken
+          jwtToken,
+          {
+            domain: 'dev.calorie-count.com',
+            path: '/',
+            maxAge: 24 * 3600
+          }
         )
         .send(userData);
 
@@ -139,14 +144,13 @@ class AuthController {
 
     reply
       .code(200)
-      .clearCookie('jwt')
-      // .clearCookie(
-      //   process.env.JWT_COOKIE_NAME,
-      //   jwtToken, {
-      //   domain: process.env.UI_DOMAIN_URL,
-      //   path: '/'
-      // })
+      .clearCookie('jwt', { path: "/", domain: "dev.calorie-count.com" })
       .send({ message: "Logout successfull!" })
+
+    request.session.destroy(function (err) {
+      reply.redirect('/')
+    }
+    )
   }
 
 }

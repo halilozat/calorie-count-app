@@ -15,14 +15,14 @@ import './header.scss'
 
 
 const Header = () => {
-    const { logout } = useAuth();
+    const { logout, loggedIn } = useAuth();
     const history = useHistory()
 
+    console.log(loggedIn);
 
     const handleLogout = () => {
         logout()
         history.push("/login");
-        Cookies.remove('jwt')
     }
 
     return (

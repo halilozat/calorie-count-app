@@ -1,7 +1,11 @@
+/** Dependencies */
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import Datetime from 'react-datetime';
 
+import CalorieFinder from '../../Home/CalorieFinder/CalorieFinder'
+
+/** Styles */
 import './eventModal.scss'
 
 const EventModal = ({ isOpen, onClose, onEventAdded }) => {
@@ -30,12 +34,12 @@ const EventModal = ({ isOpen, onClose, onEventAdded }) => {
                     overlay: {
                         position: 'fixed',
                         margin: '200px 700px',
-                        background: 'rgb(8, 44, 87)',
+                        background: 'rgb(40, 40, 40)',
                         zIndex: 1,
                         borderRadius: '30px'
                     },
                     content: {
-                        background: 'rgb(8, 44, 87)',
+                        background: 'rgb(40, 40, 40)',
                         textAlign: 'center',
                         padding: '50px',
                         border: '0px'
@@ -43,6 +47,7 @@ const EventModal = ({ isOpen, onClose, onEventAdded }) => {
                 }}
             >
                 <form className="auth-form" onSubmit={onSubmit}>
+                    <CalorieFinder />
                     <input
                         className="form-field animation a3"
                         placeholder="Email *"
@@ -52,6 +57,16 @@ const EventModal = ({ isOpen, onClose, onEventAdded }) => {
                         className="form-field animation a4"
                         placeholder="Password *"
                         required
+                    />
+                    <Datetime
+                        className="dateTimePicker"
+                        value={start}
+                        onChange={date => setStart(date)}
+                    />
+                    <Datetime
+                        className="dateTimePicker"
+                        value={end}
+                        onChange={date => setEnd(date)}
                     />
                     <button type="submit" className="animation a6">LOGIN</button>
                 </form>
