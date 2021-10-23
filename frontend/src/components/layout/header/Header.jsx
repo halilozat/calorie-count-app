@@ -26,23 +26,33 @@ const Header = () => {
     }
 
     return (
-        <>
+        <div className="header-main">
             <header className="header">
-                <img className="logo" src={logoImg} alt="" />
-                <nav>
-                    <ul className="nav__links">
-                        <li><Link to="/" style={{ textDecoration: "none", color: "white" }}><div>Home</div></Link></li>
-                        <li><Link to="/foodCalendar" style={{ textDecoration: "none", color: "white" }}><div>Food Calendar</div></Link></li>
-                        <li><div>My Macros</div></li>
-                    </ul>
-                </nav>
-                <div className="logout">
-                    <button onClick={handleLogout}>
-                        Logout
-                    </button>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <div className="header_content d-flex flex-row align-items-center justify-content-start trans_400">
+                                <a href="#">
+                                    <div className="logo d-flex flex-row align-items-center justify-content-start"><img className="logoImg" src={logoImg} alt="" /><div>Fit<span>Foods</span></div></div>
+                                </a>
+                                <nav className="main_nav">
+                                    <ul className="d-flex flex-row align-items-center justify-content-start">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="services.html">Meal Calendar</a></li>
+                                        <li><a href="blog.html">My Macros</a></li>
+                                        <li><a href="blog.html" className="phone d-flex flex-row align-items-center justify-content-start ml-auto"></a></li>
+                                    </ul>
+                                </nav>
+                                <div className="phone d-flex flex-row align-items-center justify-content-start ml-auto">
+                                    <div>LOGIN</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </header>
-        </>
+
+        </div>
     )
 }
 
