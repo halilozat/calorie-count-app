@@ -32,20 +32,36 @@ const Header = () => {
                         <div className="col">
                             <div className="header_content d-flex flex-row align-items-center justify-content-start trans_400">
                                 <a href="#">
-                                    <div className="logo d-flex flex-row align-items-center justify-content-start">
-                                        <img src={logoImg} alt="" />
-                                        <div>Fit<span>Foods</span></div>
-                                    </div>
+                                    <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                                        <div className="logo d-flex flex-row align-items-center justify-content-start">
+                                            <img src={logoImg} alt="" />
+                                            <div>Fit<span>Foods</span></div>
+                                        </div>
+                                    </Link>
                                 </a>
                                 <nav className="main_nav">
                                     <ul className="d-flex flex-row align-items-center justify-content-start">
-                                        <li ><a href="index.html">Home</a></li>
-                                        <li><a href="services.html">Meal Calendar</a></li>
-                                        <li><a href="blog.html">My Macros</a></li>
+                                        <li >
+                                            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                                                <a>Home</a>
+                                            </Link>
+                                        </li>
+                                        <li >
+                                            <Link to="/foodCalendar" style={{ textDecoration: "none", color: "white" }}>
+                                                <a>Meal Calendar</a>
+                                            </Link>
+                                        </li>
+                                        <li >
+                                            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                                                <a>My Macros</a>
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </nav>
                                 <div className="phone d-flex flex-row align-items-center justify-content-start ml-auto">
-                                    <div>LOGIN</div>
+                                    <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
+                                        <a>LOGIN</a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

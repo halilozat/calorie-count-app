@@ -32,7 +32,7 @@ textarea {
 
 .screen {
   position: relative;
-  background: #3e3e3e;
+  background: #262626;
   border-radius: 15px;
 }
 
@@ -53,7 +53,7 @@ textarea {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background: #4d4d4f;
+  background: #ff9711;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -79,7 +79,7 @@ textarea {
 }
 
 .screen-header-button.maximize {
-  background: #e8e925;
+  background: #0f1d08;
 }
 
 .screen-header-button.minimize {
@@ -174,7 +174,7 @@ textarea {
 .app-form-button {
   background: none;
   border: none;
-  color: #ea1d6f;
+  color: #ff9711;
   font-size: 20px;
   cursor: pointer;
   outline: none;
@@ -256,7 +256,7 @@ textarea {
 .addMealButton {
   padding: 9px 25px;
   margin-bottom: 10px;
-  background-color: rgb(40, 40, 40);
+  background-color: #693e04;
   border: none;
   border-radius: 50px;
   cursor: pointer;

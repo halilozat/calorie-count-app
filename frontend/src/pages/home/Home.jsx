@@ -1,22 +1,26 @@
 /** Components */
-import Macros from '../../components/Home/UserMacros/UserMacros';
-import Basket from '../../components/Home/Basket/Basket';
-import CalorieFinder from '../../components/Home/CalorieFinder/CalorieFinder'
 import Header from '../../components/Layout/Header/Header';
 
+/** Images */
 import Icon1 from '../../assets/images/icon_1.png'
-import Icon2 from '../../assets/images/icon_2.png'
-import Icon3 from '../../assets/images/icon_3.png'
 import Icon4 from '../../assets/images/icon_4.png'
 import Icon8 from '../../assets/images/icon_8.png'
 
 /** Styles */
 import './home.scss'
 import './responsive.scss'
+import { Link } from 'react-router-dom';
 
 
 
 const Home = () => {
+
+    const handleAlert = event => {
+        event.preventDefault()
+        {
+            alert("Coming Soon!")
+        }
+    }
 
     return (
         <div className="main-body">
@@ -37,7 +41,9 @@ const Home = () => {
                                         </a>
                                     </div>
                                     <div className="home_title">Get fit with us</div>
-                                    <button className="button home_button ml-auto mr-auto"><a href="#">Join Now</a></button>
+                                    <Link to="/register" >
+                                        <button className="button home_button ml-auto mr-auto"><a>Join Now</a></button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +65,7 @@ const Home = () => {
                                         <br />
                                         <br />
                                     </div>
-                                    <div className="box_link_container">
+                                    <div onClick={handleAlert} className="box_link_container">
                                         <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
                                             <div>+</div>
                                         </div>
@@ -74,12 +80,15 @@ const Home = () => {
                                         <br />
                                         <br />
                                     </div>
-                                    <div className="box_link_container">
-                                        <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
-                                            <div>+</div>
+                                    <Link to="/foodCalendar" style={{ textDecoration: "none", color: "white" }}>
+                                        <div className="box_link_container">
+                                            <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
+                                                <div>+</div>
+                                            </div>
+                                            </a>
                                         </div>
-                                        </a>
-                                    </div>
+                                    </Link>
+
                                 </div>
                                 <div className="box">
                                     <div className="box_icon d-flex flex-column align-items-center justify-content-center"><img src={Icon1} alt="" /></div>
@@ -89,7 +98,7 @@ const Home = () => {
                                         <br /><br />
                                     </div>
 
-                                    <div className="box_link_container">
+                                    <div onClick={handleAlert} className="box_link_container">
                                         <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
                                             <div>+</div>
                                         </div>

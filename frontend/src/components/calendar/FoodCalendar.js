@@ -7,7 +7,6 @@ import timeGridPlugin from "@fullcalendar/timegrid" // needed for dayClick
 
 /** Components */
 import Header from "../Layout/Header/Header"
-import EventModal from './EventModal/EventModal'
 import AddFoodModal from './EventModal/AddFoodModal'
 
 /** Styles */
@@ -73,7 +72,6 @@ const FoodCalendar = () => {
                         right: "dayGridMonth, timeGridWeek, timeGridDay"
                     }}
                 />
-                <EventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} />
             </div>
         </div>
     )
