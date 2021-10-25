@@ -1,5 +1,4 @@
 /** Dependencies */
-import { useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,12 +11,18 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/login/Login";
 import Register from "./pages/Auth/register/Register";
 import FoodCalendar from "./pages/Calendar/FoodCalendar";
+import UserMacros from './components/UserMacros/UserMacros'
+
+/** Routes */
+import ProtectedRoute from "./pages/Routes/ProtectedRoute";
+import AuthProtectedRoute from "./pages/Routes/AuthProtectedRoute";
 
 /** Contexts */
 import { useAuth, AuthContextProvider } from "./context/AuthContext/AuthContext";
 import { FoodContextProvider } from "./context/FoodContext/FoodContext";
 
 function App() {
+
 
   return (
     <AuthContextProvider>
@@ -26,25 +31,15 @@ function App() {
           <Router>
             <Switch>
               <Route path="/" exact>
-                {/* {user ? <Home /> : 
-                } */}
                 <Home />
-                {/* <Register /> */}
               </Route>
 
-              <Route path="/login">
-                {/* {user ? <Redirect to="/" /> : 
-                } */}
-                <Login />
-              </Route>
+              <AuthProtectedRoute path="/login" component={Login} />
+              <AuthProtectedRoute path="/register" component={Register} />
 
-              <Route path="/register">
-                {/* {user ? <Redirect to="/" /> : 
-                } */}
-                <Register />
-              </Route>
+              <ProtectedRoute path="/foodCalendar" component={FoodCalendar} />
+              <ProtectedRoute path="/myMacros" component={UserMacros} />
 
-              <Route path="/foodCalendar" component={FoodCalendar} />
             </Switch>
           </Router>
         </div>

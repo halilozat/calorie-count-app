@@ -9,41 +9,49 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
-    const [user, setUser] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const [userName, setUserName] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             const me = await CalorieCountService.AuthMe();
-    //             setLoggedIn(true);
-    //             setUser(me);
-    //             setLoading(false);
-    //             console.log(loggedIn)
+    useEffect(() => {
+        (async () => {
+            try {
+                const me = await CalorieCountService.AuthMe();
+                setLoggedIn(true);
+                setUserId(me.Id);
+                setUserName(me.UserName);
+                setUserEmail(me.Email);
+                console.log(loggedIn)
 
-    //         } catch (e) {
-    //             setLoading(false);
-    //         }
-    //     })();
-    // }, []);
+            } catch (error) {
+                console.log(error)
+            }
+        })();
+    }, []);
 
 
     const login = (data) => {
         setLoggedIn(true)
-        setUser(data.user.Id)
+        setUserId(data.user.Id)
+        setUserName(data.user.UserName)
+        setUserEmail(data.user.Email)
     }
 
     const logout = async () => {
         setLoggedIn(false);
-        setUser(null);
+        setUserId(null);
+        setUserName(null);
+        setUserEmail(null);
 
         await CalorieCountService.AuthLogout();
     };
 
     const values = {
         loggedIn,
-        user,
+        userId,
+        userName,
+        userEmail,
         login,
         logout
     }

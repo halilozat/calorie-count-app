@@ -15,11 +15,10 @@ import './header.scss'
 
 
 const Header = () => {
-    const { logout, loggedIn, user } = useAuth();
+    const { logout, loggedIn, userId } = useAuth();
     const history = useHistory()
 
-    console.log(user);
-
+    console.log(userId);
     console.log(loggedIn);
 
     const handleLogout = () => {
@@ -62,10 +61,14 @@ const Header = () => {
                                     </ul>
                                 </nav>
                                 <div className="phone d-flex flex-row align-items-center justify-content-start ml-auto">
-                                    <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
-                                        <a>LOGIN</a>
-                                        {user}
-                                    </Link>
+                                    {
+                                        userId ?
+                                            <a onClick={handleLogout} style={{ textDecoration: "none", color: "white" }}>LOGOUT</a>
+                                            :
+                                            <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
+                                                <a>LOGIN</a>
+                                            </Link>
+                                    }
                                 </div>
                             </div>
                         </div>
