@@ -13,28 +13,25 @@ export const AuthContextProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const me = await CalorieCountService.AuthMe();
-                setLoggedIn(true);
-                setUser(me);
-                setLoading(false);
-                console.log(loggedIn)
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             const me = await CalorieCountService.AuthMe();
+    //             setLoggedIn(true);
+    //             setUser(me);
+    //             setLoading(false);
+    //             console.log(loggedIn)
 
-            } catch (e) {
-                setLoading(false);
-            }
-        })();
-    }, []);
+    //         } catch (e) {
+    //             setLoading(false);
+    //         }
+    //     })();
+    // }, []);
 
 
     const login = (data) => {
         setLoggedIn(true)
-        setUser(data.user)
-
-        console.log(data)
-        console.log(data.user)
+        setUser(data.user.Id)
     }
 
     const logout = async () => {

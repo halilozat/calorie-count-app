@@ -8,14 +8,17 @@ import { useAuth } from '../../../context/AuthContext/AuthContext';
 
 /** Images */
 import logoImg from '../../../assets/images/dot.png'
+import logoImg2 from '../../../assets/images/logo3.png'
 
 /** Styles */
 import './header.scss'
 
 
 const Header = () => {
-    const { logout, loggedIn } = useAuth();
+    const { logout, loggedIn, user } = useAuth();
     const history = useHistory()
+
+    console.log(user);
 
     console.log(loggedIn);
 
@@ -34,7 +37,7 @@ const Header = () => {
                                 <a href="#">
                                     <Link to="/" style={{ textDecoration: "none", color: "white" }}>
                                         <div className="logo d-flex flex-row align-items-center justify-content-start">
-                                            <img src={logoImg} alt="" />
+                                            <img className="logoImg" src={logoImg2} alt="" />
                                             <div>Fit<span>Foods</span></div>
                                         </div>
                                     </Link>
@@ -61,6 +64,7 @@ const Header = () => {
                                 <div className="phone d-flex flex-row align-items-center justify-content-start ml-auto">
                                     <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
                                         <a>LOGIN</a>
+                                        {user}
                                     </Link>
                                 </div>
                             </div>

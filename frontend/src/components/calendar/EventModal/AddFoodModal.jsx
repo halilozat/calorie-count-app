@@ -1,9 +1,13 @@
+/** Dependencies */
 import React, { useContext, useRef, useState } from 'react';
 import { Modal } from '@material-ui/core';
-import './modal.css'
+import Datetime from 'react-datetime';
+
+/** Components */
 import CalorieFinder from '../../Home/CalorieFinder/CalorieFinder';
 
-import Datetime from 'react-datetime';
+/**Styles */
+import './addFormModal.scss'
 
 
 
@@ -54,12 +58,6 @@ export default function SimpleModal({ isOpen, onClose, onEventAdded }) {
                         </div>
                     </div>
                     <div className="screen-body">
-                        {/* <div className="screen-body-item left">
-                            <div className="app-title">
-                                <span>ADD A</span>
-                                <span>FOOD</span>
-                            </div>
-                        </div> */}
                         <div className="screen-body-item">
                             <div className="app-form">
                                 <div className="app-form-group">
@@ -80,13 +78,6 @@ export default function SimpleModal({ isOpen, onClose, onEventAdded }) {
                                         onChange={date => setEnd(date)}
                                     />
                                 </div>
-                                {/* <div className="app-form-group">
-                                    <input
-                                        className="app-form-control"
-                                        placeholder="Kitap Adı"
-                                        required
-                                    />
-                                </div> */}
                                 <br />
                                 <div className="app-form-group buttons">
                                     <form onSubmit={submitHandler}>

@@ -58,7 +58,7 @@ class AuthController {
             maxAge: 24 * 3600
           }
         )
-        .send(userData);
+        .send({ user: userData });
     } catch (error) {
       if (['NotFound', 'BadRequest'].includes(error.message)) {
         reply.code(400).send(error.message);
@@ -114,7 +114,7 @@ class AuthController {
             maxAge: 24 * 3600
           }
         )
-        .send(userData);
+        .send({ user: userData });
 
     } catch (error) {
       if (['Founded', 'BadRequest'].includes(error.message)) {
@@ -129,7 +129,7 @@ class AuthController {
     try {
       const { userData } = request.body;
 
-      reply.code(200).send(userData);
+      reply.code(200).send({ user: userData });
 
     } catch (error) {
       if (['Founded', 'BadRequest'].includes(error.message)) {

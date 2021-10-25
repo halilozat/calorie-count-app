@@ -35,7 +35,9 @@ const FoodCalendar = () => {
                     plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                     initialView="dayGridMonth"
                     events={[
-                        // { title: 'Lunch', date: '2021-10-01' },
+                        { title: 'Hunger Games', date: '2021-10-05', color: "red" },
+                        { title: 'Hunger Games', date: '2021-10-06', color: "purple" },
+                        { title: 'Intermittent fasting', date: '2021-10-06', color: "brown" },
                         {
                             title: 'Breakfast',
                             start: '2021-10-01T08:30:00',
@@ -61,6 +63,21 @@ const FoodCalendar = () => {
                             start: '2021-10-01T18:30:00',
                             end: '2021-10-01T19:00:00',
                             allDay: false
+                        },
+                        {
+                            title: 'Breakfast',
+                            start: '2021-10-02T08:30:00',
+                            end: '2021-10-02T09:30:00',
+                        },
+                        {
+                            title: 'Lunch',
+                            start: '2021-10-02 12:30:00',
+                            end: '2021-10-02 13:00:00',
+                        },
+                        {
+                            title: 'Dinner',
+                            start: '2021-10-02T18:30:00',
+                            end: '2021-10-02T19:00:00',
                         }
                     ]}
                     firstDay={1}

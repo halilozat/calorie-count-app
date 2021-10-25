@@ -42,7 +42,7 @@ const Home = () => {
                                     </div>
                                     <div className="home_title">Get fit with us</div>
                                     <Link to="/register" >
-                                        <button className="button home_button ml-auto mr-auto"><a>Join Now</a></button>
+                                        <button className="button home_button ml-auto mr-auto"><a href="!#">Join Now</a></button>
                                     </Link>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ const Home = () => {
                                         <br />
                                     </div>
                                     <div onClick={handleAlert} className="box_link_container">
-                                        <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
+                                        <a href="!#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
                                             <div>+</div>
                                         </div>
                                         </a>
@@ -82,7 +82,7 @@ const Home = () => {
                                     </div>
                                     <Link to="/foodCalendar" style={{ textDecoration: "none", color: "white" }}>
                                         <div className="box_link_container">
-                                            <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
+                                            <a href="!#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
                                                 <div>+</div>
                                             </div>
                                             </a>
@@ -99,7 +99,7 @@ const Home = () => {
                                     </div>
 
                                     <div onClick={handleAlert} className="box_link_container">
-                                        <a href="#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
+                                        <a href="!#"><div className="box_link d-flex flex-column align-items-center justify-content-center trans_200">
                                             <div>+</div>
                                         </div>
                                         </a>
