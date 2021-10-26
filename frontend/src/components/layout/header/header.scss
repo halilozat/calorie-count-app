@@ -24,7 +24,7 @@
 
     div {
       margin-left: 10px;
-      font-size: 28.3px;
+      font-size: 40px;
       line-height: 0.75;
       color: #ffffff;
       font-weight: 700;
@@ -65,7 +65,7 @@
 
   .phone {
     cursor: pointer;
-    margin-left: 100px;
+    margin-left: 140px;
     height: 43px;
     padding-left: 23px;
     padding-right: 20px;
@@ -112,8 +112,8 @@
 .menu_hamburger {
   display: block;
   position: relative;
-  width: 12px;
-  height: 12px;
+  width: 30px;
+  height: 30px;
 }
 .hamburger_lines {
   display: block;
@@ -165,6 +165,8 @@
 
 .menu {
   position: fixed;
+  display: flex;
+  flex-direction: column !important;
   top: 0;
   left: 0;
   width: 100vw;
@@ -178,6 +180,7 @@
 .menu.active {
   visibility: visible;
   opacity: 1;
+  flex-direction: column !important;
 }
 .menu_content {
   width: 100%;
@@ -203,24 +206,21 @@
 .menu_content ul li a:hover {
   color: rgba(255, 255, 255, 1);
 }
-.menu_phone {
+.menu_button {
   position: absolute;
   left: 50%;
+  cursor: pointer;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  bottom: 40px;
+  bottom: 300px;
   height: 43px;
   padding-left: 23px;
   padding-right: 20px;
   border-radius: 22px;
+  color: white;
   border: solid 1px #ff9711;
   box-shadow: 0 0 1px 0 #ff9711 inset, 0 0 1px 0 #ff9711;
-}
-.menu_phone i {
-  font-size: 18px;
-  color: #ff9711;
-  margin-right: 12px;
 }
