@@ -4,7 +4,7 @@ import { Modal } from '@material-ui/core';
 import Datetime from 'react-datetime';
 
 /** Components */
-import CalorieFinder from '../../Home/CalorieFinder/CalorieFinder';
+import CalorieFinder from '../CalorieFinder/CalorieFinder';
 
 /**Styles */
 import './addFormModal.scss'

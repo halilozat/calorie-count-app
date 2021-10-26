@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 
 /** Pages && Components */
@@ -18,7 +17,7 @@ import ProtectedRoute from "./pages/Routes/ProtectedRoute";
 import AuthProtectedRoute from "./pages/Routes/AuthProtectedRoute";
 
 /** Contexts */
-import { useAuth, AuthContextProvider } from "./context/AuthContext/AuthContext";
+import { AuthContextProvider } from "./context/AuthContext/AuthContext";
 import { FoodContextProvider } from "./context/FoodContext/FoodContext";
 
 function App() {
@@ -30,9 +29,8 @@ function App() {
         <div>
           <Router>
             <Switch>
-              <Route path="/" exact>
-                <Home />
-              </Route>
+
+              <Route path="/" exact component={Home} />
 
               <AuthProtectedRoute path="/login" component={Login} />
               <AuthProtectedRoute path="/register" component={Register} />
