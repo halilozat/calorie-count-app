@@ -1,6 +1,3 @@
-/** Dependencies */
-
-
 /** Validations */
 const FoodValidations = require('../../../validations/FoodsValidations')
 

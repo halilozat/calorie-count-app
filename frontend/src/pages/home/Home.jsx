@@ -4,7 +4,7 @@ import HomeComponent from '../../components/Home/HomeComponent';
 
 /** Styles */
 import './home.scss'
-import './responsive.scss'
+import './homeResponsive.scss'
 
 
 

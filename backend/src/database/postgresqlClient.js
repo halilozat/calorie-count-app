@@ -39,7 +39,7 @@ function postgreSQLClient(mediator) {
     const repositories = {
       userRepository,
       userFoodRepository,
-      userMacroRepository
+      userMacroRepository,
     }
 
     mediator.emit('db:ready', repositories);

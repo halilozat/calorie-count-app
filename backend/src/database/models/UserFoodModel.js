@@ -41,7 +41,7 @@ module.exports = function userFoodModel(sequelize) {
             allowNull: false,
         },
         createDateTime: {
-            type: DataTypes.DATEONLY(),
+            type: DataTypes.DATE(),
             defaultValue: new Date(),
         },
     }, {

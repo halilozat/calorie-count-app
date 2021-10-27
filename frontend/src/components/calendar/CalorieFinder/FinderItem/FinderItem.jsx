@@ -1,5 +1,5 @@
 /** Dependencies */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 /** Services */
 import CalorieCountService from '../../../../services/CalorieCountService'
@@ -25,8 +25,6 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
             foods,
         } = useFoodContext()
     const { userId } = useContext(AuthContext)
-
-    const [currentFood, setCurrentFood] = useState({})
 
     useEffect(() => {
 

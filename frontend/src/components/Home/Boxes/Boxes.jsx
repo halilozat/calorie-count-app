@@ -29,7 +29,7 @@ const Boxes = () => {
 
                                 <div className="box">
                                     <div className="box_icon d-flex flex-column align-items-center justify-content-center"><img src={Icon4} alt="" /></div>
-                                    <div className="box_title">8 weeks nutrition program</div>
+                                    <div className="box_title">Get free nutrition programs</div>
                                     <div className="box_text">
                                         <p>Coming Soon...</p>
                                         <br />
@@ -62,7 +62,7 @@ const Boxes = () => {
                                 </div>
                                 <div className="box">
                                     <div className="box_icon d-flex flex-column align-items-center justify-content-center"><img src={Icon1} alt="" /></div>
-                                    <div className="box_title">8 weeks training program</div>
+                                    <div className="box_title">Get free training programs</div>
                                     <div className="box_text">
                                         <p>Coming Soon...</p>
                                         <br /><br />

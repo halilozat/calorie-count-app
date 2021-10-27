@@ -1,40 +1,21 @@
 /** Dependencies */
-import React, { useContext, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Modal } from '@material-ui/core';
 import Datetime from 'react-datetime';
 
 /** Components */
 import CalorieFinder from '../CalorieFinder/CalorieFinder';
 
-/** Contexts */
-import { useFoodContext } from '../../../context/FoodContext/FoodContext';
-
-
 /**Styles */
 import './addFormModal.scss'
 
 
 
-export default function SimpleModal({ isOpen, onClose, onEventAdded }) {
-
-    const
-        {
-            foods,
-        } = useFoodContext()
+export default function SimpleModal() {
 
     const [foodname, setFoodname] = useState("");
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
-
-    const onSubmit = (event) => {
-        event.preventDefault()
-        onEventAdded({
-            foodname,
-            start,
-            end
-        })
-        onClose()
-    }
 
     const submitHandler = async (e) => {
         e.preventDefault();

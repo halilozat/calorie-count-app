@@ -41,6 +41,10 @@ export default class CalorieCountService {
     return fetcher.post("v1/foods/addFood", payload)
   }
 
+  static GetUserFoods(userId) {
+    return fetcher.get(`/v1/foods/getFoods/${userId}`)
+  }
+
   static getBasketItems(userId) {
     return fetcher.get(`/v1/userFood/${userId}`);
   }
