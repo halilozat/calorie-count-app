@@ -1,3 +1,7 @@
+/** Styles */
+import './hamburgerBar.scss'
+
+
 const HamburgerBar = ({ open, setOpen }) => {
     return (
         <>

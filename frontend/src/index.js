@@ -6,6 +6,7 @@ import App from "./App";
 import "./index.css";
 import "react-datetime/css/react-datetime.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'alertifyjs/build/css/alertify.css';
 
 
 ReactDOM.render(

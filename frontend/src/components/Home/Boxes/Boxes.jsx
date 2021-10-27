@@ -1,5 +1,6 @@
 /** Dependencies */
 import { Link } from 'react-router-dom';
+import alertify from 'alertifyjs';
 
 /** Images */
 import Icon1 from '../../../assets/images/icon_1.png'
@@ -12,7 +13,9 @@ const Boxes = () => {
     const handleAlert = event => {
         event.preventDefault()
         {
-            alert("Coming Soon!")
+            alertify.alert('İnfo Message', 'COMING SOON!', function () {
+                alertify.success('I Understand!');
+            });
         }
     }
 

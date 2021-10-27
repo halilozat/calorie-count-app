@@ -1,8 +1,8 @@
 /** Dependencies */
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
-/** Axios */
-import axios from 'axios'
+/** Services */
+import CalorieCountService from '../../../../services/CalorieCountService'
 
 /** Components */
 import { AuthContext } from '../../../../context/AuthContext/AuthContext'
@@ -17,16 +17,16 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
     const
         {
-            foods,
-            setFoods,
-            setTotalFat,
-            setTotalCarb,
             setTotalProtein,
-            setTotalCalorie
+            setTotalCalorie,
+            setTotalCarb,
+            setTotalFat,
+            setFoods,
+            foods,
         } = useFoodContext()
-    const { user } = useContext(AuthContext)
+    const { userId } = useContext(AuthContext)
 
-
+    const [currentFood, setCurrentFood] = useState({})
 
     useEffect(() => {
 
@@ -74,29 +74,32 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
 
     const addBasket = async () => {
         const newFood = {
-            userId: user.user.id,
-            foodname: food.name,
-            amount: 1,
-            protein: Math.round(food.protein_g),
-            carb: Math.round(food.carbohydrates_total_g),
-            fat: Math.round(food.fat_total_g),
-            gram: Math.round(food.serving_size_g),
-            calorie: Math.round(food.calories)
+            UserId: userId,
+            FoodName: food.name,
+            Amount: 1,
+            Protein: Math.round(food.protein_g),
+            Carb: Math.round(food.carbohydrates_total_g),
+            Fat: Math.round(food.fat_total_g),
+            Gram: Math.round(food.serving_size_g),
+            Calorie: Math.round(food.calories)
         }
 
         try {
-            axios.post("http://localhost:5001/api/v1/userFood/addFood", newFood, { withCredentials: true })
-                .then(res => {
-                    setFoods([...foods, res.data])
+            CalorieCountService.AddFood(newFood)
+                .then(response => {
+                    setFoods([...foods, response.data])
                 })
                 .catch(
-                    err => {
-                        console.log(err);
+                    error => {
+                        console.log(error);
                     }
                 )
+
+
         } catch (error) {
             console.log(error);
         }
+        console.log(foods);
 
     }
 

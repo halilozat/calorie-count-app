@@ -19,10 +19,11 @@ export const AuthContextProvider = ({ children }) => {
             try {
                 const me = await CalorieCountService.AuthMe();
                 setLoggedIn(true);
-                setUserId(me.Id);
-                setUserName(me.UserName);
-                setUserEmail(me.Email);
+                setUserId(me.data.user.Id);
+                setUserName(me.data.user.UserName);
+                setUserEmail(me.data.user.Email);
                 console.log(loggedIn)
+                console.log(me.data.user.Id)
 
             } catch (error) {
                 console.log(error)

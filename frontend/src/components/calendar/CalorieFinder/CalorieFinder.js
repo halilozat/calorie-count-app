@@ -1,11 +1,10 @@
 /** Dependencies */
 import React, { useEffect, useState } from 'react';
 import ContentLoader from "react-content-loader"
-import axios from 'axios';
 
 /** Components */
-import Item from './FinderItem/FinderItem';
-import Search from "./FinderSearch/FinderSearch";
+import FinderItem from './FinderItem/FinderItem';
+import FinderSearch from "./FinderSearch/FinderSearch";
 
 /** Services */
 import CalorieCountService from '../../../services/CalorieCountService'
@@ -17,10 +16,7 @@ import './calorieFinder.scss';
 
 const CalorieFinder = () => {
     const [loading, setLoading] = useState(false)
-    const [foodState, setFoodState] = useState({
-        items: [],
-        term: 'Egg',
-    });
+    const [foodState, setFoodState] = useState({ items: [], term: 'Egg' });
 
     const MyLoader = () => (
         <ContentLoader viewBox="0 0 500 475" height={300} width={500} backgroundColor="#fff"
@@ -55,7 +51,7 @@ const CalorieFinder = () => {
         let foodItems = [];
         foodState.items.map((item) => {
             foodItems.push(
-                <Item
+                <FinderItem
                     food={item}
                     key={item.name}
                     name={item.name}
@@ -79,19 +75,22 @@ const CalorieFinder = () => {
 
     return (
         <div className="basket">
-            <Search defaultValue={foodState.term} onChange={searchHandler} />
+            <FinderSearch defaultValue={foodState.term} onChange={searchHandler} />
 
             <div className="items">
-                {loading && (
-                    <MyLoader />
-                )}
-                {allItems.length === 0 && loading === false ? (
-                    <div className="error">
-                        No food found... <i className="fas fa-pizza-slice"></i>
-                    </div>
-                ) : (
-                    allItems
-                )}
+                {loading && (<MyLoader />)}
+
+                {allItems.length === 0 && loading === false
+                    ?
+                    (
+                        <div className="error" style={{ color: "white" }}>
+                            <div>No food found...</div>
+                            <i className="fas fa-pizza-slice" ></i>
+                        </div>
+                    )
+                    :
+                    (allItems)
+                }
             </div>
         </div>
     );

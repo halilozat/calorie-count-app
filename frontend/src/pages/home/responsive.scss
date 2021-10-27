@@ -1,11 +1,11 @@
 @charset "utf-8";
 
 @media only screen and (max-width: 1199px) {
-  .phone {
+  .authButton {
     margin-left: 90px !important;
     display: none !important;
   }
-  .menu .phone {
+  .menu .authButton {
     display: block !important;
   }
   .logo {
@@ -26,7 +26,7 @@
   .main_nav {
     display: none;
   }
-  .phone {
+  .authButton {
     display: none !important;
   }
   .box {

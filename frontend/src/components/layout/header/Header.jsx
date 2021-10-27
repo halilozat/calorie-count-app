@@ -7,15 +7,17 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext/AuthContext';
 
 /** Images */
-import logoImg from '../../../assets/images/dot.png'
 import logoImg2 from '../../../assets/images/logo3.png'
 
 /** Components */
-import HamburgerBar from './HamburgerMenu/HamburgerBar';
+import HamburgerBar from './HamburgerBar/HamburgerBar';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 
 /** Styles */
 import './header.scss'
+
+
+
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -63,7 +65,7 @@ const Header = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <div className="phone d-flex flex-row align-items-center justify-content-start ml-auto">
+                                            <div className="authButton d-flex flex-row align-items-center justify-content-start ml-auto">
                                                 {
                                                     userId ?
                                                         <a onClick={handleLogout} style={{ textDecoration: "none", color: "white" }}>LOGOUT</a>

@@ -37,6 +37,10 @@ export default class CalorieCountService {
     return axios.post("http://dev.calorie-count.com:5001/api/v1/foods/apiFoods", query);
   }
 
+  static AddFood(payload) {
+    return fetcher.post("v1/foods/addFood", payload)
+  }
+
   static getBasketItems(userId) {
     return fetcher.get(`/v1/userFood/${userId}`);
   }

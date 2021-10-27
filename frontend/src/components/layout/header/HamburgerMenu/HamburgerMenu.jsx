@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 /** Contexts */
 import { useAuth } from '../../../../context/AuthContext/AuthContext';
 
+/** Styles */
+import './hamburgerMenu.scss'
+
+
 const HamburgerMenu = ({ open, handleLogout }) => {
     const { userId } = useAuth();
 

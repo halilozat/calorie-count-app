@@ -6,12 +6,21 @@ import Datetime from 'react-datetime';
 /** Components */
 import CalorieFinder from '../CalorieFinder/CalorieFinder';
 
+/** Contexts */
+import { useFoodContext } from '../../../context/FoodContext/FoodContext';
+
+
 /**Styles */
 import './addFormModal.scss'
 
 
 
 export default function SimpleModal({ isOpen, onClose, onEventAdded }) {
+
+    const
+        {
+            foods,
+        } = useFoodContext()
 
     const [foodname, setFoodname] = useState("");
     const [start, setStart] = useState(new Date());
