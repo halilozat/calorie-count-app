@@ -31,26 +31,16 @@ class FoodsController {
     try {
       const {
         UserId,
-        FoodName,
-        Gram,
-        Amount,
-        Calorie,
-        Carb,
-        Protein,
-        Fat,
+        Title,
+        Foods,
+        Start
       } = request.body;
-
-      const now = new Date();
 
       const dbPayload = {
         userId: UserId,
-        foodname: FoodName,
-        gram: Gram,
-        amount: Amount,
-        calorie: Calorie,
-        carb: Carb,
-        protein: Protein,
-        fat: Fat,
+        title: Title,
+        start: Start,
+        foods: Foods
       }
 
       const food = await UserFoodDomainService.AddFood(repositories, dbPayload)

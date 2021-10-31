@@ -12,37 +12,18 @@ module.exports = function userFoodModel(sequelize) {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        foodname: {
+        foods: {
+            type: DataTypes.JSON,
+            defaultValue: []
+        },
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        gram: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        amount: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        calorie: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        carb: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        protein: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        fat: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        createDateTime: {
+        start: {
             type: DataTypes.DATE(),
             defaultValue: new Date(),
+            allowNull: true
         },
     }, {
         tableName: 'userFoods',
