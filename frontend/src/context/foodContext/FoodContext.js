@@ -1,5 +1,5 @@
 /** Dependencies */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 /** Contexts */
 import { useAuth } from "../AuthContext/AuthContext";
@@ -23,6 +23,10 @@ export const FoodContextProvider = ({ children }) => {
     const [totalProtein, setTotalProtein] = useState(0);
     const [totalFat, setTotalFat] = useState(0);
     const [totalCalorie, setTotalCalorie] = useState(0);
+
+    useEffect(() => {
+        console.log(foods)
+    }, [foods]);
 
     const values = {
         foods,

@@ -29,11 +29,11 @@ const FoodCalendar = () => {
 
     const handleEventClick = (clickInfo) => {
         alertify.alert("Event Info!", `This Event's Title : ${clickInfo.event.title}`)
-        console.log(clickInfo.event.id)
+        console.log(clickInfo.event._def.extendedProps.foods)
         // clickInfo.event.remove()
     }
 
-    async function handleDatesSet(data) {
+    async function handleDatesSet() {
         const response = await CalorieCountService.GetUserFoods(userId)
         setEvents(response.data)
     }

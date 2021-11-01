@@ -83,22 +83,10 @@ const Item = ({ name, calories, carbs, serve, fat_total, protein, food }) => {
         }
 
         try {
-            CalorieCountService.AddFood(newFood)
-                .then(response => {
-                    setFoods([...foods, response.data])
-                })
-                .catch(
-                    error => {
-                        console.log(error);
-                    }
-                )
-
-
+            setFoods([...foods, newFood])
         } catch (error) {
             console.log(error);
         }
-        console.log(foods);
-
     }
 
     return (

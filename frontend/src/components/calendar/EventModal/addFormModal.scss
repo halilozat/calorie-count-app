@@ -115,19 +115,23 @@ textarea {
           }
 
           .app-form-control {
-            width: 100%;
-            padding: 10px 0;
-            background: none;
-            border: none;
+            width: 85%;
+            background-color: white;
+            color: black !important;
             border-bottom: 1px solid #666;
-            color: #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 42px;
             font-size: 14px;
             outline: none;
             transition: border-color 0.2s;
+            box-shadow: 0 3px 5px -2px rgb(0 0 0 / 30%);
           }
 
           .app-form-control::placeholder {
-            color: $textColor;
+            color: black;
           }
 
           .app-form-control:focus {
@@ -144,6 +148,9 @@ textarea {
             margin: 5px;
           }
 
+          .foods-map {
+            margin-left: 20px;
+          }
           .app-form-button:hover {
             color: $darkOrangeColor;
           }
@@ -154,6 +161,33 @@ textarea {
             margin: 0 5px;
           }
         }
+      }
+
+      .basket-reset-btn {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 13px;
+        color: $textColor;
+        background-color: $orangeColor;
+        border: 2px solid black;
+        width: 90px;
+        height: 30px;
+        border-radius: 50px;
+        margin-left: 15px;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .basket-delete-btn {
+        font-size: 10px;
+        color: $textColor;
+        background-color: $orangeColor;
+        border: 2px solid black;
+        width: 20px;
+        height: 20px;
+        border-radius: 50px;
+        margin-left: 15px;
+        cursor: pointer;
       }
 
       @media screen and (max-width: 520px) {

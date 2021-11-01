@@ -38,7 +38,7 @@ export default class CalorieCountService {
   }
 
   static AddFood(payload) {
-    return fetcher.post("v1/foods/addFood", payload)
+    return fetcher.post("/v1/foods/addFood", payload)
   }
 
   static GetUserFoods(userId) {
