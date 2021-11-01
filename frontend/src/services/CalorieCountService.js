@@ -54,4 +54,13 @@ export default class CalorieCountService {
   }
 
 
+  /** Macros */
+
+  static AddMacros(payload) {
+    return fetcher.post("/v1/users/addMacros", payload)
+  }
+
+  static GetMacros(userId) {
+    return fetcher.get(`/v1/users/getMacros/${userId}`)
+  }
 }

@@ -24,7 +24,6 @@ export default function SimpleModal() {
 
     const [title, setTitle] = useState("")
     const [start, setStart] = useState(Date.now())
-    const end = useRef()
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -34,11 +33,12 @@ export default function SimpleModal() {
             Foods: foods,
             Start: start
         }
-        console.log(newFood);
         try {
             await CalorieCountService.AddFood(newFood)
             setOpen(false)
             setFoods([])
+            setTitle("")
+            setStart(Date.now())
         } catch (error) {
             console.log(error.message);
         }

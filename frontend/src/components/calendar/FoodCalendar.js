@@ -27,9 +27,13 @@ const FoodCalendar = () => {
     const calendarRef = useRef(null)
     const { userId } = useAuth()
 
+
+
     const handleEventClick = (clickInfo) => {
-        alertify.alert("Event Info!", `This Event's Title : ${clickInfo.event.title}`)
-        console.log(clickInfo.event._def.extendedProps.foods)
+        alertify.alert("Event Info!",
+            `${clickInfo.event.title} Foods : 
+            ${clickInfo.event._def.extendedProps.foods.map(item => item.FoodName)}`
+        )
         // clickInfo.event.remove()
     }
 

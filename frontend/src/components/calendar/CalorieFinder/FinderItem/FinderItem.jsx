@@ -1,9 +1,6 @@
 /** Dependencies */
 import React, { useContext, useEffect } from 'react'
 
-/** Services */
-import CalorieCountService from '../../../../services/CalorieCountService'
-
 /** Components */
 import { AuthContext } from '../../../../context/AuthContext/AuthContext'
 import { useFoodContext } from '../../../../context/FoodContext/FoodContext'
